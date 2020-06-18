@@ -5,17 +5,22 @@
   
 
   
-  <title>归档 | 老陶的博客</title>
+  <title>2016 CocosPods安装教程 | 老陶的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="对代码不满足，是任何真正有天才的程序员的根本特征。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="老陶的博客">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="CocoaPods简介 CocoaPods是一个管理Swift和Objective-C的Cocoa项目的依赖工具。它现在有超过一万八千多个库，可以优雅地帮助你扩展你的项目。简单的说，就是替你管理Swift和Objective-C的Cocoa项目的第三方库引入。 官网地址: https:&#x2F;&#x2F;cocoapods.org&#x2F; 安装">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2016 CocosPods安装教程">
+<meta property="og:url" content="http://yoursite.com/2016/07/12/CocoaPods-Install/index.html">
 <meta property="og:site_name" content="老陶的博客">
-<meta property="og:description" content="对代码不满足，是任何真正有天才的程序员的根本特征。">
+<meta property="og:description" content="CocoaPods简介 CocoaPods是一个管理Swift和Objective-C的Cocoa项目的依赖工具。它现在有超过一万八千多个库，可以优雅地帮助你扩展你的项目。简单的说，就是替你管理Swift和Objective-C的Cocoa项目的第三方库引入。 官网地址: https:&#x2F;&#x2F;cocoapods.org&#x2F; 安装">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/2016/07/12/CocoaPods-Install/CocoaPods-Install/001.png">
+<meta property="article:published_time" content="2016-07-12T09:41:55.000Z">
+<meta property="article:modified_time" content="2019-08-13T14:35:05.410Z">
 <meta property="article:author" content="老陶">
+<meta property="article:tag" content="iOS">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2016/07/12/CocoaPods-Install/CocoaPods-Install/001.png">
   
     <link rel="alternate" href="/atom.xml" title="老陶的博客" type="application/atom+xml">
   
@@ -68,236 +73,91 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/12/19/docker-net-shell/" class="archive-article-date">
-  <time datetime="2019-12-19T06:37:55.000Z" itemprop="datePublished">12月 19</time>
+        <section id="main"><article id="post-CocoaPods-Install" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/12/CocoaPods-Install/" class="article-date">
+  <time datetime="2016-07-12T09:41:55.000Z" itemprop="datePublished">2016-07-12</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/19/docker-net-shell/">docker网络命令与基本查看命令</a>
+    <h1 class="article-title" itemprop="name">
+      2016 CocosPods安装教程
     </h1>
   
 
-    </header>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>CocoaPods简介</p>
+<p>CocoaPods是一个管理Swift和Objective-C的Cocoa项目的依赖工具。它现在有超过一万八千多个库，可以优雅地帮助你扩展你的项目。简单的说，就是替你管理Swift和Objective-C的Cocoa项目的第三方库引入。</p>
+<p>官网地址: <a href="https://cocoapods.org/" target="_blank" rel="noopener">https://cocoapods.org/</a></p>
+<p>安装</p>
+<a id="more"></a>
+
+<p>Mac上面本来就自带了ruby，所有就不用自己安装了(除非你卸载了)。</p>
+<p>打开Terminal(终端)，输入以下命令(第二个命令可能会需要稍等一会儿)</p>
+<pre><code>gem sources --remove https://rubygems.org/
+gem source -a https://gems.ruby-china.org</code></pre><p>第一个命令是移除官方源，因为在不翻墙的情况下，使用起来比较慢；第二个命令是添加ruby-china的RubyGems镜像(很多旧教程都是说使用taobao的gem源，但是taobao的gem源已经停止维护了，原文:<a href="https://ruby-china.org/topics/29250)。" target="_blank" rel="noopener">https://ruby-china.org/topics/29250)。</a></p>
+<p>接下来运行一个命令查看是否成功添加了ruby-china的gem源:</p>
+<pre><code>gem source</code></pre><p>出现下图这样子，则代表成功添加~</p>
+<p><img src="CocoaPods-Install/001.png" alt="效果"></p>
+<p>然后就可以开始真正安装CocoaPods了，输入一下命令:</p>
+<pre><code>sudo gem install cocoapods</code></pre><p>等一会儿就能安装完成<del>~</del></p>
+<p>安装结束后，需要运行一下命令初始化CocoaPods:</p>
+<p>pod setup</p>
+<p>没有什么错误的话，就算了安装结束了。</p>
+<p>基本使用</p>
+<p>打开Terminal(终端)，cd到你的Project目录，输入一下命令:</p>
+<pre><code>pod init</code></pre><p>运行结束后，该目录下，会生成了一个Podfile文件</p>
+<p>使用文本编辑器(vim、Sublime Text2、等等…)打开它(Podfile)，大概会看到以下的东西</p>
+<pre><code>platform :ios, &apos;xxx&apos; # 目标平台及其版本use_frameworks! # swift项目需要这句话，是    Objective-C项目的话，请在前面加个`#`注释掉target &apos;xxxx&apos; do</code></pre><h1 id="在这里添加你的依赖库说明，如pod-xxx"><a href="#在这里添加你的依赖库说明，如pod-xxx" class="headerlink" title="在这里添加你的依赖库说明，如pod xxx"></a>在这里添加你的依赖库说明，如pod xxx</h1><p>pod ‘Alamofire’, ‘~&gt; 3.1’ # 例如这是引入Alamofire这个第三方库<br>end<br>编辑完Podfile后，使用Terminal(终端)输入其中一个命令(需要cd到项目的根目录，即Podfile所在目录):</p>
+<pre><code>pod install --no-repo-updateorpod install</code></pre><p>第一个命令是不更新本地库信息进行安装，速度会快一点，毕竟不需要更新。但是会有一点点问题，当有一个新的库发布的时候，就会无法安装成功。如果不嫌麻烦，可以定时执行以下命令更新CocoaPods的库，然后就可以在一段时间使用以上的第一个命令进行安装:</p>
+<pre><code>pod repo update</code></pre><p>安装完成之后，打开项目就需要打开xxx.xcworkspace，而不是xxx.xcodeproj了</p>
+<p>如果在安装之后，修改了Podfile文件，可以执行以下的其中一个命令进行库的更新(两个命令的区别和上面说的一样):</p>
+<pre><code>pod update --no-repo-updateorpod update</code></pre><p>安装CocoaPods的可能失败原因</p>
+<p>gem过旧，使用以下命令更新一下，再进行安装(先切换到了ruby-china的gem源再运行一下命令更新):</p>
+<pre><code>sudo gem update</code></pre><p>如果发现有的库的版本比其他人低，可以运行如下命令，更新：</p>
+<pre><code>pod update --verbose</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/07/12/CocoaPods-Install/" data-id="ckbkhedo80003vjatbi1faqx6" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/" rel="tag">iOS</a></li></ul>
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/07/17/git-sshkey/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          生成SSH Key
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/07/11/swift-delegate-memory-leak/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">swift 使用 delegate 内存泄露问题</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/12/19/linux-brctl-shell/" class="archive-article-date">
-  <time datetime="2019-12-19T02:54:12.000Z" itemprop="datePublished">12月 19</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/19/linux-brctl-shell/">Linux brclt 命令</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/12/18/mac-go-environment/" class="archive-article-date">
-  <time datetime="2019-12-18T09:26:15.000Z" itemprop="datePublished">12月 18</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/18/mac-go-environment/">Mac 下Go语言开发环境设置</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/08/13/iOS-BLEDevelopMultiDevice/baidu_verify_GTSzPZiZEu/" class="archive-article-date">
-  <time datetime="2019-08-13T14:35:05.595Z" itemprop="datePublished">8月 13</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/13/iOS-BLEDevelopMultiDevice/baidu_verify_GTSzPZiZEu/">iOS-BLEDevelopMultiDevice/baidu_verify_GTSzPZiZEu</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/04/05/linux-Shell-ssh/" class="archive-article-date">
-  <time datetime="2019-04-05T03:55:55.000Z" itemprop="datePublished">4月 5</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/05/linux-Shell-ssh/">Linux Shell ssh登录脚本</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/04/05/hexo-installed-1/" class="archive-article-date">
-  <time datetime="2019-04-05T02:58:46.000Z" itemprop="datePublished">4月 5</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/05/hexo-installed-1/">Mac+HEXO+Github 搭建属于自己的博客(一)</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/07/27/iOS-AVAudioSession/" class="archive-article-date">
-  <time datetime="2018-07-27T03:10:43.000Z" itemprop="datePublished">7月 27</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/27/iOS-AVAudioSession/">iOS-AVAudio</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/05/29/ios-iphone-device/" class="archive-article-date">
-  <time datetime="2018-05-29T07:17:30.000Z" itemprop="datePublished">5月 29</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/29/ios-iphone-device/">iPhone不同设备屏幕尺寸和分辨率</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/11/25/domain-transfer/" class="archive-article-date">
-  <time datetime="2017-11-25T06:21:28.000Z" itemprop="datePublished">11月 25</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/25/domain-transfer/">域名转让</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/03/21/html-javaScript-elements/" class="archive-article-date">
-  <time datetime="2017-03-21T07:07:25.000Z" itemprop="datePublished">3月 21</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/21/html-javaScript-elements/">javaScript-elements</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/8/">8</a><a class="extend next" rel="next" href="/archives/page/2/">下一页 &amp;raquo;</a>
-  </nav>
 
 </section>
         

@@ -5,16 +5,19 @@
   
 
   
-  <title>归档 | 老陶的博客</title>
+  <title>苹果:所有应用必须支持IPv6-only网络 | 老陶的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="对代码不满足，是任何真正有天才的程序员的根本特征。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="老陶的博客">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="自今年6月1日开始，所有提交至苹果App Store的应用申请必须要兼容面向硬件识别和网络路由的最新互联网协议–IPv6-only标准。在去年的全球开发者大会上苹果就率先宣布iOS9会向IPv6-only网络服务过渡。(Supporting IPv6 DNS64&#x2F;NAT64 Networks)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="苹果:所有应用必须支持IPv6-only网络">
+<meta property="og:url" content="http://yoursite.com/2016/05/05/iOS-require-AllAppIPv6-only/index.html">
 <meta property="og:site_name" content="老陶的博客">
-<meta property="og:description" content="对代码不满足，是任何真正有天才的程序员的根本特征。">
+<meta property="og:description" content="自今年6月1日开始，所有提交至苹果App Store的应用申请必须要兼容面向硬件识别和网络路由的最新互联网协议–IPv6-only标准。在去年的全球开发者大会上苹果就率先宣布iOS9会向IPv6-only网络服务过渡。(Supporting IPv6 DNS64&#x2F;NAT64 Networks)">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2016-05-05T05:50:19.000Z">
+<meta property="article:modified_time" content="2019-08-13T14:35:05.609Z">
 <meta property="article:author" content="老陶">
+<meta property="article:tag" content="iPhone">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="老陶的博客" type="application/atom+xml">
@@ -68,236 +71,69 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/12/19/docker-net-shell/" class="archive-article-date">
-  <time datetime="2019-12-19T06:37:55.000Z" itemprop="datePublished">12月 19</time>
+        <section id="main"><article id="post-iOS-require-AllAppIPv6-only" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/05/05/iOS-require-AllAppIPv6-only/" class="article-date">
+  <time datetime="2016-05-05T05:50:19.000Z" itemprop="datePublished">2016-05-05</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/19/docker-net-shell/">docker网络命令与基本查看命令</a>
+    <h1 class="article-title" itemprop="name">
+      苹果:所有应用必须支持IPv6-only网络
     </h1>
   
 
-    </header>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>  自今年6月1日开始，所有提交至苹果App Store的应用申请必须要兼容面向硬件识别和网络路由的最新互联网协议–IPv6-only标准。在去年的全球开发者大会上苹果就率先宣布iOS9会向IPv6-only网络服务过渡。(Supporting IPv6 DNS64/NAT64 Networks)</p>
+  <a id="more"></a>
+<p><a href="https://developer.apple.com/library/mac/documentation/NetworkingInternetWeb/Conceptual/NetworkingOverview/UnderstandingandPreparingfortheIPv6Transition/UnderstandingandPreparingfortheIPv6Transition.html#//apple_ref/doc/uid/TP40010220-CH213-SW1" target="_blank" rel="noopener">Apple 在这里给出了适配 IPv6 的指南</a></p>
+<p>   根据苹果开发者网站的声明，大部分现有应用程序已经通过NSURLSession和CFNetwork APIs兼容该协议。依然使用IPv4 APIs的或者硬件编码IP地址的开发者将需要手工调整应用代码来适应苹果的最新策略。</p>
+<p>   随着IPv4地址用完，转移到地址更丰富的IPv6协议正在变得越来越重要。对于苹果来说，切换至IPv6能够带来更广泛的行业接受协议，尤其是那些负责销售iPhone和iPad的网络运营商们。此外伴随物联网的迅速普及，能够加速智能手机的迅猛发展。</p>
+<p>   其实早在2012年6月的IPv6日，世界范围内就开始全面启动IPv6。在中国，移动、联通和电信大范围开展现网IPv6试点。随着IPv6研究工作和实际部署的不断开展，网络迟早会进入纯IPv6（IPv6-only）的时代。目前很多的资源还在IPv4环境中，因此IPv6和IPv4网络之间的互通尤为重要。</p>
+<p>   苹果这么急着进入IPv6-only网络领域，估计是想改变一下如今的环境，更好的支持下一代的苹果产品和系统。<br>   在此之前，苹果曾在WWDC2015就率先宣布iOS9会向IPv6-only网络服务过渡，随着IPv4地址用完，转移到地址更丰富的IPv6协议也是大势所趋。 </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/05/05/iOS-require-AllAppIPv6-only/" data-id="ckbkhedqb002rvjat2jwycg20" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iPhone/" rel="tag">iPhone</a></li></ul>
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/05/09/swiftPackageError-swiftc-failed-with-exit-code-1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          swift打包失败，swiftc failed with exit code 1
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/04/28/iOS-BLEDevelopMultiDevice/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">iOS-BLE蓝牙开发(二) -- 多设备</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/12/19/linux-brctl-shell/" class="archive-article-date">
-  <time datetime="2019-12-19T02:54:12.000Z" itemprop="datePublished">12月 19</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/19/linux-brctl-shell/">Linux brclt 命令</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/12/18/mac-go-environment/" class="archive-article-date">
-  <time datetime="2019-12-18T09:26:15.000Z" itemprop="datePublished">12月 18</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/18/mac-go-environment/">Mac 下Go语言开发环境设置</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/08/13/iOS-BLEDevelopMultiDevice/baidu_verify_GTSzPZiZEu/" class="archive-article-date">
-  <time datetime="2019-08-13T14:35:05.595Z" itemprop="datePublished">8月 13</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/13/iOS-BLEDevelopMultiDevice/baidu_verify_GTSzPZiZEu/">iOS-BLEDevelopMultiDevice/baidu_verify_GTSzPZiZEu</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/04/05/linux-Shell-ssh/" class="archive-article-date">
-  <time datetime="2019-04-05T03:55:55.000Z" itemprop="datePublished">4月 5</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/05/linux-Shell-ssh/">Linux Shell ssh登录脚本</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/04/05/hexo-installed-1/" class="archive-article-date">
-  <time datetime="2019-04-05T02:58:46.000Z" itemprop="datePublished">4月 5</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/05/hexo-installed-1/">Mac+HEXO+Github 搭建属于自己的博客(一)</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/07/27/iOS-AVAudioSession/" class="archive-article-date">
-  <time datetime="2018-07-27T03:10:43.000Z" itemprop="datePublished">7月 27</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/27/iOS-AVAudioSession/">iOS-AVAudio</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/05/29/ios-iphone-device/" class="archive-article-date">
-  <time datetime="2018-05-29T07:17:30.000Z" itemprop="datePublished">5月 29</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/29/ios-iphone-device/">iPhone不同设备屏幕尺寸和分辨率</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/11/25/domain-transfer/" class="archive-article-date">
-  <time datetime="2017-11-25T06:21:28.000Z" itemprop="datePublished">11月 25</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/25/domain-transfer/">域名转让</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/03/21/html-javaScript-elements/" class="archive-article-date">
-  <time datetime="2017-03-21T07:07:25.000Z" itemprop="datePublished">3月 21</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/21/html-javaScript-elements/">javaScript-elements</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/8/">8</a><a class="extend next" rel="next" href="/archives/page/2/">下一页 &amp;raquo;</a>
-  </nav>
 
 </section>
         

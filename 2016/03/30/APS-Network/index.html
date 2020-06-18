@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>APS-Network | 老陶的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="(分层，各层作用，协议) What’s the purpose of this course?- basic knowledge of computer network - focus on the structure and behavior of networkDetailsIntroduction 简介">
+<meta property="og:type" content="article">
+<meta property="og:title" content="APS-Network">
+<meta property="og:url" content="http://yoursite.com/2016/03/30/APS-Network/index.html">
+<meta property="og:site_name" content="老陶的博客">
+<meta property="og:description" content="(分层，各层作用，协议) What’s the purpose of this course?- basic knowledge of computer network - focus on the structure and behavior of networkDetailsIntroduction 简介">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/2016/03/30/APS-Network/APS-Network/topologys_total.jpg">
+<meta property="article:published_time" content="2016-03-29T23:22:43.000Z">
+<meta property="article:modified_time" content="2019-08-13T14:35:05.409Z">
+<meta property="article:author" content="老陶">
+<meta property="article:tag" content="APS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2016/03/30/APS-Network/APS-Network/topologys_total.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="老陶的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">老陶的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">真正的才智是刚毅的志向。</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-APS-Network" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/30/APS-Network/" class="article-date">
+  <time datetime="2016-03-29T23:22:43.000Z" itemprop="datePublished">2016-03-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      APS-Network
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>(分层，各层作用，协议)</p>
+<h3 id="What’s-the-purpose-of-this-course"><a href="#What’s-the-purpose-of-this-course" class="headerlink" title="What’s the purpose of this course?"></a>What’s the purpose of this course?</h3><pre><code>- basic knowledge of computer network
+- focus on the structure and behavior of network</code></pre><h3 id="Details"><a href="#Details" class="headerlink" title="Details"></a>Details</h3><h5 id="Introduction-简介"><a href="#Introduction-简介" class="headerlink" title="Introduction 简介"></a>Introduction 简介</h5><a id="more"></a>
+<pre><code>- the architecture of newtork is based on different protocols.
+
+     =&gt; Protocol: an agreement between the communicating parties on how communication is to proceed.
+
+- Network Model of hierarchy =&gt; 5 Layers</code></pre><h5 id="5-Layers"><a href="#5-Layers" class="headerlink" title="5 Layers"></a>5 Layers</h5><p>OSI/RM (Open Systems Interconnection Reference Model) 开发系统互连基本参考模型</p>
+<table>
+<thead>
+<tr>
+<th align="center">5 Layers</th>
+<th align="center">Function</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Application Layer</td>
+<td align="center">message</td>
+</tr>
+<tr>
+<td align="center">Transport Layer</td>
+<td align="center">segment</td>
+</tr>
+<tr>
+<td align="center">Network Layer</td>
+<td align="center">datagram</td>
+</tr>
+<tr>
+<td align="center">Data Link Layer</td>
+<td align="center">frame</td>
+</tr>
+<tr>
+<td align="center">Physical Layer</td>
+<td align="center">bit</td>
+</tr>
+</tbody></table>
+<ul>
+<li>each layer contains several protocals</li>
+<li>in s sense, each layer offers certain service to the layer above it.</li>
+<li>each layer communicates with the corresponding(相应的) layer, using specific message header to distinguish(区别).    </li>
+</ul>
+<h5 id="Application-Layer-应用层-HTTP-FTP-SMTP-DNS"><a href="#Application-Layer-应用层-HTTP-FTP-SMTP-DNS" class="headerlink" title="Application Layer 应用层 (HTTP, FTP, SMTP, DNS)"></a>Application Layer 应用层 (HTTP, FTP, <u><del>SMTP</del></u>, DNS)</h5><pre><code>* deal with the problems how network applications work and communicate with each other.
+* famour protocols:
+- HTTP, HyperText Transfer Protocol
+ =&gt; defines how the web clients ask for web pages and how the server transfer the web pages to clients.
+- kinds of connection
+  non-persistent connection 
+  persistent connection =&gt; won&apos;t shut down till specific time.
+
+Client             Server
+ |    Start TCP      |
+ |----------------&gt;|
+ |                 |
+ |   Confirm       |
+ |&lt;----------------|
+ |                 |
+ |  ask for files  |
+ |----------------&gt;|
+ |                 |
+ |   get files     |
+ |-----------------|
+ |-----------------|</code></pre><ul>
+<li><p>HTTP Request</p>
+<p>request line -&gt;</p>
+<p>   GET/HTTP/1.1</p>
+<pre><code>| Host: www.devtao.com</code></pre><p>   header line -| connection: close</p>
+<pre><code>| user-agent: Mozilla / 4.0
+|    Accept-language: cn</code></pre></li>
+<li><p>HTTP Respond:</p>
+</li>
+<li><p>   status line -&gt;</p>
+<p>   (status code: 200, 404)<br>   header line<br>   entity body</p>
+</li>
+<li><p>Cookie</p>
+<p>=&gt; a special file to distinguish the clients</p>
+<p>Sam login to Amazon, PC send cookie 1000 to server, server will store this cookie in the backend database.<br>next time Sam login to Amazon, the server will recognise him.</p>
+<ul>
+<li>FTP, File Transfer Protocol<br>=&gt; Users can upload or download files from the FTP server =&gt; in LAN</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">user &lt;–&gt;</th>
+<th align="center">FTP Interface</th>
+<th align="center">FTP Client &lt;–&gt;</th>
+<th align="center">FTP Server</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"></td>
+<td align="center">II</td>
+<td align="center"></td>
+<td align="center">II</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">local file system</td>
+<td align="center"></td>
+<td align="center">remote file system</td>
+</tr>
+</tbody></table>
+<p>  对照下图</p>
+<pre><code> ------        ---------------    ------------        ------------
+| user |&lt;--&gt;  | FTP Interface |  | FTP Client |&lt;--&gt;  | FTP Server |
+ ------        ---------------    ------------        ------------         
+                          ||                                   ||
+            -------------------             --------------------
+           | local file system |           | remote file system |
+            -------------------             --------------------</code></pre><ul>
+<li><p>SMTP (Simple Main Transfer Protocol)</p>
+<p>  =&gt; define how the E-mainl system works.</p>
+</li>
+</ul>
+<pre><code>    -----------      -----------------  SMTP   ---------------
+   | A&apos;s agent | -&gt; | A&apos;s mail Server | ----&gt; |B&apos;s mail Server|
+    -----------      -----------------         ---------------
+                                                      ||
+                                                      ||
+                                                 -----------
+                                                | B&apos;s agent |                                                       -----------
+
+- define the message format
+
+=&gt; header
+
+=&gt; &lt;u&gt;Only ASCII code is legal in SMTP.&lt;/u&gt;</code></pre><ul>
+<li><p>DNS (Domain Name Server Protocol)</p>
+<p>  =&gt; use DNS to get the internet IP address.</p>
+<ul>
+<li><p>people prefer to rememter the web address, or say URL rather than the IP address.</p>
+</li>
+<li><p>use DNS to find the corresponding IP address of a specific web URL(Uniform Resource Locator). <a href="http://www.google.com" target="_blank" rel="noopener">www.google.com</a> &lt;=&gt; 8.8.8.8</p>
+</li>
+<li><p>using a distributed database. </p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Network"><a href="#Network" class="headerlink" title="Network"></a>Network</h3><p>A computer network is a group of interconnected computers.<br>Networks may be classified(划分) according to a wide kind of<br>characteristics. The most common division is “LAN” and “WAN”.</p>
+<ul>
+<li>“WAN”(Wide Area Network), is connect computer within a very wide Region.</li>
+<li>“LAN”(Local Area Network), is a Network in l limited region and computers belonging to it, will enter the net when they get switched on.</li>
+</ul>
+<h3 id="Network-Topologys"><a href="#Network-Topologys" class="headerlink" title="Network-Topologys"></a>Network-Topologys</h3><p>Network toplogy is the study of the arrangement(排列) or mapping(映射) of the elements of a network, especially the physical and logical interconnections between nodes(结点).</p>
+<p><img src="APS-Network/topologys_total.jpg" alt="拓扑图"></p>
+<ul>
+<li><p>Line-Topology</p>
+</li>
+<li><p>Bus-Topology</p>
+<p>  All computers are connected in a line. When a line is broken, the whole network doesn’t work.</p>
+</li>
+<li><p>Ring-Topology</p>
+<p>  It’s like a Bus or Line Topology and has the same advantages and disadvantages.</p>
+</li>
+<li><p>Star-Topology</p>
+<p>  In Star-Topology, all computers are connected to Central-Stations like Hub, Switch or Router. This topology is very quick and  safe and also easy to maintenance.</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/03/30/APS-Network/" data-id="ckbkhedo20001vjat28h96brp" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/APS/" rel="tag">APS</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/04/01/iOS-dSYMAnalyseCrash/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          iOS通过dSYM文件分析crash
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/03/28/APS-SQL2005/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">APS---SQL2005</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/APS/" rel="tag">APS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LaoTao-Code/" rel="tag">LaoTao-Code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/" rel="tag">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VR/" rel="tag">VR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/deutsch/" rel="tag">deutsch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/golang/" rel="tag">golang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/" rel="tag">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/" rel="tag">iOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iPhone/" rel="tag">iPhone</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sqlite/" rel="tag">sqlite</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swift/" rel="tag">swift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91/" rel="tag">服务器开发</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/APS/" style="font-size: 16.25px;">APS</a> <a href="/tags/LaoTao-Code/" style="font-size: 10px;">LaoTao-Code</a> <a href="/tags/Linux/" style="font-size: 11.25px;">Linux</a> <a href="/tags/Mac/" style="font-size: 12.5px;">Mac</a> <a href="/tags/VR/" style="font-size: 10px;">VR</a> <a href="/tags/deutsch/" style="font-size: 11.25px;">deutsch</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/golang/" style="font-size: 10px;">golang</a> <a href="/tags/hexo/" style="font-size: 13.75px;">hexo</a> <a href="/tags/html/" style="font-size: 17.5px;">html</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/iPhone/" style="font-size: 11.25px;">iPhone</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/swift/" style="font-size: 18.75px;">swift</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91/" style="font-size: 10px;">服务器开发</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/12/19/docker-net-shell/">docker网络命令与基本查看命令</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/19/linux-brctl-shell/">Linux brclt 命令</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/18/mac-go-environment/">Mac 下Go语言开发环境设置</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/13/iOS-BLEDevelopMultiDevice/baidu_verify_GTSzPZiZEu/">iOS-BLEDevelopMultiDevice/baidu_verify_GTSzPZiZEu</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/05/linux-Shell-ssh/">Linux Shell ssh登录脚本</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 老陶<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

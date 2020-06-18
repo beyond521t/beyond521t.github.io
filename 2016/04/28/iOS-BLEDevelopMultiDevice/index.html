@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>iOS-BLE蓝牙开发(二) -- 多设备 | 老陶的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="点击下载代码 多设备其实和单设备并没有什么太大的变化。至少初级写的时候，只是代码量多了一些。但是后面各种状态还有代码的优化工作挺多。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS-BLE蓝牙开发(二) -- 多设备">
+<meta property="og:url" content="http://yoursite.com/2016/04/28/iOS-BLEDevelopMultiDevice/index.html">
+<meta property="og:site_name" content="老陶的博客">
+<meta property="og:description" content="点击下载代码 多设备其实和单设备并没有什么太大的变化。至少初级写的时候，只是代码量多了一些。但是后面各种状态还有代码的优化工作挺多。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2016-04-28T08:51:37.000Z">
+<meta property="article:modified_time" content="2019-08-13T14:35:05.594Z">
+<meta property="article:author" content="老陶">
+<meta property="article:tag" content="iOS">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="老陶的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">老陶的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">真正的才智是刚毅的志向。</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-iOS-BLEDevelopMultiDevice" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/28/iOS-BLEDevelopMultiDevice/" class="article-date">
+  <time datetime="2016-04-28T08:51:37.000Z" itemprop="datePublished">2016-04-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      iOS-BLE蓝牙开发(二) -- 多设备
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="/2016/04/28/iOS-BLEDevelopMultiDevice/BleDemo.zip">点击下载代码</a></p>
+<p>多设备其实和单设备并没有什么太大的变化。至少初级写的时候，只是代码量多了一些。但是后面各种状态还有代码的优化工作挺多。</p>
+<a id="more"></a>
+
+<pre><code>@interface CentralManager ()&lt;CBCentralManagerDelegate, CBPeripheralDelegate,CentralManagerDelegate&gt;
+{
+    /** 这里只做多设备简单介绍。如果设备很多，或者设备不固定，可以考虑使用数组等进行优化 */
+    CBPeripheral *_devicePeripheral;    //硬件设备 (设备1)
+    CBPeripheral *_wristbandPeripheral; //手环设备 (设备2)
+
+    CBCharacteristic *_deviceCharacteristic;    //硬件设备服务特征 （用来发送指令）
+    CBCharacteristic *_wristbandCharacteristic; //手环设备服务特征 (发送指令，用来和手环进行数据交换，读取手环数据等)
+
+    //蓝牙管理类，这就是蓝牙Boss呀，没有他，你就别想做蓝牙
+    CBCentralManager *_manager;
+}</code></pre><p>这里添加了两个 CBPeripheral *成员变量。 每一个 CBPeripheral对应一个硬件设备，如果硬件过多，建议使用数组进行优化。 如果只是两个设备倒还不会有影响。另外建议使用swift，做起来会更快速一些。</p>
+<p>#pragma mark - &gt;&gt; 发现蓝牙设备</p>
+<pre><code>- (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary&lt;NSString *,id&gt; *)advertisementData RSSI:(NSNumber *)RSSI {
+
+    if (!peripheral.name) {
+        return;
+    }
+        //连接设备可以根据需求，写到两个方法里面，可以根据点击操作分别连接不同的设备。 我这里是直接进行了同时连接
+    //里面的字符串是硬件设备的名称。 也可以根据 广播等内容进行判断连接
+    //连接硬件设备
+    if ([peripheral.name rangeOfString:@&quot;Device&quot;].location != NSNotFound) {
+        [_manager connectPeripheral:peripheral options:@{CBCentralManagerScanOptionAllowDuplicatesKey:[NSNumber numberWithBool:NO]}];
+    }
+
+    //连接手环设备
+    if ([peripheral.name rangeOfString:@&quot;wristband&quot;].location != NSNotFound) {
+        [_manager connectPeripheral:peripheral options:@{CBCentralManagerScanOptionAllowDuplicatesKey:[NSNumber numberWithBool:NO]}];
+    }
+}</code></pre><p>#pragma mark - &gt;&gt; 连接成功</p>
+<pre><code>- (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral {
+    NSLog(@&quot;连接成功:%@&quot;, peripheral.name);
+    if (_devicePeripheral == peripheral) {
+        _deviceBleState = BleManagerStateConnect;
+        _devicePeripheral = peripheral;
+    }else if (_wristbandPeripheral == peripheral) {
+        _wristbandBleState = BleManagerStateConnect;
+        _wristbandPeripheral = peripheral;
+    }
+
+    for (id listener in _listener) {
+        if ([listener respondsToSelector:@selector(didConnectDevicePeripheral:)]) {
+            [listener didConnectDevicePeripheral:peripheral];
+        }
+    }
+    /*
+     1、连接成功
+     2、发现服务
+     3、发现特征值
+     4、特征值 是用来 和蓝牙设备做交互使用的。如设置设备时间，或者读取设备数据。设置通知等
+     */
+
+    //因为在后面我们要从外设蓝牙那边再获取一些信息，并与之通讯，这些过程会有一些事件可能要处理，所以要给这个外设设置代理
+    peripheral.delegate = self;
+    //找到该设备上的指定服务 调用完该方法后会调用代理CBPeripheralDelegate（现在开始调用另一个代理的方法了）
+//    [peripheral discoverServices:@[[CBUUID UUIDWithString:UUID_DEVICE_SERVER_0]]];
+//    [peripheral discoverServices:@[[CBUUID UUIDWithString:@&quot;7480&quot;]]];
+    [peripheral discoverServices:nil];  //发现服务
+}</code></pre><p>#pragma mark - &gt;&gt; CBPeripheralDelegate<br>#pragma mark - &gt;&gt; 发现服务</p>
+<pre><code>- (void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error {
+    if (error == nil) {
+        NSLog(@&quot;发现服务&quot;);
+
+        for (CBService *service in peripheral.services) {
+            NSLog(@&quot;服务:%@&quot;, service);
+            //发现服务，然后去查找该服务的特征值 ,然后请转到下面的那个代理方法
+            [peripheral discoverCharacteristics:nil forService:service];
+//            if ([service.UUID isEqual:[CBUUID UUIDWithString:UUID_DEVICE_SERVER_0]]) {
+//                //查询服务所带的特征值
+//                //                [peripheral discoverCharacteristics:@[[CBUUID UUIDWithString:@&quot;FFE0&quot;]] forService:service];
+//                [peripheral discoverCharacteristics:nil forService:service];
+//            }
+        }
+    }
+}</code></pre><p>#pragma mark - &gt;&gt; 发现特征值</p>
+<ul>
+<li><p>(void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error {<br>  NSLog(@”—–发现特征值”);<br>  //在这里给 蓝牙设备写数据， 或者将 peripheral 和 characteristic 拿出去，可以在其他地方，发送命令<br>  if (error == nil) {</p>
+<pre><code>for (CBCharacteristic *characteristic in service.characteristics) {
+
+    NSLog(@&quot;发现特征值:%@&quot;, characteristic);
+    //这里只写了 devicePeripheral 的特征值。 手环的 方法同理，代码几乎一样
+    if (_devicePeripheral == peripheral) {
+
+        [peripheral setNotifyValue:YES forCharacteristic:characteristic];
+
+        //以下宏定义的UUID 请根据自己当前的硬件设备做调整。 不同的设备会有不同的定义。
+        //另外，读写的，也会的也会不同。 可以使用 第三方蓝牙工具，进行设备上的服务和特征值查看一下。
+        //或者是直接参阅 贵公司的蓝牙设备 协议文档
+        if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:UUID_DEVICE_SERVER_1]]) {
+            //如果是指定的特征值，设置NotifyValue
+            [peripheral setNotifyValue:YES forCharacteristic:characteristic];
+
+        }else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:UUID_DEVICE_SERVER_2]]) {
+            _deviceCharacteristic = characteristic;
+
+            for (id listener in _listener) {
+                if ([listener respondsToSelector:@selector(didDiscoverDevicePeripheral:service:)]) {
+                    [listener didDiscoverDevicePeripheral:peripheral service:service];
+                }
+            }
+        }
+    }else if (_wristbandPeripheral == peripheral) {
+
+    }
+
+}</code></pre><p>  }<br>}</p>
+</li>
+</ul>
+<p>#pragma mark - &gt;&gt; 如果一个特征的值被更新，然后周边代理接收</p>
+<pre><code>- (void)peripheral:(CBPeripheral *)peripheral didUpdateNotificationStateForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
+
+}</code></pre><p>#pragma mark - &gt;&gt; 读数据</p>
+<pre><code>//这里是接收到蓝牙数据。 但是蓝牙数据都是一堆 16进制数据，需要根据协议去解析
+//数据协议，请参阅协议文档，如果没有，就去找吧。
+- (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
+    NSLog(@&quot;接收到数据:%@,%@&quot;, peripheral.name, characteristic.value);
+}
+
+- (void)peripheral:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
+    NSLog(@&quot;did write value For Characteristic&quot;);
+    NSLog(@&quot;%@&quot;, characteristic.value);
+}
+
+- (void)peripheral:(CBPeripheral *)peripheral didWriteValueForDescriptor:(CBDescriptor *)descriptor error:(NSError *)error {
+    NSLog(@&quot;did Write Value For Descriptor&quot;);
+}</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/04/28/iOS-BLEDevelopMultiDevice/" data-id="ckbkhedq3002avjathjrfbb8y" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/" rel="tag">iOS</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/05/05/iOS-require-AllAppIPv6-only/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          苹果:所有应用必须支持IPv6-only网络
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/04/28/iOS-BLEDevelop1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">iOS-BLE蓝牙开发</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/APS/" rel="tag">APS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LaoTao-Code/" rel="tag">LaoTao-Code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/" rel="tag">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VR/" rel="tag">VR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/deutsch/" rel="tag">deutsch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/golang/" rel="tag">golang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/" rel="tag">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/" rel="tag">iOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iPhone/" rel="tag">iPhone</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sqlite/" rel="tag">sqlite</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swift/" rel="tag">swift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91/" rel="tag">服务器开发</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/APS/" style="font-size: 16.25px;">APS</a> <a href="/tags/LaoTao-Code/" style="font-size: 10px;">LaoTao-Code</a> <a href="/tags/Linux/" style="font-size: 11.25px;">Linux</a> <a href="/tags/Mac/" style="font-size: 12.5px;">Mac</a> <a href="/tags/VR/" style="font-size: 10px;">VR</a> <a href="/tags/deutsch/" style="font-size: 11.25px;">deutsch</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/golang/" style="font-size: 10px;">golang</a> <a href="/tags/hexo/" style="font-size: 13.75px;">hexo</a> <a href="/tags/html/" style="font-size: 17.5px;">html</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/iPhone/" style="font-size: 11.25px;">iPhone</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/swift/" style="font-size: 18.75px;">swift</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91/" style="font-size: 10px;">服务器开发</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/12/19/docker-net-shell/">docker网络命令与基本查看命令</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/19/linux-brctl-shell/">Linux brclt 命令</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/18/mac-go-environment/">Mac 下Go语言开发环境设置</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/13/iOS-BLEDevelopMultiDevice/baidu_verify_GTSzPZiZEu/">iOS-BLEDevelopMultiDevice/baidu_verify_GTSzPZiZEu</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/05/linux-Shell-ssh/">Linux Shell ssh登录脚本</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 老陶<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

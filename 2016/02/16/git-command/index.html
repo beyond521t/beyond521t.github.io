@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Git命令 | 老陶的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="# Git   OverviewGit Profile 1)远程仓库相关命令">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git命令">
+<meta property="og:url" content="http://yoursite.com/2016/02/16/git-command/index.html">
+<meta property="og:site_name" content="老陶的博客">
+<meta property="og:description" content="# Git   OverviewGit Profile 1)远程仓库相关命令">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2016-02-16T03:49:03.000Z">
+<meta property="article:modified_time" content="2019-08-13T14:35:05.570Z">
+<meta property="article:author" content="老陶">
+<meta property="article:tag" content="git">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="老陶的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">老陶的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">真正的才智是刚毅的志向。</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-git-command" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/02/16/git-command/" class="article-date">
+  <time datetime="2016-02-16T03:49:03.000Z" itemprop="datePublished">2016-02-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Git命令
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+# Git
+<!--![Mou icon](http://h.picphotos.baidu.com/album/s%3D550%3Bq%3D90%3Bc%3Dxiangce%2C100%2C100/sign=53df6017ecf81a4c2232eccce7111164/8644ebf81a4c510f861530796759252dd52aa584.jpg?referer=5318d6feccef7609651cadaf039a&x=.jpg)-->
+
+<h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p><strong>Git</strong> Profile</p>
+<h4 id="1-远程仓库相关命令"><a href="#1-远程仓库相关命令" class="headerlink" title="1)远程仓库相关命令"></a>1)远程仓库相关命令</h4><a id="more"></a>
+
+<pre><code>检出仓库：$ git clone git://github.com/jquery/jquery.git
+
+查看远程仓库：$ git remote -v
+
+获取远程分支信息到本地：$ git getch
+
+添加远程仓库：$ git remote add [name] [url]
+
+删除远程仓库：$ git remote rm [name]
+
+拉取远程仓库：$ git pull [remoteName] [localBranchName]
+
+推送远程仓库：$ git push [remoteName] [localBranchName]</code></pre><h4 id="2-分支-branch-操作相关命令"><a href="#2-分支-branch-操作相关命令" class="headerlink" title="2)分支(branch)操作相关命令"></a>2)分支(branch)操作相关命令</h4><pre><code>查看本地分支：$ git branch
+
+查看远程分支：$ git branch -r
+
+创建本地分支：$ git branch [name] ----注意新分支创建后不会自动切换为当前分支
+
+切换分支：$ git checkout [name]
+
+创建新分支并立即切换到新分支：$ git checkout -b [name]
+
+迁出远程分支    $ git checkout -b dev origin/dev 
+
+删除分支：$ git branch -d [name] 
+
+ -d 选项只能删除已经参与了合并的分支，对于未有合并的分支是无法删除的。如果想强制删除一个分支，可以使用-D选项
+
+合并分支：$ git merge [name] ----将名称为[name]的分支与当前分支合并
+
+创建远程分支(本地分支push到远程)：$ git push origin [name]
+
+删除远程分支：$ git push origin --delete [name]
+            $ git push origin :[name]
+
+列出分支图
+git config --global alias.lg &quot;log --graph --all --pretty=format:&apos;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset&apos; --abbrev-commit --date=relative&quot;
+
+git lg (设置了别名后，就可以使用别名进行查看)</code></pre><h4 id="3）版本-tag-操作相关命令"><a href="#3）版本-tag-操作相关命令" class="headerlink" title="3）版本(tag)操作相关命令"></a>3）版本(tag)操作相关命令</h4><pre><code>查看版本：$ git tag
+
+创建版本：$ git tag [name]
+
+删除版本：$ git tag -d [name]
+
+查看远程版本：$ git tag -r
+
+创建远程版本(本地版本push到远程)：$ git push origin [name]
+
+删除远程版本：$ git push origin :refs/tags/[name]
+
+拉取tag版本：git checkout -b branch_name tag_name</code></pre><h4 id="4-子模块-submodule-相关操作命令"><a href="#4-子模块-submodule-相关操作命令" class="headerlink" title="4) 子模块(submodule)相关操作命令"></a>4) 子模块(submodule)相关操作命令</h4><pre><code>添加子模块：$ git submodule add [url] [path]
+
+初始化子模块：$ git submodule init  ----只在首次检出仓库时运行一次就行
+
+更新子模块：$ git submodule update ----每次更新或切换分支后都需要运行一下
+
+删除子模块：$ git rm --cached [path]</code></pre><h4 id="5）忽略一些文件、文件夹不提交"><a href="#5）忽略一些文件、文件夹不提交" class="headerlink" title="5）忽略一些文件、文件夹不提交"></a>5）忽略一些文件、文件夹不提交</h4><p>在仓库根目录下创建名称为“.gitignore”的文件，写入不需要的文件夹名或文件，每个元素占一行即可，如<br>target,<br>bin,<br>*.db,</p>
+<h2 id="代码提交"><a href="#代码提交" class="headerlink" title="代码提交"></a>代码提交</h2><p>命令操作详情:</p>
+<pre><code>1、查看修改文件
+    git status
+2、暂存修改的文件
+    git add .
+3、提交已暂存的文件
+    git commit
+4、拉取远程修改内容
+    git pull -p
+    如果有冲突，这里修改，修改之后，从1步骤重新开始
+5、提交代码到远程分支
+    git push
+
+    如果没有创建远程分支， 则使用如下命令
+    git push origin 分支名
+
+    //如果是从远程分支拉取的，但是没有建立关系，使用以下命令
+    git branch --set-upstream my_branch origin/my_branch</code></pre><p><code>以下内容比较多，不容易理解</code></p>
+<p>代码提交一般有五个步骤：</p>
+<p>1.查看目前代码的修改状态</p>
+<p>2.查看代码修改内容</p>
+<p>3.暂存需要提交的文件</p>
+<p>4.提交已暂存的文件</p>
+<p>5.同步到服务器</p>
+<pre><code>git config --global push.default matching
+
+git config --global push.default simple</code></pre><p>建立关系</p>
+<pre><code>git branch --set-upstream my_branch origin/my_branch</code></pre><h3 id="1-查看目前代码的修改状态"><a href="#1-查看目前代码的修改状态" class="headerlink" title="1. 查看目前代码的修改状态"></a>1. 查看目前代码的修改状态</h3><p>提交代码之前，首先应该检查目前所做的修改，运行git status命令</p>
+<p>a) 已暂存 （changes to be committed）</p>
+<p>new file //表示新建文件</p>
+<p>modified //表示修改文件</p>
+<p>deleted //表示删除文件</p>
+<p>b) 已修改 （changed but not updated）</p>
+<p>modified //表示修改文件</p>
+<p>deleted //表示删除文件</p>
+<pre><code>另外，git 给出了可能需要的操作命令，git add/rm, gitcheckout --</code></pre><p>c) 未跟踪 （untracked files）</p>
+<h3 id="2-查看代码修改的内容"><a href="#2-查看代码修改的内容" class="headerlink" title="2. 查看代码修改的内容"></a>2. 查看代码修改的内容</h3><p> git diff  <file></p>
+<p>比较某文件与最近提交节点的差异。</p>
+<p>注意：如果该文件已暂存，那么应该使用git diff –cached<file></p>
+<p> git diff <hashcode> <hashcode>  <file></p>
+<p>比较某文件在提交节点a，节点b的差异。</p>
+<p>技巧：如果省略后面一个hashcode，则默认表示与上一提交节点比较。（也可以利用^运算符）</p>
+<h3 id="3-暂存需要提交的文件"><a href="#3-暂存需要提交的文件" class="headerlink" title="3. 暂存需要提交的文件"></a>3. 暂存需要提交的文件</h3><p>如果是新建的文件</p>
+<p>则git add  <file></p>
+<p>如果是修改的文件</p>
+<p>则git add  <file></p>
+<p>如果是删除的文件</p>
+<p>则 git rm  <file></p>
+<h3 id="4-提交已暂存的文件"><a href="#4-提交已暂存的文件" class="headerlink" title="4. 提交已暂存的文件"></a>4. 提交已暂存的文件</h3><pre><code>git commit
+
+注意注释填写规范。
+
+git commit --amend
+
+修改最近一次提交。有时候如果提交注释书写有误或者漏提文件，可以使用此命令。</code></pre><h3 id="5-同步到服务器"><a href="#5-同步到服务器" class="headerlink" title="5. 同步到服务器"></a>5. 同步到服务器</h3><p>同步到服务器前先需要将服务器代码同步到本地</p>
+<pre><code>命令： git pull</code></pre><p>如果执行失败，就按照提示还原有冲突的文件，然后再次尝试同步。<br>    命令：git checkout – &lt;有冲突的文件路径&gt;</p>
+<p>同步到服务器</p>
+<pre><code>命令： git push origin  &lt;本地分支名&gt;</code></pre><p>远程如果暂时没有分支（即初始，没有master分支），同步本地master分支到远程</p>
+<pre><code>git push -u origin master</code></pre><p>如果执行失败，一般是没有将服务器代码同步到本地导致的，先执行上面的git pull命令。</p>
+<h3 id="新仓库处理"><a href="#新仓库处理" class="headerlink" title="新仓库处理"></a>新仓库处理</h3><pre><code>$ touch README.md
+$ git init
+$ git add README.md
+$ git commit -m &quot;first commit&quot;
+$ git remote add origin https://github.com/****.git
+$ git -u origin master</code></pre><h2 id="未整理"><a href="#未整理" class="headerlink" title="未整理"></a>未整理</h2><p>git remote prune origin</p>
+<p>git pull</p>
+<p>git branch -a</p>
+<p>git tag</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/02/16/git-command/" data-id="ckbkhedoz0019vjatetci6rio" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/02/17/DB-Error-1-unrecognized-token/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          DB Error 1 unrecognized token
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/01/17/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/APS/" rel="tag">APS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LaoTao-Code/" rel="tag">LaoTao-Code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/" rel="tag">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VR/" rel="tag">VR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/deutsch/" rel="tag">deutsch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/golang/" rel="tag">golang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/" rel="tag">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/" rel="tag">iOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iPhone/" rel="tag">iPhone</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sqlite/" rel="tag">sqlite</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swift/" rel="tag">swift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91/" rel="tag">服务器开发</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/APS/" style="font-size: 16.25px;">APS</a> <a href="/tags/LaoTao-Code/" style="font-size: 10px;">LaoTao-Code</a> <a href="/tags/Linux/" style="font-size: 11.25px;">Linux</a> <a href="/tags/Mac/" style="font-size: 12.5px;">Mac</a> <a href="/tags/VR/" style="font-size: 10px;">VR</a> <a href="/tags/deutsch/" style="font-size: 11.25px;">deutsch</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/golang/" style="font-size: 10px;">golang</a> <a href="/tags/hexo/" style="font-size: 13.75px;">hexo</a> <a href="/tags/html/" style="font-size: 17.5px;">html</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/iPhone/" style="font-size: 11.25px;">iPhone</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/swift/" style="font-size: 18.75px;">swift</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91/" style="font-size: 10px;">服务器开发</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/12/19/docker-net-shell/">docker网络命令与基本查看命令</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/19/linux-brctl-shell/">Linux brclt 命令</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/18/mac-go-environment/">Mac 下Go语言开发环境设置</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/13/iOS-BLEDevelopMultiDevice/baidu_verify_GTSzPZiZEu/">iOS-BLEDevelopMultiDevice/baidu_verify_GTSzPZiZEu</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/05/linux-Shell-ssh/">Linux Shell ssh登录脚本</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 老陶<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

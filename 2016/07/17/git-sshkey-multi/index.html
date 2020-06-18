@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>管理多个SSH Key | 老陶的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="如果你在一台机器使用两个github账号，或者是使用github的同时，还有bitbucket等代码管理仓库。例如github，默认情况下，这个秘钥是在你账户的.ssh目录生成id_rsa文件，对应一个id_rsa.pub公钥文件，但是，我可能会有两个github帐号，一个个人，一个办公用（或者是多个仓库管理），这时，我就需要生成多个密钥。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="管理多个SSH Key">
+<meta property="og:url" content="http://yoursite.com/2016/07/17/git-sshkey-multi/index.html">
+<meta property="og:site_name" content="老陶的博客">
+<meta property="og:description" content="如果你在一台机器使用两个github账号，或者是使用github的同时，还有bitbucket等代码管理仓库。例如github，默认情况下，这个秘钥是在你账户的.ssh目录生成id_rsa文件，对应一个id_rsa.pub公钥文件，但是，我可能会有两个github帐号，一个个人，一个办公用（或者是多个仓库管理），这时，我就需要生成多个密钥。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2016-07-17T05:43:04.000Z">
+<meta property="article:modified_time" content="2019-08-13T14:35:05.570Z">
+<meta property="article:author" content="老陶">
+<meta property="article:tag" content="git">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="老陶的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">老陶的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">真正的才智是刚毅的志向。</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-git-sshkey-multi" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/17/git-sshkey-multi/" class="article-date">
+  <time datetime="2016-07-17T05:43:04.000Z" itemprop="datePublished">2016-07-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      管理多个SSH Key
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>如果你在一台机器使用两个github账号，或者是使用github的同时，还有bitbucket等代码管理仓库。<br>例如github，默认情况下，这个秘钥是在你账户的.ssh目录生成id_rsa文件，对应一个id_rsa.pub公钥文件，但是，我可能会有两个github帐号，一个个人，一个办公用（或者是多个仓库管理），这时，我就需要生成多个密钥。</p>
+<a id="more"></a>
+
+<pre><code>$ ls ~/.ssh/
+beyond521t.pem 
+config        
+github_rsa     
+github_rsa.pub 
+id_rsa         
+id_rsa.pub     
+known_hosts    
+personalid     
+personalid.pub 
+ssh_rsa        
+ssh_rsa.pub</code></pre><p>以上是我的密钥列表，那么我的github如何使用多个密钥呢。</p>
+<ul>
+<li>需要编辑一下配置文件~/.ssh/config：</li>
+</ul>
+<p>如果没有这个文件，可以创建一个(切换到 ~/.ssh    目录下)</p>
+<pre><code>$ touch config</code></pre><p>编辑 config文件</p>
+<pre><code>Host github.com
+       Hostname github.com
+    User            username
+    IdentityFile    ~/.ssh/github_rsa
+
+Host bitbucket.org
+    Hostname bitbucket.org
+    User username
+    IdentityFile ~/.ssh/personalid</code></pre><p>解释此配置文件：</p>
+<pre><code>Host: &quot;github.com&quot;是一个『别名』，可以随意命名，也可以直接写github
+
+Hostname:    仓储地址：例如git@github.com，这里要的就是 github.com
+
+IdentityFile: 所使用的公钥文件</code></pre><p>配置完毕，用下面的命令测试一下：</p>
+<pre><code>$ ssh -T git@bitbucket.com
+logged in as beyond521t.
+
+You can use git or hg to connect to Bitbucket. Shell access is disabled.</code></pre><p>可以使用如下命令，进行debug查看：</p>
+<pre><code>$ ssh -vv git@bitbucket.com
+OpenSSH_6.9p1, LibreSSL 2.1.8
+debug1: Reading configuration data /Users/LaoTao/.ssh/config
+debug1: Reading configuration data /etc/ssh/ssh_config
+debug1: /etc/ssh/ssh_config line 21: Applying options for *
+debug2: ssh_connect: needpriv 0
+debug1: Connecting to bitbucket.com [104.192.143.7] port 22.
+debug1: Connection established.
+debug1: identity file /Users/LaoTao/.ssh/id_rsa type 1
+debug1: key_load_public: No such file or directory
+debug1: identity file /Users/LaoTao/.ssh/id_rsa-cert type -1
+debug1: key_load_public: No such file or directory
+debug1: identity file /Users/LaoTao/.ssh/id_dsa type -1
+debug1: key_load_public: No such file or directory
+debug1: identity file /Users/LaoTao/.ssh/id_dsa-cert type -1
+debug1: key_load_public: No such file or directory
+debug1: identity file /Users/LaoTao/.ssh/id_ecdsa type -1
+debug1: key_load_public: No such file or directory
+debug1: identity file /Users/LaoTao/.ssh/id_ecdsa-cert type -1
+debug1: key_load_public: No such file or directory
+debug1: identity file /Users/LaoTao/.ssh/id_ed25519 type -1
+debug1: key_load_public: No such file or directory
+debug1: identity file /Users/LaoTao/.ssh/id_ed25519-cert type -1
+debug1: Enabling compatibility mode for protocol 2.0
+debug1: Local version string SSH-2.0-OpenSSH_6.9
+debug1: Remote protocol version 2.0, remote software version conker_1.0.205.d303317
+debug1: no match: conker_1.0.205.d303317
+debug2: fd 5 setting O_NONBLOCK
+debug1: Authenticating to bitbucket.com:22 as &apos;git&apos;
+debug1: SSH2_MSG_KEXINIT sent
+debug1: SSH2_MSG_KEXINIT received
+debug2: kex_parse_kexinit: curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1,diffie-hellman-group1-sha1
+debug2: kex_parse_kexinit: ssh-rsa-cert-v01@openssh.com,ssh-rsa-cert-v00@openssh.com,ssh-rsa,ecdsa-sha2-nistp256-cert-v01@openssh.com,ecdsa-sha2-nistp384-cert-v01@openssh.com,ecdsa-sha2-nistp521-cert-v01@openssh.com,ssh-ed25519-cert-v01@openssh.com,ssh-dss-cert-v01@openssh.com,ssh-dss-cert-v00@openssh.com,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,ssh-ed25519,ssh-dss
+debug2: kex_parse_kexinit: chacha20-poly1305@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com,arcfour256,arcfour128,aes128-cbc,3des-cbc,blowfish-cbc,cast128-cbc,aes192-cbc,aes256-cbc,arcfour,rijndael-cbc@lysator.liu.se
+debug2: kex_parse_kexinit: chacha20-poly1305@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com,arcfour256,arcfour128,aes128-cbc,3des-cbc,blowfish-cbc,cast128-cbc,aes192-cbc,aes256-cbc,arcfour,rijndael-cbc@lysator.liu.se
+debug2: kex_parse_kexinit: umac-64-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-64@openssh.com,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-sha1,hmac-md5-etm@openssh.com,hmac-ripemd160-etm@openssh.com,hmac-sha1-96-etm@openssh.com,hmac-md5-96-etm@openssh.com,hmac-md5,hmac-ripemd160,hmac-ripemd160@openssh.com,hmac-sha1-96,hmac-md5-96
+debug2: kex_parse_kexinit: umac-64-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-64@openssh.com,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-sha1,hmac-md5-etm@openssh.com,hmac-ripemd160-etm@openssh.com,hmac-sha1-96-etm@openssh.com,hmac-md5-96-etm@openssh.com,hmac-md5,hmac-ripemd160,hmac-ripemd160@openssh.com,hmac-sha1-96,hmac-md5-96
+debug2: kex_parse_kexinit: none,zlib@openssh.com,zlib
+debug2: kex_parse_kexinit: none,zlib@openssh.com,zlib
+debug2: kex_parse_kexinit: 
+debug2: kex_parse_kexinit: 
+debug2: kex_parse_kexinit: first_kex_follows 0 
+debug2: kex_parse_kexinit: reserved 0 
+debug2: kex_parse_kexinit: curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group14-sha1,diffie-hellman-group1-sha1
+debug2: kex_parse_kexinit: ssh-dss,ssh-rsa
+debug2: kex_parse_kexinit: aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,arcfour256,arcfour128
+debug2: kex_parse_kexinit: aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,arcfour256,arcfour128
+debug2: kex_parse_kexinit: hmac-sha2-256,hmac-sha1,hmac-sha1-96
+debug2: kex_parse_kexinit: hmac-sha2-256,hmac-sha1,hmac-sha1-96
+debug2: kex_parse_kexinit: none
+debug2: kex_parse_kexinit: none
+debug2: kex_parse_kexinit: 
+debug2: kex_parse_kexinit: 
+debug2: kex_parse_kexinit: first_kex_follows 0 
+debug2: kex_parse_kexinit: reserved 0 
+debug1: kex: server-&gt;client aes128-ctr hmac-sha2-256 none
+debug1: kex: client-&gt;server aes128-ctr hmac-sha2-256 none
+debug1: expecting SSH2_MSG_KEX_ECDH_REPLY
+debug1: Server host key: ssh-rsa SHA256:zzXQOXSRBEiUtuE8AikJYKwbHaxvSc0ojez9YXaGp1A
+debug1: Host &apos;bitbucket.com&apos; is known and matches the RSA host key.
+debug1: Found key in /Users/LaoTao/.ssh/known_hosts:1
+debug2: set_newkeys: mode 1
+debug1: SSH2_MSG_NEWKEYS sent
+debug1: expecting SSH2_MSG_NEWKEYS
+debug2: set_newkeys: mode 0
+debug1: SSH2_MSG_NEWKEYS received
+debug1: SSH2_MSG_SERVICE_REQUEST sent
+debug2: service_accept: ssh-userauth
+debug1: SSH2_MSG_SERVICE_ACCEPT received
+debug2: key: /Users/LaoTao/.ssh/personalid (0x7fd358e00bd0),
+debug2: key: /Users/LaoTao/.ssh/id_rsa (0x7fd358e00200),
+debug2: key: /Users/LaoTao/.ssh/id_dsa (0x0),
+debug2: key: /Users/LaoTao/.ssh/id_ecdsa (0x0),
+debug2: key: /Users/LaoTao/.ssh/id_ed25519 (0x0),
+debug1: Authentications that can continue: publickey
+debug1: Next authentication method: publickey
+debug1: Offering RSA public key: /Users/LaoTao/.ssh/personalid
+debug2: we sent a publickey packet, wait for reply
+debug1: Server accepts key: pkalg ssh-rsa blen 279
+debug2: input_userauth_pk_ok: fp SHA256:v/HdPvYds0+vJmcKW09dsaeyRWab2w3FHPPiMwysGJY
+debug1: Authentication succeeded (publickey).
+Authenticated to bitbucket.com ([104.192.143.7]:22).
+debug1: channel 0: new [client-session]
+debug2: channel 0: send open
+debug1: Entering interactive session.
+debug2: callback start
+debug2: fd 5 setting TCP_NODELAY
+debug2: client_session2_setup: id 0
+debug2: channel 0: request pty-req confirm 1
+debug1: Sending environment.
+debug1: Sending env LANG = zh_CN.UTF-8
+debug2: channel 0: request env confirm 0
+debug2: channel 0: request shell confirm 1
+debug2: callback done
+debug2: channel 0: open confirm rwindow 2097152 rmax 32768
+debug2: channel_input_status_confirm: type 100 id 0
+PTY allocation request failed on channel 0
+debug2: channel_input_status_confirm: type 99 id 0
+debug2: shell request accepted on channel 0
+debug1: client_input_channel_req: channel 0 rtype exit-status reply 0
+debug2: channel 0: rcvd eof
+debug2: channel 0: output open -&gt; drain
+debug2: channel 0: rcvd close
+debug2: channel 0: close_read
+debug2: channel 0: input open -&gt; closed
+logged in as beyond521t.
+
+You can use git or hg to connect to Bitbucket. Shell access is disabled.
+debug2: channel 0: obuf empty
+debug2: channel 0: close_write
+debug2: channel 0: output drain -&gt; closed
+debug2: channel 0: almost dead
+debug2: channel 0: gc: notify user
+debug2: channel 0: gc: user detached
+debug2: channel 0: send close
+debug2: channel 0: is dead
+debug2: channel 0: garbage collecting
+debug1: channel 0: free: client-session, nchannels 1
+Connection to bitbucket.com closed.
+Transferred: sent 3600, received 1744 bytes, in 0.9 seconds
+Bytes per second: sent 4044.6, received 1959.4
+debug1: Exit status 0</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/07/17/git-sshkey-multi/" data-id="ckbkhedp2001evjatbojybidx" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/08/01/nvm-update-Ruby/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          rvm升级Ruby
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/07/17/git-sshkey/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">生成SSH Key</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/APS/" rel="tag">APS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LaoTao-Code/" rel="tag">LaoTao-Code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/" rel="tag">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VR/" rel="tag">VR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/deutsch/" rel="tag">deutsch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/golang/" rel="tag">golang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/" rel="tag">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/" rel="tag">iOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iPhone/" rel="tag">iPhone</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sqlite/" rel="tag">sqlite</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swift/" rel="tag">swift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91/" rel="tag">服务器开发</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/APS/" style="font-size: 16.25px;">APS</a> <a href="/tags/LaoTao-Code/" style="font-size: 10px;">LaoTao-Code</a> <a href="/tags/Linux/" style="font-size: 11.25px;">Linux</a> <a href="/tags/Mac/" style="font-size: 12.5px;">Mac</a> <a href="/tags/VR/" style="font-size: 10px;">VR</a> <a href="/tags/deutsch/" style="font-size: 11.25px;">deutsch</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/golang/" style="font-size: 10px;">golang</a> <a href="/tags/hexo/" style="font-size: 13.75px;">hexo</a> <a href="/tags/html/" style="font-size: 17.5px;">html</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/iPhone/" style="font-size: 11.25px;">iPhone</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/swift/" style="font-size: 18.75px;">swift</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91/" style="font-size: 10px;">服务器开发</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/12/19/docker-net-shell/">docker网络命令与基本查看命令</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/19/linux-brctl-shell/">Linux brclt 命令</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/18/mac-go-environment/">Mac 下Go语言开发环境设置</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/13/iOS-BLEDevelopMultiDevice/baidu_verify_GTSzPZiZEu/">iOS-BLEDevelopMultiDevice/baidu_verify_GTSzPZiZEu</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/05/linux-Shell-ssh/">Linux Shell ssh登录脚本</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 老陶<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

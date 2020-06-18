@@ -5,16 +5,19 @@
   
 
   
-  <title>归档 | 老陶的博客</title>
+  <title>html-style-link-table | 老陶的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="对代码不满足，是任何真正有天才的程序员的根本特征。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="老陶的博客">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="HTML样式、链接、表格一、样式1、标签&lt;style&gt;: 样式定义 &lt;link&gt;: 资源引用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="html-style-link-table">
+<meta property="og:url" content="http://yoursite.com/2017/03/17/html-style-link-table/index.html">
 <meta property="og:site_name" content="老陶的博客">
-<meta property="og:description" content="对代码不满足，是任何真正有天才的程序员的根本特征。">
+<meta property="og:description" content="HTML样式、链接、表格一、样式1、标签&lt;style&gt;: 样式定义 &lt;link&gt;: 资源引用">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-03-17T02:35:56.000Z">
+<meta property="article:modified_time" content="2019-08-13T14:35:05.592Z">
 <meta property="article:author" content="老陶">
+<meta property="article:tag" content="html">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="老陶的博客" type="application/atom+xml">
@@ -68,236 +71,135 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/12/19/docker-net-shell/" class="archive-article-date">
-  <time datetime="2019-12-19T06:37:55.000Z" itemprop="datePublished">12月 19</time>
+        <section id="main"><article id="post-html-style-link-table" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/17/html-style-link-table/" class="article-date">
+  <time datetime="2017-03-17T02:35:56.000Z" itemprop="datePublished">2017-03-17</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/19/docker-net-shell/">docker网络命令与基本查看命令</a>
+    <h1 class="article-title" itemprop="name">
+      html-style-link-table
     </h1>
   
 
-    </header>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="HTML样式、链接、表格"><a href="#HTML样式、链接、表格" class="headerlink" title="HTML样式、链接、表格"></a>HTML样式、链接、表格</h2><h3 id="一、样式"><a href="#一、样式" class="headerlink" title="一、样式"></a>一、样式</h3><h4 id="1、标签"><a href="#1、标签" class="headerlink" title="1、标签"></a>1、标签</h4><pre><code>&lt;style&gt;: 样式定义
+&lt;link&gt;: 资源引用</code></pre><a id="more"></a>
+
+<h4 id="2、属性"><a href="#2、属性" class="headerlink" title="2、属性"></a>2、属性</h4><pre><code>`rel=&quot;stylesheet&quot;:外部样式表 (stylesheet只是其中之一)
+type=&quot;text/css&quot;:引入文档的类型
+margin-left: 边距`</code></pre><p>1、三种样式表插入方法</p>
+<!--more-->
+
+<ul>
+<li><p>外部样式表:</p>
+<p>  <code>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href= &quot;mystyle.css&quot;&gt;</code></p>
+</li>
+<li><p>内部样式表:</p>
+<p>  <code>&lt;style type= &quot;text/css&quot;&gt;
+  body {background-color: red}
+  p {margin-left: 20px}
+  &lt;/style&gt;</code></p>
+</li>
+<li><p>内联样式表:</p>
+<p>  <code>&lt;p style= &quot;color: red&gt;</code></p>
+</li>
+</ul>
+<h3 id="二、HTML-链接"><a href="#二、HTML-链接" class="headerlink" title="二、HTML 链接"></a>二、HTML 链接</h3><h4 id="1、链接数据"><a href="#1、链接数据" class="headerlink" title="1、链接数据"></a>1、链接数据</h4><ul>
+<li>文本链接</li>
+<li>图片链接</li>
+</ul>
+<h4 id="2、属性-1"><a href="#2、属性-1" class="headerlink" title="2、属性"></a>2、属性</h4><ul>
+<li>href属性：指向另一个文档的链接</li>
+<li>name属性：创建文档内的链接</li>
+</ul>
+<p>3、img标签属性</p>
+<ul>
+<li>alt：替换文本属性</li>
+<li>width：宽</li>
+<li>height：高</li>
+</ul>
+<h3 id="三、HTML-表格"><a href="#三、HTML-表格" class="headerlink" title="三、HTML 表格"></a>三、HTML 表格</h3><h4 id="1、"><a href="#1、" class="headerlink" title="1、"></a>1、</h4><pre><code>&lt;table&gt;    定义表格
+&lt;caption&gt;    定义表格标题
+&lt;th&gt;        定义表格的表头
+&lt;tr&gt;        定义表格的行
+&lt;td&gt;        定义表格的单元
+&lt;thead&gt;    定义表格的页眉
+&lt;tbody&gt;    定义表格的主体
+&lt;tfoot&gt;    定义表格页脚
+&lt;col&gt;        定义表格的列属性</code></pre><ul>
+<li>1、没有边框的表格</li>
+<li>2、表格中的表头</li>
+<li>3、空单元格</li>
+<li>4、带有标题的表格</li>
+<li>5、表格内的标签</li>
+<li>6、单元格边距</li>
+<li>7、单元格间距</li>
+<li>8、表格内的背景颜色和图像</li>
+<li>9、单元格内容排列</li>
+<li>10、跨行和跨列单元格</li>
+</ul>
+<h2 id="L04-HTML5列表、块和布局"><a href="#L04-HTML5列表、块和布局" class="headerlink" title="L04_HTML5列表、块和布局"></a>L04_HTML5列表、块和布局</h2><h3 id="HTML5列表的使用"><a href="#HTML5列表的使用" class="headerlink" title="HTML5列表的使用"></a>HTML5列表的使用</h3><h4 id="1、标签-1"><a href="#1、标签-1" class="headerlink" title="1、标签"></a>1、标签</h4><pre><code>&lt;ol&gt;    有序列表
+&lt;ul&gt;    无序列表
+&lt;li&gt;    列表项
+&lt;dl&gt;    列表
+&lt;dt&gt;    列表项
+&lt;dd&gt;    描述</code></pre><p>1、无序列表</p>
+<pre><code>使用标签：&lt;ul&gt;、&lt;li&gt;
+属性：    disc、circle、square</code></pre><p>2、有序列表</p>
+<pre><code>使用标签：&lt;ol&gt;、&lt;li&gt;
+属性：    A、a、l、i、start</code></pre><p>3、嵌套列表</p>
+<pre><code>使用标签：&lt;ul&gt;、&lt;ol&gt;、&lt;li&gt;</code></pre><p>4、自定义列表</p>
+<pre><code>使用标签：&lt;dl&gt;、&lt;dt&gt;、&lt;dd&gt;</code></pre><h3 id="HTML块"><a href="#HTML块" class="headerlink" title="HTML块"></a>HTML块</h3><p>1、HTML块元素</p>
+<pre><code>快元素在显示时，通常会以新行开始
+如：&lt;h1&gt;、&lt;p&gt;、&lt;ul&gt;</code></pre><p>2、HTML内联元素</p>
+<pre><code>内联元素通常不会以新行开始
+如：&lt;b&gt;、&lt;a&gt;、&lt;img&gt;</code></pre><p>3、HTML <div>元素</p>
+<pre><code>&lt;div&gt;元素也被称为块元素，其主要是组合HTML元素的容器</code></pre><p>4、HTML <span>元素</p>
+<pre><code>&lt;span&gt;元素是内联元素，可作为文本的容器</code></pre><h3 id="HTML布局"><a href="#HTML布局" class="headerlink" title="HTML布局"></a>HTML布局</h3><h4 id="1、使用元素布局"><a href="#1、使用元素布局" class="headerlink" title="1、使用元素布局"></a>1、使用<div>元素布局</h4><h4 id="2、使用元素布局"><a href="#2、使用元素布局" class="headerlink" title="2、使用元素布局"></a>2、使用<table>元素布局</h4>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/17/html-style-link-table/" data-id="ckbkhedpz0021vjat7d7f9zi3" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/" rel="tag">html</a></li></ul>
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/21/html-css-elements/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          第3阶段 CSS3基础
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/10/html-framework-bg/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">HTML框架、背景、实体</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/12/19/linux-brctl-shell/" class="archive-article-date">
-  <time datetime="2019-12-19T02:54:12.000Z" itemprop="datePublished">12月 19</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/19/linux-brctl-shell/">Linux brclt 命令</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/12/18/mac-go-environment/" class="archive-article-date">
-  <time datetime="2019-12-18T09:26:15.000Z" itemprop="datePublished">12月 18</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/18/mac-go-environment/">Mac 下Go语言开发环境设置</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/08/13/iOS-BLEDevelopMultiDevice/baidu_verify_GTSzPZiZEu/" class="archive-article-date">
-  <time datetime="2019-08-13T14:35:05.595Z" itemprop="datePublished">8月 13</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/13/iOS-BLEDevelopMultiDevice/baidu_verify_GTSzPZiZEu/">iOS-BLEDevelopMultiDevice/baidu_verify_GTSzPZiZEu</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/04/05/linux-Shell-ssh/" class="archive-article-date">
-  <time datetime="2019-04-05T03:55:55.000Z" itemprop="datePublished">4月 5</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/05/linux-Shell-ssh/">Linux Shell ssh登录脚本</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/04/05/hexo-installed-1/" class="archive-article-date">
-  <time datetime="2019-04-05T02:58:46.000Z" itemprop="datePublished">4月 5</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/05/hexo-installed-1/">Mac+HEXO+Github 搭建属于自己的博客(一)</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/07/27/iOS-AVAudioSession/" class="archive-article-date">
-  <time datetime="2018-07-27T03:10:43.000Z" itemprop="datePublished">7月 27</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/27/iOS-AVAudioSession/">iOS-AVAudio</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/05/29/ios-iphone-device/" class="archive-article-date">
-  <time datetime="2018-05-29T07:17:30.000Z" itemprop="datePublished">5月 29</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/29/ios-iphone-device/">iPhone不同设备屏幕尺寸和分辨率</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/11/25/domain-transfer/" class="archive-article-date">
-  <time datetime="2017-11-25T06:21:28.000Z" itemprop="datePublished">11月 25</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/25/domain-transfer/">域名转让</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/03/21/html-javaScript-elements/" class="archive-article-date">
-  <time datetime="2017-03-21T07:07:25.000Z" itemprop="datePublished">3月 21</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/21/html-javaScript-elements/">javaScript-elements</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/8/">8</a><a class="extend next" rel="next" href="/archives/page/2/">下一页 &amp;raquo;</a>
-  </nav>
 
 </section>
         

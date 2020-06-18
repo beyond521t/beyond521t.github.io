@@ -5,16 +5,19 @@
   
 
   
-  <title>归档 | 老陶的博客</title>
+  <title>Swift2.2的新特性 | 老陶的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="对代码不满足，是任何真正有天才的程序员的根本特征。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="老陶的博客">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="Swift 2.2 随着 iOS 9.3 一同闪亮登场，相较于 Swift 2.1， 2.2 版本做出了许多调整，从其调整方向上我们也能一窥 Swift 3.0 的影子，以下内容主要来自于苹果 Swift 官方 Blog ，接下来就让我们进入正题，一睹 Swift 2.2 的庐山真面目：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Swift2.2的新特性">
+<meta property="og:url" content="http://yoursite.com/2016/03/23/swift2-2NewInfo/index.html">
 <meta property="og:site_name" content="老陶的博客">
-<meta property="og:description" content="对代码不满足，是任何真正有天才的程序员的根本特征。">
+<meta property="og:description" content="Swift 2.2 随着 iOS 9.3 一同闪亮登场，相较于 Swift 2.1， 2.2 版本做出了许多调整，从其调整方向上我们也能一窥 Swift 3.0 的影子，以下内容主要来自于苹果 Swift 官方 Blog ，接下来就让我们进入正题，一睹 Swift 2.2 的庐山真面目：">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2016-03-23T14:25:21.000Z">
+<meta property="article:modified_time" content="2019-08-13T14:35:05.618Z">
 <meta property="article:author" content="老陶">
+<meta property="article:tag" content="swift">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="老陶的博客" type="application/atom+xml">
@@ -68,236 +71,93 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/12/19/docker-net-shell/" class="archive-article-date">
-  <time datetime="2019-12-19T06:37:55.000Z" itemprop="datePublished">12月 19</time>
+        <section id="main"><article id="post-swift2-2NewInfo" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/23/swift2-2NewInfo/" class="article-date">
+  <time datetime="2016-03-23T14:25:21.000Z" itemprop="datePublished">2016-03-23</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/19/docker-net-shell/">docker网络命令与基本查看命令</a>
+    <h1 class="article-title" itemprop="name">
+      Swift2.2的新特性
     </h1>
   
 
-    </header>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Swift 2.2 随着 iOS 9.3 一同闪亮登场，相较于 Swift 2.1， 2.2 版本做出了许多调整，从其调整方向上我们也能一窥 Swift 3.0 的影子，以下内容主要来自于苹果 Swift 官方 Blog ，接下来就让我们进入正题，一睹 Swift 2.2 的庐山真面目：</p>
+<a id="more"></a>
+
+<h3 id="Language-Changes-语言变化"><a href="#Language-Changes-语言变化" class="headerlink" title="Language Changes 语言变化"></a>Language Changes 语言变化</h3><ul>
+<li><p><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0001-keywords-as-argument-labels.md" target="_blank" rel="noopener">SE-0001: Allow (most) keywords as argument labels</a></p>
+</li>
+<li><p><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0015-tuple-comparison-operators.md" target="_blank" rel="noopener">SE-0015: Tuple comparison operators</a></p>
+</li>
+<li><p><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0014-constrained-AnySequence.md" target="_blank" rel="noopener">SE-0014: Constraining AnySequence.init</a></p>
+</li>
+<li><p><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0011-replace-typealias-associated.md" target="_blank" rel="noopener">SE-0011: Replace typealias keyword with associatedtype for associated type declarations</a></p>
+</li>
+<li><p><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0021-generalized-naming.md" target="_blank" rel="noopener">SE-0021: Naming Functions with Argument Labels</a></p>
+</li>
+<li><p><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0022-objc-selectors.md" target="_blank" rel="noopener">SE-0022: Referencing the Objective-C selector of a method</a></p>
+</li>
+<li><p><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0020-if-swift-version.md" target="_blank" rel="noopener">SE-0020: Swift Language Version Build Configuration</a></p>
+</li>
+<li><h4 id="允许更多的关键字来做参数标签"><a href="#允许更多的关键字来做参数标签" class="headerlink" title="允许更多的关键字来做参数标签"></a>允许更多的关键字来做参数标签</h4><p>  SE-0001: Allow (most) keywords as argument labels<br>  参数标签是 Swift 中非常 cool 的一个特性，我们可以这么写：</p>
+<pre><code>for i in 1.stride(to: 9, by: 2) {
+    print(i)
+}</code></pre><p>  这个函数很简单，由 1 开始，每次加 2，返回一系列的值，最后的结果要小于 9：</p>
+<p>  上面的函数如果参数前没有 to 或 by 标签，即 stride(9, 2) 那么代码将失去自解释性，别人也很难猜到这些参数的实际用途。</p>
+<p>  又假设我们要获取集合中某个值对应的索引，可以声明如下方法：</p>
+<pre><code>indexOf(value, in: collection)</code></pre><p>  但是注意在 Swift 2.2 之前的版本，上面这种写法 Xcode 会报错，因为 in 是一个关键字，想要使用这些关键字必须加上单引号：</p>
+<pre><code>indexOf(value, `in`: collection)</code></pre><p>  以前我们定义新的 API 的时候，通常也要避免与这些关键字撞车，比如用 within 代替 in 。在我们导入 Objective-C APIs 的时候通常会碰到这些问题：</p>
+<pre><code>event.touchesMatching([.Began, .Moved], `in`: view)
+NSXPCInterface(`protocol`: SomeProtocolType.Protocol)</code></pre><p>  而在 Swift 2.2，我们开放了除 inout , var 和 let 以外所有的关键字，现在他们都可以作为参数 label 来使用了（而不用加单引号）关于语法的影响主要注意以下三方面：</p>
+<p>  函数调用中的关键字可以随意使用了，不会产生什么歧义，因为方法调用时 “:” 总是伴随着参数标签出现。<br>  函数/子类化/初始化 声明：除 inout , var 和 let 这三个关键字之外，使用其他关键字没有什么歧义，因为这些关键字后面总是跟随着 ‘:’ 或 ‘_’ 比如：</p>
+<pre><code>func touchesMatching(phase: NSTouchPhase, in view: NSView?) -&gt; Set&lt;NSTouch&gt;</code></pre></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/03/23/swift2-2NewInfo/" data-id="ckbkhedqw003svjat700v5144" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/" rel="tag">swift</a></li></ul>
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/03/24/developmentHistoryOfApple/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          苹果手机发展史
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/03/23/OSI%E3%80%81TCP-IP/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">OSI、TCP/IP</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/12/19/linux-brctl-shell/" class="archive-article-date">
-  <time datetime="2019-12-19T02:54:12.000Z" itemprop="datePublished">12月 19</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/19/linux-brctl-shell/">Linux brclt 命令</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/12/18/mac-go-environment/" class="archive-article-date">
-  <time datetime="2019-12-18T09:26:15.000Z" itemprop="datePublished">12月 18</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/18/mac-go-environment/">Mac 下Go语言开发环境设置</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/08/13/iOS-BLEDevelopMultiDevice/baidu_verify_GTSzPZiZEu/" class="archive-article-date">
-  <time datetime="2019-08-13T14:35:05.595Z" itemprop="datePublished">8月 13</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/13/iOS-BLEDevelopMultiDevice/baidu_verify_GTSzPZiZEu/">iOS-BLEDevelopMultiDevice/baidu_verify_GTSzPZiZEu</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/04/05/linux-Shell-ssh/" class="archive-article-date">
-  <time datetime="2019-04-05T03:55:55.000Z" itemprop="datePublished">4月 5</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/05/linux-Shell-ssh/">Linux Shell ssh登录脚本</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/04/05/hexo-installed-1/" class="archive-article-date">
-  <time datetime="2019-04-05T02:58:46.000Z" itemprop="datePublished">4月 5</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/05/hexo-installed-1/">Mac+HEXO+Github 搭建属于自己的博客(一)</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/07/27/iOS-AVAudioSession/" class="archive-article-date">
-  <time datetime="2018-07-27T03:10:43.000Z" itemprop="datePublished">7月 27</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/27/iOS-AVAudioSession/">iOS-AVAudio</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/05/29/ios-iphone-device/" class="archive-article-date">
-  <time datetime="2018-05-29T07:17:30.000Z" itemprop="datePublished">5月 29</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/29/ios-iphone-device/">iPhone不同设备屏幕尺寸和分辨率</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/11/25/domain-transfer/" class="archive-article-date">
-  <time datetime="2017-11-25T06:21:28.000Z" itemprop="datePublished">11月 25</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/25/domain-transfer/">域名转让</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/03/21/html-javaScript-elements/" class="archive-article-date">
-  <time datetime="2017-03-21T07:07:25.000Z" itemprop="datePublished">3月 21</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/21/html-javaScript-elements/">javaScript-elements</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/8/">8</a><a class="extend next" rel="next" href="/archives/page/2/">下一页 &amp;raquo;</a>
-  </nav>
 
 </section>
         

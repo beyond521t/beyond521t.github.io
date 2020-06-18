@@ -5,16 +5,19 @@
   
 
   
-  <title>归档 | 老陶的博客</title>
+  <title>APS---SQL2005 | 老陶的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="对代码不满足，是任何真正有天才的程序员的根本特征。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="老陶的博客">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="What is the Normal Form?Normal Form is a set that with a particular level. （范式是符合某一种级别的关系模式的集合。） Create database must follow certain rules. In the relational database, this rule is the Normal Form.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="APS---SQL2005">
+<meta property="og:url" content="http://yoursite.com/2016/03/28/APS-SQL2005/index.html">
 <meta property="og:site_name" content="老陶的博客">
-<meta property="og:description" content="对代码不满足，是任何真正有天才的程序员的根本特征。">
+<meta property="og:description" content="What is the Normal Form?Normal Form is a set that with a particular level. （范式是符合某一种级别的关系模式的集合。） Create database must follow certain rules. In the relational database, this rule is the Normal Form.">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2016-03-28T13:36:38.000Z">
+<meta property="article:modified_time" content="2019-08-13T14:35:05.410Z">
 <meta property="article:author" content="老陶">
+<meta property="article:tag" content="APS">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="老陶的博客" type="application/atom+xml">
@@ -68,236 +71,211 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/12/19/docker-net-shell/" class="archive-article-date">
-  <time datetime="2019-12-19T06:37:55.000Z" itemprop="datePublished">12月 19</time>
+        <section id="main"><article id="post-APS-SQL2005" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/28/APS-SQL2005/" class="article-date">
+  <time datetime="2016-03-28T13:36:38.000Z" itemprop="datePublished">2016-03-28</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/19/docker-net-shell/">docker网络命令与基本查看命令</a>
+    <h1 class="article-title" itemprop="name">
+      APS---SQL2005
     </h1>
   
 
-    </header>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="What-is-the-Normal-Form"><a href="#What-is-the-Normal-Form" class="headerlink" title="What is the Normal Form?"></a>What is the Normal Form?</h4><pre><code>Normal Form is a set that with a particular level. （范式是符合某一种级别的关系模式的集合。）
+Create database must follow certain rules. In the relational database, this rule is the Normal Form.</code></pre><a id="more"></a>
+
+<h4 id="What-is-the-Normal-Form-used-to-do-What-is-the-role-of-Normal-Form"><a href="#What-is-the-Normal-Form-used-to-do-What-is-the-role-of-Normal-Form" class="headerlink" title="What is the Normal Form used to do? / What is the role of Normal Form?"></a>What is the Normal Form used to do? / What is the role of Normal Form?</h4><pre><code>Database that meet these Normal Form are concise and clear stuctured. At the same time, there are no exceptions when insert, delete and update.
+
+Generally, the Relationship is divided into 5 Normal Form.
+1NF, 2NF, 3NF, Boyce-Codd NF, 4NF, 5NF.
+
+In generally, the database only to meet the 3NF.</code></pre><h3 id="1NF"><a href="#1NF" class="headerlink" title="1NF"></a>1NF</h3><pre><code>In any relational database, the 1NF is the basic requirement.
+If the database that does not meet the 1NF, it isn&apos;t a relational database.
+The 1NF is a non repeating column.
+* There must have primary key.
+* Primary key cannot be empty.
+* The Primary Key can&apos;t be repeated
+* the column can&apos;t be divided.</code></pre><table>
+<thead>
+<tr>
+<th>StudentNo</th>
+<th>Name</th>
+<th>Sex</th>
+<th>Email</th>
+<th>Phone</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>001</td>
+<td>LaoTao</td>
+<td>Mail</td>
+<td><a href="mailto:laotao@m.com">laotao@m.com</a></td>
+<td>18866688688</td>
+</tr>
+</tbody></table>
+<h3 id="2NF"><a href="#2NF" class="headerlink" title="2NF"></a>2NF</h3><pre><code>Meeting the 2NF must meeting the 1NF. 
+Each non key attribute is not part dependent on the Primary Key attribute.
+So the main task of the 2NF is to meet the 1NF, and eliminate some dependence of the function.</code></pre><table>
+<thead>
+<tr>
+<th>StudentNo</th>
+<th>Name</th>
+<th>Sex</th>
+<th>Email</th>
+<th>Phone</th>
+<th>ClassNo</th>
+<th>classAddress</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>001</td>
+<td>LaoTao</td>
+<td>Mail</td>
+<td><a href="mailto:lt@m.cn">lt@m.cn</a></td>
+<td>18866688688</td>
+<td>1003</td>
+<td>67#A205</td>
+</tr>
+</tbody></table>
+<pre><code>This table is fully satisfied with the 1NF. 
+The primary key is consisting of the &quot;StudentNo&quot; and &quot;ClassNO&quot;.
+But the &quot;ClassAddress&quot; depends on the key(ClassNo -&gt; ClassAddress), so it must be divided into two tables.</code></pre><p>Table 1</p>
+<table>
+<thead>
+<tr>
+<th>StudentNo</th>
+<th>Name</th>
+<th>Sex</th>
+<th>Email</th>
+<th>Phone</th>
+<th>ClassNo</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>001</td>
+<td>LaoTao</td>
+<td>Mail</td>
+<td><a href="mailto:lt@m.cn">lt@m.cn</a></td>
+<td>18866688688</td>
+<td>1003</td>
+</tr>
+</tbody></table>
+<p>Table 2</p>
+<table>
+<thead>
+<tr>
+<th>ClassNO</th>
+<th>ClassAddress</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1003</td>
+<td>67#205</td>
+</tr>
+</tbody></table>
+<h3 id="3NF"><a href="#3NF" class="headerlink" title="3NF"></a>3NF</h3><pre><code>如果关系模型R是第二范式， 且没有一个非键属性传递依赖于键，则称R是3NF.
+The 3NF requires a database table does not contain the non primary key information that has benn included in other tables.</code></pre><table>
+<thead>
+<tr>
+<th>StudentNo</th>
+<th>Name</th>
+<th>Sex</th>
+<th>Email</th>
+<th>bounsLevel</th>
+<th>bouns</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>001</td>
+<td>LaoTao</td>
+<td>Mail</td>
+<td><a href="mailto:lt@m.cn">lt@m.cn</a></td>
+<td>Good</td>
+<td>£1000</td>
+</tr>
+</tbody></table>
+<pre><code>This table is fully satisfied with the 2NF.But boundsLevel and bounds has a transitive dependency(传递依赖).</code></pre><table>
+<thead>
+<tr>
+<th>StudentNo</th>
+<th>Name</th>
+<th>Sex</th>
+<th>Email</th>
+<th>boundsNo</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>001</td>
+<td>LaoTao</td>
+<td>Mail</td>
+<td><a href="mailto:lt@m.cn">lt@m.cn</a></td>
+<td>01</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>boundsNo</th>
+<th>bounsLevel</th>
+<th>bouns</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>01</td>
+<td>Good</td>
+<td>£1000</td>
+</tr>
+</tbody></table>
+<pre><code>I&apos;d love using the boundsNo as the Primary Key,
+There are two reasons:
+ * 1)don&apos;t use the characters as Primary Key.
+ * 2)Generally, use the unrelated key in preference as the primary Key.</code></pre><h3 id="BCNF"><a href="#BCNF" class="headerlink" title="BCNF"></a>BCNF</h3><p>Boyce-Codd Normal Formal</p>
+<h3 id="三层模式模型"><a href="#三层模式模型" class="headerlink" title="三层模式模型"></a>三层模式模型</h3><h3 id="E-R图"><a href="#E-R图" class="headerlink" title="E-R图"></a>E-R图</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/03/28/APS-SQL2005/" data-id="ckbkhedod0005vjathqra0mru" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/APS/" rel="tag">APS</a></li></ul>
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/03/30/APS-Network/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          APS-Network
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/03/28/APS-Start/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">APS---Start</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/12/19/linux-brctl-shell/" class="archive-article-date">
-  <time datetime="2019-12-19T02:54:12.000Z" itemprop="datePublished">12月 19</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/19/linux-brctl-shell/">Linux brclt 命令</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/12/18/mac-go-environment/" class="archive-article-date">
-  <time datetime="2019-12-18T09:26:15.000Z" itemprop="datePublished">12月 18</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/18/mac-go-environment/">Mac 下Go语言开发环境设置</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/08/13/iOS-BLEDevelopMultiDevice/baidu_verify_GTSzPZiZEu/" class="archive-article-date">
-  <time datetime="2019-08-13T14:35:05.595Z" itemprop="datePublished">8月 13</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/13/iOS-BLEDevelopMultiDevice/baidu_verify_GTSzPZiZEu/">iOS-BLEDevelopMultiDevice/baidu_verify_GTSzPZiZEu</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/04/05/linux-Shell-ssh/" class="archive-article-date">
-  <time datetime="2019-04-05T03:55:55.000Z" itemprop="datePublished">4月 5</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/05/linux-Shell-ssh/">Linux Shell ssh登录脚本</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/04/05/hexo-installed-1/" class="archive-article-date">
-  <time datetime="2019-04-05T02:58:46.000Z" itemprop="datePublished">4月 5</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/05/hexo-installed-1/">Mac+HEXO+Github 搭建属于自己的博客(一)</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/07/27/iOS-AVAudioSession/" class="archive-article-date">
-  <time datetime="2018-07-27T03:10:43.000Z" itemprop="datePublished">7月 27</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/27/iOS-AVAudioSession/">iOS-AVAudio</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/05/29/ios-iphone-device/" class="archive-article-date">
-  <time datetime="2018-05-29T07:17:30.000Z" itemprop="datePublished">5月 29</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/29/ios-iphone-device/">iPhone不同设备屏幕尺寸和分辨率</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/11/25/domain-transfer/" class="archive-article-date">
-  <time datetime="2017-11-25T06:21:28.000Z" itemprop="datePublished">11月 25</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/25/domain-transfer/">域名转让</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/03/21/html-javaScript-elements/" class="archive-article-date">
-  <time datetime="2017-03-21T07:07:25.000Z" itemprop="datePublished">3月 21</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/21/html-javaScript-elements/">javaScript-elements</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/8/">8</a><a class="extend next" rel="next" href="/archives/page/2/">下一页 &amp;raquo;</a>
-  </nav>
 
 </section>
         

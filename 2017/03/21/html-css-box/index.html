@@ -5,16 +5,19 @@
   
 
   
-  <title>归档 | 老陶的博客</title>
+  <title>3.3 CSS盒子模型 | 老陶的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="对代码不满足，是任何真正有天才的程序员的根本特征。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="老陶的博客">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="3.3 CSS盒子模型课程概要 CSS盒子模型概述 CSS内边距 CSS边框 CSS外边距 CSS外边距合并">
+<meta property="og:type" content="article">
+<meta property="og:title" content="3.3 CSS盒子模型">
+<meta property="og:url" content="http://yoursite.com/2017/03/21/html-css-box/index.html">
 <meta property="og:site_name" content="老陶的博客">
-<meta property="og:description" content="对代码不满足，是任何真正有天才的程序员的根本特征。">
+<meta property="og:description" content="3.3 CSS盒子模型课程概要 CSS盒子模型概述 CSS内边距 CSS边框 CSS外边距 CSS外边距合并">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-03-21T07:01:17.000Z">
+<meta property="article:modified_time" content="2019-08-13T14:35:05.591Z">
 <meta property="article:author" content="老陶">
+<meta property="article:tag" content="html">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="老陶的博客" type="application/atom+xml">
@@ -68,236 +71,226 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/12/19/docker-net-shell/" class="archive-article-date">
-  <time datetime="2019-12-19T06:37:55.000Z" itemprop="datePublished">12月 19</time>
+        <section id="main"><article id="post-html-css-box" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/21/html-css-box/" class="article-date">
+  <time datetime="2017-03-21T07:01:17.000Z" itemprop="datePublished">2017-03-21</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/19/docker-net-shell/">docker网络命令与基本查看命令</a>
+    <h1 class="article-title" itemprop="name">
+      3.3 CSS盒子模型
     </h1>
   
 
-    </header>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="3-3-CSS盒子模型"><a href="#3-3-CSS盒子模型" class="headerlink" title="3.3 CSS盒子模型"></a>3.3 CSS盒子模型</h2><h2 id="课程概要"><a href="#课程概要" class="headerlink" title="课程概要"></a>课程概要</h2><ul>
+<li>CSS盒子模型概述</li>
+<li>CSS内边距</li>
+<li>CSS边框</li>
+<li>CSS外边距</li>
+<li>CSS外边距合并</li>
+</ul>
+<a id="more"></a>
+
+<h3 id="3-3-1-CSS盒子模型-概述"><a href="#3-3-1-CSS盒子模型-概述" class="headerlink" title="3.3.1 CSS盒子模型-概述"></a>3.3.1 CSS盒子模型-概述</h3><p>1、盒子模型的内容范围包括</p>
+<pre><code>margin（外边距）、border（边框）、padding（内边距）、content部分组成
+
+height、width</code></pre><h3 id="3-3-2-CSS盒子模型-内边距"><a href="#3-3-2-CSS盒子模型-内边距" class="headerlink" title="3.3.2 CSS盒子模型-内边距"></a>3.3.2 CSS盒子模型-内边距</h3><p>1、内边距</p>
+<pre><code>内边距在content外，边框外</code></pre><p>2、内边距属性</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>padding</td>
+<td>设置所有边距</td>
+</tr>
+<tr>
+<td>padding-bottom</td>
+<td>设置底边距</td>
+</tr>
+<tr>
+<td>padding-left</td>
+<td>设置左边距</td>
+</tr>
+<tr>
+<td>padding-right</td>
+<td>设置右边距</td>
+</tr>
+<tr>
+<td>padding-top</td>
+<td>设置上边距</td>
+</tr>
+</tbody></table>
+<h3 id="3-3-3-CSS盒子模型-边框"><a href="#3-3-3-CSS盒子模型-边框" class="headerlink" title="3.3.3 CSS盒子模型-边框"></a>3.3.3 CSS盒子模型-边框</h3><p>1、CSS边框：</p>
+<p>我们可以创建出效果出色的边框，并且可以应用于任何元素</p>
+<p>2、边框的样式：</p>
+<p>border-style: 定义了10个不同的非继承样式，包括none</p>
+<p>3、边框的单边样式：</p>
+<table>
+<thead>
+<tr>
+<th align="left">style</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">border-top-style</td>
+</tr>
+<tr>
+<td align="left">border-left-style</td>
+</tr>
+<tr>
+<td align="left">border-right-style</td>
+</tr>
+<tr>
+<td align="left">border-bottom-style</td>
+</tr>
+</tbody></table>
+<p>4、边框的宽度：</p>
+<pre><code>border-width</code></pre><p>5、边框单边的宽度：</p>
+<table>
+<thead>
+<tr>
+<th align="left">style</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">border-top-width</td>
+</tr>
+<tr>
+<td align="left">border-left-width</td>
+</tr>
+<tr>
+<td align="left">border-right-width</td>
+</tr>
+<tr>
+<td align="left">border-bottom-width</td>
+</tr>
+</tbody></table>
+<p>6、边框的颜色：</p>
+<pre><code>border-color</code></pre><p>7、边框单边的颜色</p>
+<table>
+<thead>
+<tr>
+<th align="left">style</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">border-top-color</td>
+</tr>
+<tr>
+<td align="left">border-left-color</td>
+</tr>
+<tr>
+<td align="left">border-right-color</td>
+</tr>
+<tr>
+<td align="left">border-bottom-color</td>
+</tr>
+</tbody></table>
+<p>8、CSS3边框</p>
+<table>
+<thead>
+<tr>
+<th>CSS3边框</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>border-radius</td>
+<td>圆角边框</td>
+</tr>
+<tr>
+<td>box-shadow</td>
+<td>边框阴影</td>
+</tr>
+<tr>
+<td>border-image</td>
+<td>边框图片</td>
+</tr>
+</tbody></table>
+<pre><code>box-shadow 背景阴影右移移动像素、下移移动像素、背景阴影透明度、颜色</code></pre><h3 id="3-3-4-CSS盒子模型-外边距"><a href="#3-3-4-CSS盒子模型-外边距" class="headerlink" title="3.3.4 CSS盒子模型-外边距"></a>3.3.4 CSS盒子模型-外边距</h3><p>1、外边距：</p>
+<p>围绕在内容边框的区域就是外边距，外边距默认为透明区域</p>
+<p>外边距接受任何长度单位、百分数值</p>
+<p>2、外边距常用属性</p>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">margin</td>
+<td align="left">设置所有边距</td>
+</tr>
+<tr>
+<td align="left">margin-bottom</td>
+<td align="left">设置底边距</td>
+</tr>
+<tr>
+<td align="left">margin-left</td>
+<td align="left">设置左边距</td>
+</tr>
+<tr>
+<td align="left">margin-right</td>
+<td align="left">设置右边距</td>
+</tr>
+<tr>
+<td align="left">margin-top</td>
+<td align="left">设置上边距</td>
+</tr>
+</tbody></table>
+<h3 id="3-3-5-CSS盒子模型-外边距合并"><a href="#3-3-5-CSS盒子模型-外边距合并" class="headerlink" title="3.3.5 CSS盒子模型-外边距合并"></a>3.3.5 CSS盒子模型-外边距合并</h3><p>1、外边距合并：</p>
+<p>外边距合并就是一个叠加的概念</p>
+<h3 id="3-3-6-CSS盒子模型-盒子模型应用"><a href="#3-3-6-CSS盒子模型-盒子模型应用" class="headerlink" title="3.3.6 CSS盒子模型-盒子模型应用"></a>3.3.6 CSS盒子模型-盒子模型应用</h3><p><a href="http://www.jekexueyuan.com" target="_blank" rel="noopener">极客学院官网效果</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/21/html-css-box/" data-id="ckbkhedpc001nvjat5zxl748h" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/" rel="tag">html</a></li></ul>
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/21/html-css-position/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          html-css-position
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/21/html-css-style/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">3.2 CSS基础样式讲解</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/12/19/linux-brctl-shell/" class="archive-article-date">
-  <time datetime="2019-12-19T02:54:12.000Z" itemprop="datePublished">12月 19</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/19/linux-brctl-shell/">Linux brclt 命令</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/12/18/mac-go-environment/" class="archive-article-date">
-  <time datetime="2019-12-18T09:26:15.000Z" itemprop="datePublished">12月 18</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/18/mac-go-environment/">Mac 下Go语言开发环境设置</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/08/13/iOS-BLEDevelopMultiDevice/baidu_verify_GTSzPZiZEu/" class="archive-article-date">
-  <time datetime="2019-08-13T14:35:05.595Z" itemprop="datePublished">8月 13</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/13/iOS-BLEDevelopMultiDevice/baidu_verify_GTSzPZiZEu/">iOS-BLEDevelopMultiDevice/baidu_verify_GTSzPZiZEu</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/04/05/linux-Shell-ssh/" class="archive-article-date">
-  <time datetime="2019-04-05T03:55:55.000Z" itemprop="datePublished">4月 5</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/05/linux-Shell-ssh/">Linux Shell ssh登录脚本</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/04/05/hexo-installed-1/" class="archive-article-date">
-  <time datetime="2019-04-05T02:58:46.000Z" itemprop="datePublished">4月 5</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/05/hexo-installed-1/">Mac+HEXO+Github 搭建属于自己的博客(一)</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/07/27/iOS-AVAudioSession/" class="archive-article-date">
-  <time datetime="2018-07-27T03:10:43.000Z" itemprop="datePublished">7月 27</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/27/iOS-AVAudioSession/">iOS-AVAudio</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/05/29/ios-iphone-device/" class="archive-article-date">
-  <time datetime="2018-05-29T07:17:30.000Z" itemprop="datePublished">5月 29</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/29/ios-iphone-device/">iPhone不同设备屏幕尺寸和分辨率</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/11/25/domain-transfer/" class="archive-article-date">
-  <time datetime="2017-11-25T06:21:28.000Z" itemprop="datePublished">11月 25</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/25/domain-transfer/">域名转让</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/03/21/html-javaScript-elements/" class="archive-article-date">
-  <time datetime="2017-03-21T07:07:25.000Z" itemprop="datePublished">3月 21</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/21/html-javaScript-elements/">javaScript-elements</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/8/">8</a><a class="extend next" rel="next" href="/archives/page/2/">下一页 &amp;raquo;</a>
-  </nav>
 
 </section>
         

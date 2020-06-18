@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Swift字符串常用操作总结 | 老陶的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="版本2：增加了Swift 2.0的语法，与Swift 1.2的语法相比，主要是：advance方法变成了advancedBy方法（但不是简单替换）；没有了count方法，count(str)需要变成str.characters.count等。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Swift字符串常用操作总结">
+<meta property="og:url" content="http://yoursite.com/2016/04/07/swift-StringOperation/index.html">
+<meta property="og:site_name" content="老陶的博客">
+<meta property="og:description" content="版本2：增加了Swift 2.0的语法，与Swift 1.2的语法相比，主要是：advance方法变成了advancedBy方法（但不是简单替换）；没有了count方法，count(str)需要变成str.characters.count等。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2016-04-07T05:19:17.000Z">
+<meta property="article:modified_time" content="2019-08-13T14:35:05.617Z">
+<meta property="article:author" content="老陶">
+<meta property="article:tag" content="swift">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="老陶的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">老陶的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">真正的才智是刚毅的志向。</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-swift-StringOperation" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/07/swift-StringOperation/" class="article-date">
+  <time datetime="2016-04-07T05:19:17.000Z" itemprop="datePublished">2016-04-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Swift字符串常用操作总结
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>版本2：增加了Swift 2.0的语法，与Swift 1.2的语法相比，主要是：advance方法变成了advancedBy方法（但不是简单替换）；没有了count方法，count(str)需要变成str.characters.count等。</p>
+<a id="more"></a>
+
+<p>字符串的定义</p>
+<pre><code>var str1=&quot;hello, mandarava.&quot; //字符串变量
+let str2=&quot;hello, mandarava.&quot; //字符串常量
+let str3=&quot;&quot; //空字符串
+let str4=String() //空字符串</code></pre><p>字符的定义</p>
+<pre><code>var char1:Character=&quot;m&quot; //字符变量
+let char2:Character=&quot;m&quot; //字符常量</code></pre><p>字符串的连接</p>
+<pre><code>let str1=&quot;hello, &quot;
+let str2=&quot;mandarava.&quot;
+let str3=str1+str2 //=连接str1、str2
+//str3=&quot;hello, mandarava.&quot;
+//----------------------------------------
+let str4=&quot;\(str1)\(str2)&quot; //=连接str1、str2
+//str4=&quot;hello, mandarava.&quot;
+//----------------------------------------
+let strArray=[&quot;apple&quot;, &quot;orange&quot;, &quot;cherry&quot;]
+let joinStr=&quot;,&quot;.join(strArray)
+//joinStr=&quot;apple,orange,cherry&quot;</code></pre><p>字符串与字符的连接</p>
+<pre><code>let char1:Character=&quot;o&quot;
+var str1=&quot;hell&quot;
+let str2=str1+String(char1)
+//str2=&quot;hello&quot;
+//----------------------------------------
+let str3=&quot;\(str1)\(char1)&quot;
+//str3=&quot;hello&quot;
+//----------------------------------------
+str1.append(char1)
+//str1=&quot;hello&quot;</code></pre><p>字符串与其它类型值的连接</p>
+<pre><code>let xx=10
+let yy=10.8
+let str1=&quot;\(xx)+\(yy)=?&quot;
+//str1=&quot;10+10.8=?&quot;
+//----------------------------------------
+let str2=String(format: &quot;%i+%.1f=?&quot;, xx, yy)
+//str2=&quot;10+10.8=?&quot;</code></pre><p>字符串枚举字符</p>
+<pre><code>//Swift 1.2
+let str=&quot;mandarava&quot;
+for ch in str{
+ println(ch)
+}
+//-----------------------
+//Swift 2.0
+let str=&quot;mandarava&quot;
+for ch in str.characters{
+ print(ch)
+}</code></pre><p>获取字符串中指定索引处的字符</p>
+<pre><code>let str=&quot;Mandarava&quot;
+let chr=str[advance(str.startIndex,2)] //Swift 1.2 //chr:Character=&quot;n&quot;
+let chr=str[str.startIndex.advancedBy(2)] //Swift 2.0 //chr:Character=&quot;n&quot;</code></pre><p>计算字符串长度length</p>
+<pre><code>let str=&quot;@Tao&quot;
+let len1=count(str) //swift 1.2 //=4 
+let len2=str.characters.count //swift 2.0 //=4 
+let blen=str.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) //=10</code></pre><p>字符串比较</p>
+<pre><code>let str1=&quot;hello,&quot;
+let str2=&quot;mandarava.&quot;
+let str3=&quot;hello,mandarava.&quot;
+let comp1 = str1==str2 //false
+let comp2 = str1+str2 == str3 //true
+let comp3 = str1 &lt; str2 //true
+let comp4 = str1 != str2 //true</code></pre><p>是否包含子串contains</p>
+<pre><code>let str1=&quot;hello,mandarava.&quot;
+let str2=&quot;mandarava&quot;
+let range=str1.rangeOfString(str2)
+if range != nil{
+ //包含
+}</code></pre><p>查找子串indexof</p>
+<pre><code>var str=&quot;hi,Mandarava.&quot;
+let range=str.rangeOfString(&quot;Mandarava&quot;, options: NSStringCompareOptions.allZeros) //Swift 1.2
+let range=str.rangeOfString(&quot;Mandarava&quot;, options: NSStringCompareOptions()) //Swift 2.0
+let startIndex=range?.startIndex //=3</code></pre><p>首字母大写capitalized</p>
+<pre><code>var str1=&quot;mandarava is a flower.&quot;
+str1.capitalizedString
+//str1=&quot;Mandarava Is A Flower.</code></pre><p>转换为大写字母uppercase</p>
+<pre><code>var str1=&quot;hello, mandarava.&quot;
+str1=str1.uppercaseString
+//str1=&quot;HELLO, MANDARAVA.&quot;</code></pre><p>转换为小写字母lowercase</p>
+<pre><code>var str1=&quot;HELLO, MANDARAVA.&quot;
+str1=str1.lowercaseString
+//str1=&quot;hello, mandarava.&quot;</code></pre><p>截取字符串substring</p>
+<pre><code>let str1=&quot;hello,mandarava.&quot;
+let str2=str1.substringFromIndex(advance(str1.startIndex, 6)) //Swift 1.2
+let str2=str1.substringFromIndex(str1.startIndex.advancedBy(6)) //Swift 2.0
+//str2=&quot;mandarava.&quot;
+//----------------------------------------
+let str3=str1.substringToIndex(advance(str1.startIndex, 5)) //Swift 1.2
+let str3=str1.substringToIndex(str1.startIndex.advancedBy(5)) //Swift 2.0
+//str3=&quot;hello&quot;
+//----------------------------------------
+let range=Range&lt;String.Index&gt;(start: advance(str1.startIndex, 6), end: advance(str1.endIndex, -1)) //Swift 1.2
+let range=Range&lt;String.Index&gt;(start: str1.startIndex.advancedBy(6), end: str1.endIndex.advancedBy(-1)) //Swift 2.0
+let str4=str1.substringWithRange(range)
+//str4=&quot;mandarava&quot;</code></pre><p>字符串修剪trim</p>
+<pre><code>let str1=&quot; mandarava.\n &quot;
+let str2=str1.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+//str2=&quot;mandarava.&quot;
+//----------------------------------------
+let str3=str1.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+//str3=&quot;mandarava.\n&quot;
+//----------------------------------------
+let charset=NSCharacterSet(charactersInString:&quot; \n&quot;)
+let str4=str1.stringByTrimmingCharactersInSet(charset)
+//str4=&quot;mandarava.&quot;</code></pre><p>字符串的分解子串split</p>
+<pre><code>var str1=&quot;boy, girl, man, woman&quot;
+let str1Array=str1.componentsSeparatedByString(&quot;,&quot;)
+//str1Array=[&quot;boy&quot;, &quot; girl&quot;, &quot; man&quot;, &quot; woman&quot;]
+var str2=&quot;boy,girl,man 10 20 30&quot;
+let charset=NSCharacterSet(charactersInString:&quot;, &quot;)
+let str2Array=str2.componentsSeparatedByCharactersInSet(charset)
+//str2Array=[&quot;boy&quot;, &quot;girl&quot;, &quot;man&quot;, &quot;10&quot;, &quot;20&quot;, &quot;30&quot;]</code></pre><p>字符串替换replace</p>
+<pre><code>var str1=&quot;My name is Mandarava.&quot;
+let subRange=Range(start: str1.startIndex, end: advance(str1.startIndex, 2)) //Swift 1.2
+let subRange=Range(start: str1.startIndex, end: str1.startIndex.advancedBy(2)) //Swift 2.0
+str1.replaceRange(subRange, with: &quot;Your&quot;)
+//str1=&quot;Your name is Mandarava.&quot;
+var str2=&quot;hello, Mandarava.&quot;
+str2=str2.stringByReplacingOccurrencesOfString(&quot;Mandarava&quot;, withString: &quot;Tao&quot;)
+//str2=&quot;hello, Tao.&quot;
+str2=str2.stringByReplacingOccurrencesOfString(&quot;Tao&quot;, withString: &quot;Mandarava&quot;, options: NSStringCompareOptions.CaseInsensitiveSearch, range: nil)
+//str2=&quot;hello, Mandarava.&quot;
+string转换为Int/Long/Float/Double/Bool等
+var str1=&quot;100&quot;
+var i=str1.toInt()! //Swift 1.2 //=100 
+var i=(str1 as NSString).integerValue //Swift 2.0 //=100
+var i=(str1 as NSString).intValue //=100
+var l=(str1 as NSString).longLongValue //=100
+var str2=&quot;10.8&quot;
+var f=(str2 as NSString).floatValue //=10.8
+var d=(str2 as NSString).doubleValue //=10.8
+var str3=&quot;true&quot;
+var b=(str3 as NSString).boolValue //=true</code></pre><p>原文链接：<a href="http://www.jianshu.com/p/52e7580166ff" target="_blank" rel="noopener">http://www.jianshu.com/p/52e7580166ff</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/04/07/swift-StringOperation/" data-id="ckbkhedqt003nvjatgflsd4s2" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/" rel="tag">swift</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/04/11/IOS-cancel-performSelector-And-cancelPreviousPerformRequestsWithTarget/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+           IOS 关于取消延迟执行函数的种种。performSelector与cancelPreviousPerformRequestsWithTarget
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/04/07/StringOrNSString/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">String还是NSString</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/APS/" rel="tag">APS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LaoTao-Code/" rel="tag">LaoTao-Code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/" rel="tag">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VR/" rel="tag">VR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/deutsch/" rel="tag">deutsch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/golang/" rel="tag">golang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/" rel="tag">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/" rel="tag">iOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iPhone/" rel="tag">iPhone</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sqlite/" rel="tag">sqlite</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swift/" rel="tag">swift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91/" rel="tag">服务器开发</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/APS/" style="font-size: 16.25px;">APS</a> <a href="/tags/LaoTao-Code/" style="font-size: 10px;">LaoTao-Code</a> <a href="/tags/Linux/" style="font-size: 11.25px;">Linux</a> <a href="/tags/Mac/" style="font-size: 12.5px;">Mac</a> <a href="/tags/VR/" style="font-size: 10px;">VR</a> <a href="/tags/deutsch/" style="font-size: 11.25px;">deutsch</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/golang/" style="font-size: 10px;">golang</a> <a href="/tags/hexo/" style="font-size: 13.75px;">hexo</a> <a href="/tags/html/" style="font-size: 17.5px;">html</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/iPhone/" style="font-size: 11.25px;">iPhone</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/swift/" style="font-size: 18.75px;">swift</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91/" style="font-size: 10px;">服务器开发</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/12/19/docker-net-shell/">docker网络命令与基本查看命令</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/19/linux-brctl-shell/">Linux brclt 命令</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/18/mac-go-environment/">Mac 下Go语言开发环境设置</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/13/iOS-BLEDevelopMultiDevice/baidu_verify_GTSzPZiZEu/">iOS-BLEDevelopMultiDevice/baidu_verify_GTSzPZiZEu</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/05/linux-Shell-ssh/">Linux Shell ssh登录脚本</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 老陶<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

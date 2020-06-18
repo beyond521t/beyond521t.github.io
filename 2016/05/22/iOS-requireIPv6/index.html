@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>6 月 1 日起所有提交的 app 都需要支持 IPv6 网络 | 老陶的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="根据苹果开发者网站的声明，大部分现有应用程序已经通过NSURLSession和CFNetwork APIs兼容该协议。依然使用IPv4 APIs的或者硬件编码IP地址的开发者将需要手工调整应用代码来适应苹果的最新策略。 IPv6比IPv4更有效： 避免了网络地址转换的需要(NAT: Network Address Translation)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="6 月 1 日起所有提交的 app 都需要支持 IPv6 网络">
+<meta property="og:url" content="http://yoursite.com/2016/05/22/iOS-requireIPv6/index.html">
+<meta property="og:site_name" content="老陶的博客">
+<meta property="og:description" content="根据苹果开发者网站的声明，大部分现有应用程序已经通过NSURLSession和CFNetwork APIs兼容该协议。依然使用IPv4 APIs的或者硬件编码IP地址的开发者将需要手工调整应用代码来适应苹果的最新策略。 IPv6比IPv4更有效： 避免了网络地址转换的需要(NAT: Network Address Translation)">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/2016/05/22/iOS-requireIPv6/iOS-requireIPv6/1-1.png">
+<meta property="og:image" content="http://yoursite.com/2016/05/22/iOS-requireIPv6/iOS-requireIPv6/1-2.png">
+<meta property="og:image" content="http://yoursite.com/2016/05/22/iOS-requireIPv6/iOS-requireIPv6/1-3.png">
+<meta property="og:image" content="http://yoursite.com/2016/05/22/iOS-requireIPv6/iOS-requireIPv6/1-4.png">
+<meta property="og:image" content="http://yoursite.com/2016/05/22/iOS-requireIPv6/iOS-requireIPv6/1-5.png">
+<meta property="article:published_time" content="2016-05-22T03:58:16.000Z">
+<meta property="article:modified_time" content="2019-08-13T14:35:05.609Z">
+<meta property="article:author" content="老陶">
+<meta property="article:tag" content="iOS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2016/05/22/iOS-requireIPv6/iOS-requireIPv6/1-1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="老陶的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">老陶的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">真正的才智是刚毅的志向。</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-iOS-requireIPv6" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/05/22/iOS-requireIPv6/" class="article-date">
+  <time datetime="2016-05-22T03:58:16.000Z" itemprop="datePublished">2016-05-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      6 月 1 日起所有提交的 app 都需要支持 IPv6 网络
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p> 根据苹果开发者网站的声明，大部分现有应用程序已经通过NSURLSession和CFNetwork APIs兼容该协议。依然使用IPv4 APIs的或者硬件编码IP地址的开发者将需要手工调整应用代码来适应苹果的最新策略。</p>
+<h4 id="IPv6比IPv4更有效："><a href="#IPv6比IPv4更有效：" class="headerlink" title="IPv6比IPv4更有效："></a>IPv6比IPv4更有效：</h4><ul>
+<li>避免了网络地址转换的需要(NAT: Network Address Translation)<a id="more"></a></li>
+<li>通过使用简单的Headers，通过网络提供更快的路由</li>
+<li>防止网络碎片</li>
+<li>Avoids broadcasting for neighbor address resolution （避免广播 ….，请自行翻译好了）</li>
+</ul>
+<h4 id="DNS64-NAT64-过渡工作流程"><a href="#DNS64-NAT64-过渡工作流程" class="headerlink" title="DNS64/NAT64 过渡工作流程"></a>DNS64/NAT64 过渡工作流程</h4><p>   为了帮助减缓IPv4地址耗尽，NAT在许多IPv4网络实现。虽然这个解决方案暂时工作，它证明了昂贵和脆弱。今天，随着越来越多的客户使用IPv6，供应商现在必须同时支持IPv4和IPv6。这是一个代价高昂的努力。<br>图<code>1-1</code>蜂窝网络提供独立的IPv4和IPv6连接<br>   <img src="iOS-requireIPv6/1-1.png" alt="IPv4和IPv6连接"></p>
+<p>   理想的情况下，供应商要降为IPv4网络支持。然而，这样做可以防止客户端访问IPv4的服务器，这是互联网的一个重要部分。为了解决这个问题，最主要的网络供应商实施 DNS64/NAT64 过渡工作。这是一个纯IPv6网络，继续提供访问IPv4内容通过翻译。<br>图<code>1-2</code>蜂窝网络的部署与 DNS64 和 NAT64 的IPv6网络<br>    <img src="iOS-requireIPv6/1-2.png" alt="DNS64 和 NAT64 的IPv6网络"></p>
+<p>在这种类型的工作流中，客户端发送DNS查询到DNS64服务器，它要求从DNS服务器获取 IPv6 地址。当一个IPv6地址被发现，它会立即传回到客户端。然而，当没有找到IPv6地址时，DNS64服务器请求一个IPv4地址代替。然后DNS64服务器通过为IPv4添加地址前缀合成一个IPv6地址，并传递回客户端。在这方面，客户端总是收到一个IPv6-ready地址（In this regard, the client always receives an IPv6-ready address.最后一句原文 By 老陶2016-05-22 12:29:56）。</p>
+<p>图<code>1-3</code>处理IPv4向IPv6的转换过程<br>    <img src="iOS-requireIPv6/1-3.png" alt="IPv4向IPv6的转换过程"></p>
+<p>当客户端像服务器发送一个请求，任何IPv6数据包</p>
+<p>When the client sends a request to a server, any IPv6 packets destined for synthesized addresses are automatically routed by the network through a NAT64 gateway. The gateway performs the IPv6-to-IPv4 address and protocol translation for the request. It also performs the IPv4 to IPv6 translation for the response from the server. See Figure 1-4.</p>
+<p>图<code>1-4</code> DNS64/NAT64过渡方案工作流程<br>    <img src="iOS-requireIPv6/1-4.png" alt="DNS64/NAT64过渡方案工作流程"></p>
+<h4 id="IPv6-和-App-Store-的要求"><a href="#IPv6-和-App-Store-的要求" class="headerlink" title="IPv6 和 App Store 的要求"></a>IPv6 和 App Store 的要求</h4><p>IPv6 DNS64/NAT64的网络兼容性处理将成为 App Store 的一个提交要求，所以应用程序兼容性不可少的。好消息是大部分软件都兼容IPv6.对于这些应用，定期回归测试你的应用程序仍然是有必要的。不兼容IPv6的应用在操作DNS64/NAT64网络时可能会遇到问题。幸运的是，解决这些问题通常很简单，就像是本章节所讨论的。</p>
+<h4 id="支持IPv6的常见问题"><a href="#支持IPv6的常见问题" class="headerlink" title="支持IPv6的常见问题"></a>支持IPv6的常见问题</h4><p>几种阻止一个应用支持IPv6的情况。下面的章节描述如何解决这些问题。</p>
+<ul>
+<li>协议中包含IP地址的文字。</li>
+<li>在配置文件中包含IP地址。</li>
+<li>网络检测。</li>
+<li>使用地级别的网络API.</li>
+<li>Using small address family storage containers.（请自行翻译 add By 老陶 2016-05-22 15:15:36）</li>
+</ul>
+<p>此部分原文：</p>
+<pre><code>    Several situations can prevent an app from supporting IPv6. The sections that follow describe how to resolve these problems.
+
+IP address literals embedded in protocols. Many communications protocols, such as Session Initiation Protocol (SIP), File Transfer Protocol (FTP), WebSockets, and Peer-to-Peer Protocol (P2PP), include IP address literals in protocol messages. For example, the FTP parameter commands DATA PORT and PASSIVE exchange information that includes IP address literals. Similarly, IP address literals may appear in the values of SIP header fields, such as To, From, Contact, Record-Route, and Via. See Use High-Level Networking Frameworks and Don’t Use IP Address Literals.
+IP address literals embedded in configuration files. Configuration files often include IP address literals. See Don’t Use IP Address Literals.
+Network preflighting. Many apps attempt to proactively check for an Internet connection or an active Wi-Fi connection by passing IP address literals to network reachability APIs. See Connect Without Preflight.
+Using low-level networking APIs. Some apps work directly with sockets and other raw network APIs such as gethostbyname, gethostbyname2, and inet_aton. These APIs are prone to misuse or they only support IPv4—for example, resolving hostnames for the AF_INET address family, rather than the AF_UNSPEC address family. See Use High-Level Networking Frameworks.
+Using small address family storage containers. Some apps and networking libraries use address storage containers—such as uint32_t, in_addr, and sockaddr_in—that are 32 bits or smaller. See Use Appropriately Sized Storage Containers.</code></pre><h2 id="确保IPv6-DNS64-NAT64兼容性"><a href="#确保IPv6-DNS64-NAT64兼容性" class="headerlink" title="确保IPv6 DNS64/NAT64兼容性"></a>确保IPv6 DNS64/NAT64兼容性</h2><p>遵循以下的知道以确保IPv6 DNS64/NAT64在你的应用程序的兼容性。</p>
+<h4 id="使用高级的网络框架"><a href="#使用高级的网络框架" class="headerlink" title="使用高级的网络框架"></a>使用高级的网络框架</h4><pre><code>应用需要可以建立在`高级网络框架` 或 `低级POSIX socket API网络框架`。在大多数情况下，高层次框架是足够的。它们有能力，易于使用，相比低级API拥有更少的缺陷。</code></pre><p>图 <code>1-5</code> 网络框架和API图<br>    <img src="iOS-requireIPv6/1-5.png" alt="网络框架和API图"></p>
+<ul>
+<li><p><b>WebKit.</b> This framework provides a set of classes for displaying web content in windows, and implements browser features such as following links, managing a back-forward list, and managing a history of pages recently visited. WebKit simplifies the complicated process of loading webpages—that is, asynchronously requesting web content from an HTTP server where the response may arrive incrementally, in random order, or partially due to network errors. For more information, see <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/WebKit/ObjC_classic/index.html#//apple_ref/doc/uid/TP30000745" target="_blank" rel="noopener">WebKit Framework Reference</a>.</p>
+</li>
+<li><p><b>Cocoa URL loading system.</b> This system is the easiest way to send and receive data over the network without providing an explicit IP address. Data is sent and received using one of several classes—such as <code>NSURLSession</code>, <code>NSURLRequest</code>, and <code>NSURLConnection</code>—that work with <code>NSURL</code> objects. <code>NSURL</code> objects let your app manipulate URLs and the resources they reference. Create an NSURL object by calling the <code>initWithString</code>: method and passing it a URL specifier. Call the <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSURL_Class/index.html#//apple_ref/occ/instm/NSURL/checkResourceIsReachableAndReturnError:" target="_blank" rel="noopener">checkResourceIsReachableAndReturnError</a>: method of the <code>NSURL</code> class to check the reachability of a host. For more information, see <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/URLLoadingSystem/URLLoadingSystem.html#//apple_ref/doc/uid/10000165i" target="_blank" rel="noopener">URL Session Programming Guide</a>.</p>
+</li>
+<li><p><b>CFNetwork.</b> This Core Services framework provides a library of abstractions for network protocols, which makes it easy to perform a variety of network tasks such as working with BSD sockets, resolving DNS hosts, and working with HTTP/HTTPS. To target a host without an explicit IP address, call the <a href="https://developer.apple.com/library/mac/documentation/CoreFoundation/Reference/CFHostRef/index.html#//apple_ref/c/func/CFHostCreateWithName" target="_blank" rel="noopener">CFHostCreateWithName</a> method. To open a pair of TCP sockets to the host, call the <a href="https://developer.apple.com/library/mac/documentation/CoreFoundation/Reference/CFStreamConstants/index.html#//apple_ref/c/func/CFStreamCreatePairWithSocketToCFHost" target="_blank" rel="noopener">CFStreamCreatePairWithSocketToCFHost</a> method. For more information, see [CFNetwork Concepts](CFNetwork Concepts) in <a href="https://developer.apple.com/library/mac/documentation/Networking/Conceptual/CFNetwork/Introduction/Introduction.html#//apple_ref/doc/uid/TP30001132" target="_blank" rel="noopener">CFNetwork Programming Guide</a>.<br>If you do require the low-level socket APIs, follow the guidelines in RFC4038: Application Aspects of IPv6 Transition.</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/05/22/iOS-requireIPv6/" data-id="ckbkhedqf002wvjat8c826hla" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/" rel="tag">iOS</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/05/25/iOS-MultiLanguage/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          iOS多语言，支持app内部设置
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/05/16/FMDatabaseQueue-lead-to-a-deadlock/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">FMDatabaseQueue lead to a deadlock</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/APS/" rel="tag">APS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LaoTao-Code/" rel="tag">LaoTao-Code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/" rel="tag">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VR/" rel="tag">VR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/deutsch/" rel="tag">deutsch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/golang/" rel="tag">golang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/" rel="tag">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/" rel="tag">iOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iPhone/" rel="tag">iPhone</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sqlite/" rel="tag">sqlite</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swift/" rel="tag">swift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91/" rel="tag">服务器开发</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/APS/" style="font-size: 16.25px;">APS</a> <a href="/tags/LaoTao-Code/" style="font-size: 10px;">LaoTao-Code</a> <a href="/tags/Linux/" style="font-size: 11.25px;">Linux</a> <a href="/tags/Mac/" style="font-size: 12.5px;">Mac</a> <a href="/tags/VR/" style="font-size: 10px;">VR</a> <a href="/tags/deutsch/" style="font-size: 11.25px;">deutsch</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/golang/" style="font-size: 10px;">golang</a> <a href="/tags/hexo/" style="font-size: 13.75px;">hexo</a> <a href="/tags/html/" style="font-size: 17.5px;">html</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/iPhone/" style="font-size: 11.25px;">iPhone</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/swift/" style="font-size: 18.75px;">swift</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91/" style="font-size: 10px;">服务器开发</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/12/19/docker-net-shell/">docker网络命令与基本查看命令</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/19/linux-brctl-shell/">Linux brclt 命令</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/18/mac-go-environment/">Mac 下Go语言开发环境设置</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/13/iOS-BLEDevelopMultiDevice/baidu_verify_GTSzPZiZEu/">iOS-BLEDevelopMultiDevice/baidu_verify_GTSzPZiZEu</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/05/linux-Shell-ssh/">Linux Shell ssh登录脚本</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 老陶<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

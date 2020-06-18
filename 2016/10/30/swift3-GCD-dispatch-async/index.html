@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Swift3中dispatch_once废弃的解决办法 | 老陶的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="Swift3中dispatch_once废弃的解决办法">
+<meta property="og:url" content="http://yoursite.com/2016/10/30/swift3-GCD-dispatch-async/index.html">
+<meta property="og:site_name" content="老陶的博客">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/2016/10/30/swift3-GCD-dispatch-async/swift3-GCD-dispatch-async/001.png">
+<meta property="og:image" content="http://yoursite.com/2016/10/30/swift3-GCD-dispatch-async/swift3-GCD-dispatch-async/002.png">
+<meta property="article:published_time" content="2016-10-30T07:45:13.000Z">
+<meta property="article:modified_time" content="2019-08-13T14:35:05.618Z">
+<meta property="article:author" content="老陶">
+<meta property="article:tag" content="swift">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2016/10/30/swift3-GCD-dispatch-async/swift3-GCD-dispatch-async/001.png">
+  
+    <link rel="alternate" href="/atom.xml" title="老陶的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">老陶的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">真正的才智是刚毅的志向。</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-swift3-GCD-dispatch-async" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/10/30/swift3-GCD-dispatch-async/" class="article-date">
+  <time datetime="2016-10-30T07:45:13.000Z" itemprop="datePublished">2016-10-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Swift3中dispatch_once废弃的解决办法
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="swift3-GCD-dispatch-async/001.png" alt="图示"></p>
+<a id="more"></a>
+
+<p>内存和活动管理选项( memory and activity management options)是今年苹果在OS发布的新技术(包括 OSX 10.12, iOS 10.0, tvOS 10.0, watchOS 3.0).这个包括用.initiallyInactive在非活动的状态启动一个队列,或者为你的线程设置一个自动释放属性(.autoreleaseInherit, .autoreleaseNever, .autoreleaseWorkItem)</p>
+<p>swift 3中对C层级的GCD的API进行了彻头彻尾的改变。本文将从实际使用场景来了解一下新的api使用。</p>
+<p>dispatch_async<br>一个常见的场景就是在一个全局队列进行一些操作后切换到主线程配置UI。现在是这么写：</p>
+<pre><code>DispatchQueue.global().async {
+    // code
+    DispatchQueue.main.async {
+        // 主线程中
+    }
+}</code></pre><p>global()是一个有着默认参数的静态函数：</p>
+<pre><code>class DispatchQueue : DispatchObject {
+    public  class var main: DispatchQueue 
+    public class func global(qos: DispatchQoS.QoSClass = default) -&gt; DispatchQueue
+}</code></pre><p>sync</p>
+<p>如果想同步执行操作，和async类似，调用sync就可以了：</p>
+<pre><code>DispatchQueue.global().sync {    
+    // 同步执行
+}</code></pre><p>优先级：DispatchQoS<br>我们知道，GCD 的默认队列优先级有四个：</p>
+<pre><code>DISPATCH_QUEUE_PRIORITY_HIGH
+DISPATCH_QUEUE_PRIORITY_DEFAULT
+DISPATCH_QUEUE_PRIORITY_LOW
+DISPATCH_QUEUE_PRIORITY_BACKGROUND</code></pre><p>现在则改为了QoSClass枚举</p>
+<pre><code>public enum QoSClass {
+
+    case background
+
+    case utility
+
+    case `default`
+
+    case userInitiated
+
+    case userInteractive
+
+    case unspecified
+
+    public init?(rawValue: qos_class_t)
+
+    public var rawValue: qos_class_t { get }
+}</code></pre><p>这些命名比原先的更加友好，能更好表达这个操作的意图。</p>
+<p><img src="swift3-GCD-dispatch-async/002.png" alt="图示"></p>
+<p>和原有的对应关系是：</p>
+<ul>
+<li>DISPATCH_QUEUE_PRIORITY_HIGH:         .userInitiated</li>
+<li>DISPATCH_QUEUE_PRIORITY_DEFAULT:      .default</li>
+<li>DISPATCH_QUEUE_PRIORITY_LOW:          .utility</li>
+<li>DISPATCH_QUEUE_PRIORITY_BACKGROUND:   .background</li>
+</ul>
+<p>创建队列<br>DispatchQueue的默认初始化方法创建的就是一个同步队列，如果要创建并发的队列，在attributes中声明concurrent。</p>
+<p>// 同步队列</p>
+<pre><code>let serialQueue = DispatchQueue(label: &quot;queuename&quot;)</code></pre><p>// 并发队列</p>
+<pre><code>let concurrentQueue = DispatchQueue(label: &quot;queuename&quot;, attributes: .concurrent)</code></pre><p>推迟时间后执行</p>
+<p>原先的dispatch_time_t现在由DispatchTime对象表示。可以用静态方法now获得当前时间，然后再通过加上一个DispatchTimeInterval枚举来获得一个需要延迟的时间。</p>
+<pre><code>let delay = DispatchTime.now() + DispatchTimeInterval.seconds(60)DispatchQueue.main.asyncAfter(deadline: delay) { 
+    // 延迟执行}</code></pre><p>这里也可以直接加上一个秒数。</p>
+<pre><code>let three = DispatchTime.now() + 3.0</code></pre><p>因为DispatchTime中自定义了+号。</p>
+<pre><code>public func +(time: DispatchTime, seconds: Double) -&gt; DispatchTime</code></pre><p>DispatchGroup</p>
+<p>如果想在dispatch_queue中所有的任务执行完成后再做某种操作可以使用DispatchGroup。原先的dispatch_group_t由现在的DispatchGroup对象代替。</p>
+<pre><code>let group = DispatchGroup()
+
+let queueBook = DispatchQueue(label: &quot;book&quot;)
+queueBook.async(group: group) {
+       // 下载图书
+}
+
+let queueVideo = DispatchQueue(label: &quot;video&quot;)
+queueVideo.async(group: group) {
+    // 下载视频
+}
+
+group.notify(queue: DispatchQueue.main) { 
+    // 下载完成
+}</code></pre><p>DispatchGroup会在组里的操作都完成后执行notify。</p>
+<p>如果有多个并发队列在一个组里，我们想在这些操作执行完了再继续，调用wait</p>
+<pre><code>group.wait()</code></pre><p>DispatchWorkItem</p>
+<p>使用DispatchWorkItem代替原来的dispatch_block_t。<br>在DispatchQueue执行操作除了直接传了一个() -&gt; Void类型的闭包外，还可以传入一个DispatchWorkItem。</p>
+<pre><code>public func sync(execute workItem: DispatchWorkItem)
+
+public func async(execute workItem: DispatchWorkItem)</code></pre><p>DispatchWorkItem的初始化方法可以配置Qos和DispatchWorkItemFlags，但是这两个参数都有默认参数，所以也可以只传入一个闭包。</p>
+<pre><code>public init(qos: DispatchQoS = default, flags: DispatchWorkItemFlags = default, block: @escaping @convention(block) () -&gt; ())
+
+let workItem = DispatchWorkItem { 
+    // TODO:
+}</code></pre><p>DispatchWorkItemFlags枚举中assignCurrentContext表示QoS根据创建时的context决定。</p>
+<p>值得一提的是DispatchWorkItem也有wait方法，使用方式和group一样。调用会等待这个workItem执行完。</p>
+<pre><code>let myQueue = DispatchQueue(label: &quot;my.queue&quot;, attributes: .concurrent)
+let workItem = DispatchWorkItem {
+    sleep(1)
+    print(&quot;done&quot;)
+}
+myQueue.async(execute: workItem)
+print(&quot;before waiting&quot;)
+workItem.wait()
+print(&quot;after waiting&quot;)</code></pre><p>barrier</p>
+<p>假设我们有一个并发的队列用来读写一个数据对象。如果这个队列里的操作是读的，那么可以多个同时进行。如果有写的操作，则必须保证在执行写入操作时，不会有读取操作在执行，必须等待写入完成后才能读取，否则就可能会出现读到的数据不对。在之前我们用dipatch_barrier实现。<br>现在属性放在了DispatchWorkItemFlags里。</p>
+<pre><code>let wirte = DispatchWorkItem(flags: .barrier) { 
+    // write data}let dataQueue = DispatchQueue(label: &quot;data&quot;, attributes: .concurrent)
+dataQueue.async(execute: wirte)</code></pre><p>信号量</p>
+<p>为了线程安全的统计数量，我们会使用信号量作计数。原来的dispatch_semaphore_t现在用DispatchSemaphore对象表示。<br>初始化方法只有一个，传入一个Int类型的数。</p>
+<pre><code>let semaphore = DispatchSemaphore(value: 5)
+
+// 信号量减一
+semaphore.wait()
+
+//信号量加一
+semaphore.signal()</code></pre><p><code>dispatch_once</code>在swift 3中已经被废弃了。</p>
+<p>简单的建议就是一些初始化场景就用懒加载吧。</p>
+<pre><code>// Examples of dispatch_once replacements with global or static constants and variables. 
+// In all three, the initialiser is called only once. 
+
+// Static properties (useful for singletons).
+class Object {
+    static let sharedInstance = Object()
+}
+
+// Global constant.
+let constant = Object()
+
+// Global variable.
+var variable: Object = {
+    let variable = Object()
+    variable.doSomething()
+    return variable
+}()</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/10/30/swift3-GCD-dispatch-async/" data-id="ckbkhedr30047vjatfvnqdhde" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/" rel="tag">swift</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/12/18/iOS-SpriteKit-SceneKit/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          iOS SpriteKit/SceneKit/Metal浅析
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/10/21/Deutsch-900-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">德语900句（一）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/APS/" rel="tag">APS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LaoTao-Code/" rel="tag">LaoTao-Code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/" rel="tag">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VR/" rel="tag">VR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/deutsch/" rel="tag">deutsch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/golang/" rel="tag">golang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/" rel="tag">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/" rel="tag">iOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iPhone/" rel="tag">iPhone</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sqlite/" rel="tag">sqlite</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swift/" rel="tag">swift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91/" rel="tag">服务器开发</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/APS/" style="font-size: 16.25px;">APS</a> <a href="/tags/LaoTao-Code/" style="font-size: 10px;">LaoTao-Code</a> <a href="/tags/Linux/" style="font-size: 11.25px;">Linux</a> <a href="/tags/Mac/" style="font-size: 12.5px;">Mac</a> <a href="/tags/VR/" style="font-size: 10px;">VR</a> <a href="/tags/deutsch/" style="font-size: 11.25px;">deutsch</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/golang/" style="font-size: 10px;">golang</a> <a href="/tags/hexo/" style="font-size: 13.75px;">hexo</a> <a href="/tags/html/" style="font-size: 17.5px;">html</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/iPhone/" style="font-size: 11.25px;">iPhone</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/swift/" style="font-size: 18.75px;">swift</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91/" style="font-size: 10px;">服务器开发</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/12/19/docker-net-shell/">docker网络命令与基本查看命令</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/19/linux-brctl-shell/">Linux brclt 命令</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/18/mac-go-environment/">Mac 下Go语言开发环境设置</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/13/iOS-BLEDevelopMultiDevice/baidu_verify_GTSzPZiZEu/">iOS-BLEDevelopMultiDevice/baidu_verify_GTSzPZiZEu</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/05/linux-Shell-ssh/">Linux Shell ssh登录脚本</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 老陶<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
