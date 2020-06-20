@@ -234,7 +234,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>在CentOS 的某个目录下，创建下面的目录形式（也可以本地创建，用ftp上传）<br><code>/data/fileserver/</code></p>
+              <h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>在CentOS 的某个目录下，创建下面的目录形式（也可以本地创建，用ftp上传）<br><code>/data/fileserver/</code></p>
 <ul>
 <li>data<ul>
 <li>fileserver<ul>
@@ -246,17 +246,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a>Dockerfile</h2><p>这里先写 <code>Dockerfile</code> 文件，注意文件名保持一致</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">FROM hub.c.163.com&#x2F;public&#x2F;nginx:1.2.1</span><br><span class="line">#从镜像中心下载镜像，如果本地已经存在，则使用本地的。这里使用的163镜像中心</span><br><span class="line"></span><br><span class="line">MAINTAINER tao</span><br><span class="line">## 作者，可以不写</span><br><span class="line">#COPY nginx.conf &#x2F;etc&#x2F;nginx&#x2F;nginx.conf</span><br><span class="line">#这里是将 Dockerfile 同级目录的 nginx.conf 拷贝到 &#x2F;etc&#x2F;nginx&#x2F;nginx.conf</span><br><span class="line"># 但是这里吧，后期 nginx.conf 可能会修改，所以我注释掉了</span><br><span class="line"># 我用的是 -v 映射，后期修改的时候，重启一下镜像就可以了</span><br></pre></td></tr></table></figure>
-
-<h2 id="nginx-conf"><a href="#nginx-conf" class="headerlink" title="nginx.conf"></a>nginx.conf</h2><p><a href="linux-start-03/nginx.conf">nginx.conf 完整文件</a></p>
-<p>这里为了方便 ，配置文件中直接使用的是 <code>user root;</code><br>最好是新创建一个用户。设置好权限。使用另一个用户，安全性更高一些。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">        listen       8080;</span><br><span class="line">        server_name  localhost;</span><br><span class="line"></span><br><span class="line">        charset utf-8;</span><br><span class="line"></span><br><span class="line">        #access_log  logs&#x2F;host.access.log  main;</span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">        location &#x2F; &#123;</span><br><span class="line">            #显示的根目录 测试文字</span><br><span class="line">            root  &#x2F;usr&#x2F;share&#x2F;nginx&#x2F;html; </span><br><span class="line">            autoindex on;             #开启索引功能  </span><br><span class="line">            autoindex_exact_size off; # 关闭计算文件确切大小（单位bytes），只显示大概大小（单位kb、mb、gb）  </span><br><span class="line">            autoindex_localtime on;   # 显示本机时间而非 GMT 时间  </span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="镜像-容器"><a href="#镜像-容器" class="headerlink" title="镜像+容器"></a>镜像+容器</h2><p>cd 到 fileserver目录下，执行命令，生成一个新的镜像<br>    $ docker build -t fileserver .</p>
-<p>生成并运行容器</p>
-<pre><code>docker run -itd --restart=always -p 8090:8080 --name fileserver -v /data/fileserver/data:/usr/share/nginx/html/ -v /data/fileserver/nginx.conf:/etc/nginx/nginx.conf fileserver </code></pre><p>这里nginx配置的是8080端口，也就是 -p 8090:8080 后面的这个8080，这个是容器内服务的端口，对外没有影响。8090是我们外面映射的端口，远程访问就是用这个8090的端口</p>
-
+          
       
     </div>
     
@@ -269,6 +259,10 @@
         <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a  href="/2020/06/20/linux-start-03/#more">查看更多 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -313,60 +307,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="搭建mysql-FTP服务"><a href="#搭建mysql-FTP服务" class="headerlink" title="搭建mysql + FTP服务"></a>搭建mysql + FTP服务</h1><h2 id="一、安装-mysql"><a href="#一、安装-mysql" class="headerlink" title="一、安装 mysql"></a>一、安装 mysql</h2><h3 id="从官方下载mysql-5-7镜像"><a href="#从官方下载mysql-5-7镜像" class="headerlink" title="从官方下载mysql 5.7镜像"></a>从官方下载<code>mysql 5.7</code>镜像</h3><pre><code>$ docker pull mysql:5.7</code></pre><p>查看下载的镜像    </p>
-<pre><code>$ docker image</code></pre><h3 id="docker安装-Mysql，并映射本地文件目录-data-mysql-data"><a href="#docker安装-Mysql，并映射本地文件目录-data-mysql-data" class="headerlink" title="docker安装 Mysql，并映射本地文件目录/data/mysql/data"></a>docker安装 Mysql，并映射本地文件目录/data/mysql/data</h3><pre><code>$ docker run -itd --restart=always -p 3306:3306 --name mysql -v /data/mysql/data:/var/lib/mysql -v /data/mysql/etc:/etc/mysql -e MYSQL_ROOT_PASSWORD=123456 mysql:5.7</code></pre><table>
-<thead>
-<tr>
-<th align="center">options</th>
-<th align="center">Mean</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">-i</td>
-<td align="center">以交互模式运行容器，通常与 -t 同时使用</td>
-</tr>
-<tr>
-<td align="center">-t</td>
-<td align="center">为容器重新分配一个伪输入终端，通常与 -i 同时使用</td>
-</tr>
-<tr>
-<td align="center">- d</td>
-<td align="center">后台运行容器，并返回容器ID</td>
-</tr>
-<tr>
-<td align="center">–restart</td>
-<td align="center">always 重启docker后，会立即启动服务</td>
-</tr>
-<tr>
-<td align="center">-p</td>
-<td align="center">端口映射 3306:3306 前面的端口，代表本机（也就是centOS的端口），后面的端口，是docker容器内部的端口，和外部端口不冲突。比如mysql -p 3306:3306, slave -p 3307:3306。centOS的端口，分别是3306, 3307。mysql容器内部是3306， slave容器内部也是3306</td>
-</tr>
-<tr>
-<td align="center">-v</td>
-<td align="center">路径映射，将容器中的数据映射到硬盘磁盘上</td>
-</tr>
-<tr>
-<td align="center">–name</td>
-<td align="center">别名，方便操作</td>
-</tr>
-<tr>
-<td align="center">mysql:5.7</td>
-<td align="center">最后这个是镜像名+镜像版本，docker images查看对比一下就可以了</td>
-</tr>
-</tbody></table>
-<p>当然也可以从<a href="http://c.163.com/" target="_blank" rel="noopener">网易云镜像</a> 或者其他镜像仓库下载镜像。需要登录，然后进入控制台，镜像仓库</p>
-<p>查看运行的容器</p>
-<pre><code>$ docker ps</code></pre><p>进入容器，测试</p>
-<pre><code># 进入mysql容器
-# 这个mysql是上面创建容器的时候，--name起的别名。也可以用容器id
-$ docker exec -it mysql bash
-$ mysql -u root -p
-# 输入密码，即可查看本地是否登录成功</code></pre><p>远程连接，要注意mysql账号是否开启了远程登录，没有的话，需要设置一下</p>
-<h2 id="二、FTP服务"><a href="#二、FTP服务" class="headerlink" title="二、FTP服务"></a>二、FTP服务</h2><h3 id="docker下载-vsftpd镜像"><a href="#docker下载-vsftpd镜像" class="headerlink" title="docker下载 vsftpd镜像"></a>docker下载 vsftpd镜像</h3><pre><code>docker pull docker.io/fauria/vsftpd</code></pre><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><pre><code>docker run -d -p 20:20 -p 21:21 -p 21100-21110:21100-21110 -v /data:/home/vsftpd/用户名 -e FTP_USER=用户名 -e FTP_PASS=密码 -e PASV_ADDRESS=服务器ip -e PASV_MIN_PORT=21100 -e PASV_MAX_PORT=21110 --name vsftpd --restart=always docker.io/fauria/vsftpd</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">-p 映射端口</span><br><span class="line">21100-21110 &#x2F;&#x2F;被动模式随机端口</span><br><span class="line">-v 映射目录，我这里是需要把本地目录映射到这个用户下。</span><br><span class="line">    所以需要把用户名加上</span><br><span class="line">    该用户在FTP中的目录是 &#x2F;home&#x2F;vsftpd&#x2F;用户名</span><br><span class="line">    所以 本地目录: &#x2F;home&#x2F;vsftpd&#x2F;用户名</span><br><span class="line"></span><br><span class="line">这里需要把服务器的端口打开，登录腾讯云&#x2F;阿里云后台</span><br><span class="line">    -&gt; 控制台</span><br><span class="line">    -&gt; 安全组</span><br><span class="line">    -&gt; 修改规则</span><br><span class="line">    -&gt; 添加规则</span><br><span class="line">    </span><br><span class="line">    来源          &#x2F;&#x2F;协议端口  备注</span><br><span class="line">    0.0.0.0&#x2F;0     tcp:20     20 端口</span><br><span class="line">    0.0.0.0&#x2F;0     tcp:21     21 端口</span><br><span class="line">    0.0.0.0&#x2F;0     tcp:22     22 ssh端口</span><br><span class="line">    0.0.0.0&#x2F;0     tcp:21100-21110     21100-21110 这是一个端口范围</span><br></pre></td></tr></table></figure>
-
-<p>远程FTP连接测试就可以了，<a href="https://www.filezilla.cn/download/client" target="_blank" rel="noopener">FTP客户端工具  FileZilla下载</a></p>
-<p>有连接不上的，点<a href="https://tool.chinaz.com/port/" target="_blank" rel="noopener">端口扫描</a>，进行一下端口扫描，看看服务端口是否关闭，如果关闭状态，去控制台添加一下规则，将端口打开。</p>
-
+              <h1 id="搭建mysql-FTP服务"><a href="#搭建mysql-FTP服务" class="headerlink" title="搭建mysql + FTP服务"></a>搭建mysql + FTP服务</h1><h2 id="一、安装-mysql"><a href="#一、安装-mysql" class="headerlink" title="一、安装 mysql"></a>一、安装 mysql</h2><h3 id="从官方下载mysql-5-7镜像"><a href="#从官方下载mysql-5-7镜像" class="headerlink" title="从官方下载mysql 5.7镜像"></a>从官方下载<code>mysql 5.7</code>镜像</h3><pre><code>$ docker pull mysql:5.7</code></pre>
+          
       
     </div>
     
@@ -379,6 +321,10 @@ $ mysql -u root -p
         <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a  href="/2020/06/20/linux-start-02/#more">查看更多 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -423,40 +369,11 @@ $ mysql -u root -p
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="CentOS-服务器-Docker"><a href="#CentOS-服务器-Docker" class="headerlink" title="CentOS 服务器 + Docker"></a>CentOS 服务器 + Docker</h2><p>1、可以通过阿里云、腾讯云购买一个服务器</p>
+              <h2 id="CentOS-服务器-Docker"><a href="#CentOS-服务器-Docker" class="headerlink" title="CentOS 服务器 + Docker"></a>CentOS 服务器 + Docker</h2><p>1、可以通过阿里云、腾讯云购买一个服务器</p>
 <p>2、自己搭建一个本地服务器</p>
 <p>（我们这里以云服务器为例）</p>
-<h2 id="一、登录服务器"><a href="#一、登录服务器" class="headerlink" title="一、登录服务器"></a>一、登录服务器</h2><pre><code>ssh root@服务器ip -p 22</code></pre><p>因为每次登录都需要输入一行带有ip的命令，比较麻烦。所以这里我用的脚本登录，每次登录的时候很方便，也方便管理多个服务器。</p>
-<h4 id="Linux-Shell-ssh登录脚本"><a href="#Linux-Shell-ssh登录脚本" class="headerlink" title="Linux Shell ssh登录脚本"></a><a href="https://blog.qoabc.com/2019/04/05/linux-Shell-ssh/" target="_blank" rel="noopener">Linux Shell ssh登录脚本</a></h4><p><img src="/2020/06/20/linux-start-01/001.gif" alt="脚本命令"></p>
-<h2 id="二、Cent-OS操作"><a href="#二、Cent-OS操作" class="headerlink" title="二、Cent OS操作"></a>二、Cent OS操作</h2><hr>
-<p>这里先记录一条命令 – 开启，重启，停止命令 (这里以ftp服务命令为例）</p>
-<pre><code>sudo systemctl start vsftpd
-sudo systemctl restart vsftpd
-sudo systemctl stop vsftpd</code></pre><hr>
-<p>把yum包更新到最新</p>
-<pre><code>$sudo yum update</code></pre><h2 id="安装各种服务"><a href="#安装各种服务" class="headerlink" title="安装各种服务"></a>安装各种服务</h2><p>本人这里使用的是<code>docker</code>容器服务，mysql，redis，vsftpd服务，以及项目部署都是使用的docker。所以这里先安装 docker</p>
-<p>docker最低支持的内核好像是3.0</p>
-<p>查看版本以及内核 </p>
-<pre><code>$ uname -a
-# 下面是输入命令后，返回的信息
-Linux VM_0_7_centos 3.10.0-1062.9.1.el7.x86_64 #1 
-SMP Fri Dec 6 15:49:49 UTC     2019 x86_64 x86_64 x86_64 GNU/Linux</code></pre><h3 id="安装Docker容器服务"><a href="#安装Docker容器服务" class="headerlink" title="安装Docker容器服务"></a>安装Docker容器服务</h3><p>安装需要的软件包， yum-util 提供yum-config-manager功能，另外两个是devicemapper驱动依赖的</p>
-<pre><code>yum install -y yum-utils device-mapper-persistent-data lvm2</code></pre><p>安装 docker</p>
-<pre><code>yum install docker -y</code></pre><p>启动Docker    </p>
-<pre><code>启动Docker,设置开机启动,
-sudo systemctl start docker
-sudo systemctl enable docker
-#停止Docker
-sudo systemctl stop docker </code></pre><p>验证是否安装成功</p>
-<pre><code>sudo docker info</code></pre><p>配置 docker 加速器    </p>
-<pre><code>curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://f1361db2.m.daocloud.io</code></pre><h2 id="Docker-常用命令"><a href="#Docker-常用命令" class="headerlink" title="Docker 常用命令"></a>Docker 常用命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">#查找Docker Hub上的镜像</span><br><span class="line">$ docker search imageName&#x2F;ID</span><br><span class="line"></span><br><span class="line">#获取Docker Hub上的镜像</span><br><span class="line">$ docker pull ImageName&#x2F;ID</span><br><span class="line"></span><br><span class="line">#显示本地主机上的镜像列表</span><br><span class="line">$ docker images </span><br><span class="line"></span><br><span class="line">#运行本地主机上的镜像</span><br><span class="line">$ docker run ImageName&#x2F;ID</span><br><span class="line"></span><br><span class="line">#列出正在运行的容器</span><br><span class="line">$ docker ps </span><br><span class="line"></span><br><span class="line">#查看正在运行容器的网络端口映射情况</span><br><span class="line">$ docker port ContainerID </span><br><span class="line"></span><br><span class="line">#查看正在运行容器的内部正在进程运行</span><br><span class="line">$ docker top ContainerID </span><br><span class="line"></span><br><span class="line">#查看正在运行容器的内部底层信息</span><br><span class="line">$ docker inspect ContainerID </span><br><span class="line"></span><br><span class="line">#停止正在运行容器</span><br><span class="line">$ docker stop ContainerID&#x2F; </span><br><span class="line"></span><br><span class="line">#重启已经停止的容器</span><br><span class="line">$ docker start ContainerID </span><br><span class="line"></span><br><span class="line">#删除不需要的容器（必须在容器已经停止的情况下）</span><br><span class="line">$ docker rm ContainerimageID</span><br><span class="line"></span><br><span class="line">#移除本地镜像，移除前需要把该镜像下所有的容器删除</span><br><span class="line">$ docker rmi ImageName&#x2F;ID</span><br><span class="line"></span><br><span class="line">#登录docker</span><br><span class="line">$ docker login</span><br><span class="line"></span><br><span class="line">#运行ubuntu:16.04镜像并创建容器和启动bash终端</span><br><span class="line">$ docker run -t -i ubuntu:16.04 &#x2F;bin&#x2F;bash </span><br><span class="line"></span><br><span class="line">#重命名容器名</span><br><span class="line">$ docker rename wonderful_kepler Ubuntu16.04 </span><br><span class="line">#构建镜像</span><br><span class="line">$ docker commit -m&#x3D;&quot;has update&quot; -a&#x3D;&quot;SpiffyEight77&quot; ff5d623e2d61 spiffyeight77&#x2F;ubuntu:16.04</span><br><span class="line"></span><br><span class="line">#提交镜像到docker hub 需要登录</span><br><span class="line">$ docker push spiffyeight77&#x2F;ubuntu</span><br></pre></td></tr></table></figure>
-
-<p>部分参数说明</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">-d: 守护模式 后台运行</span><br><span class="line">-p: 是容器内部端口绑定到指定的主机端口</span><br><span class="line">-P: 是容器内部端口随机映射到主机的高端口</span><br><span class="line">-f : 让 docker logs 像使用 tail -f 一样来输出容器内部的标准输出</span><br><span class="line">-l : 查询最后一次创建的容器</span><br><span class="line">-t : 选项让Docker分配一个伪终端（pseudo-tty）并绑定到容器的标准输入上</span><br><span class="line">-i : 则让容器的标准输入保持打开</span><br><span class="line">-m:提交的描述信息</span><br><span class="line">-a: 指定镜像作者</span><br><span class="line">--rm: 停止容器后移除容器</span><br><span class="line">ff5d623e2d61: 容器ID</span><br><span class="line">spiffyeight77&#x2F;ubuntu:16.04: 指定要创建的目标镜像名</span><br></pre></td></tr></table></figure>
-
-<p>编写 Dockerfile </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">不会写Dockerfile的话请自行Google</span><br><span class="line"></span><br><span class="line">FROM alpine:latest #使用了镜像大小体积只有5MB的alpine镜像</span><br><span class="line"></span><br><span class="line">WORKDIR &#x2F; #设置工作路径</span><br><span class="line"></span><br><span class="line">ADD main &#x2F; #把上文编译好的main文件添加到镜像里</span><br><span class="line"></span><br><span class="line">EXPOSE 3000 #暴露容器内部端口</span><br><span class="line"></span><br><span class="line">ENTRYPOINT [&quot;.&#x2F;main&quot;] #入口</span><br></pre></td></tr></table></figure>
-
+<h2 id="一、登录服务器"><a href="#一、登录服务器" class="headerlink" title="一、登录服务器"></a>一、登录服务器</h2><pre><code>ssh root@服务器ip -p 22</code></pre>
+          
       
     </div>
     
@@ -469,6 +386,10 @@ sudo systemctl stop docker </code></pre><p>验证是否安装成功</p>
         <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a  href="/2020/06/20/linux-start-01/#more">查看更多 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
