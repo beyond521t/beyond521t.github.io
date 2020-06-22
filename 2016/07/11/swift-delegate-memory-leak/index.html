@@ -8,7 +8,7 @@
   <meta name="description" content="帐号退出登录，切换rootViewController的时候，发现内存没有释放，于是对代码进行了一遍检查。发现了在定义 protocol的时候，有两种方式。 区别一个是使用 @objc定义， 一个不使用@objc。 使用 @objc 方法可以定义 optional。否则，不可以。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="swift 使用 delegate 内存泄露问题">
-<meta property="og:url" content="http://yoursite.com/2016/07/11/swift-delegate-memory-leak/index.html">
+<meta property="og:url" content="http://blog.qoabc.com/2016/07/11/swift-delegate-memory-leak/index.html">
 <meta property="og:site_name" content="老陶的博客">
 <meta property="og:description" content="帐号退出登录，切换rootViewController的时候，发现内存没有释放，于是对代码进行了一遍检查。发现了在定义 protocol的时候，有两种方式。 区别一个是使用 @objc定义， 一个不使用@objc。 使用 @objc 方法可以定义 optional。否则，不可以。">
 <meta property="og:locale" content="zh_CN">
@@ -276,8 +276,8 @@ class LTViewModel: NSObject {
         <p><span>发布时间:</span>2016年07月11日 - 15时39分</p>
         <p><span>最后更新:</span>2019年08月13日 - 22时35分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/07/11/swift-delegate-memory-leak/" title="swift 使用 delegate 内存泄露问题">http://yoursite.com/2016/07/11/swift-delegate-memory-leak/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/07/11/swift-delegate-memory-leak/　　作者: 老陶" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/07/11/swift-delegate-memory-leak/" title="swift 使用 delegate 内存泄露问题">http://blog.qoabc.com/2016/07/11/swift-delegate-memory-leak/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://blog.qoabc.com/2016/07/11/swift-delegate-memory-leak/　　作者: 老陶" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -376,7 +376,7 @@ class LTViewModel: NSObject {
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2016/07/11/swift-delegate-memory-leak/" data-title="swift 使用 delegate 内存泄露问题" data-url="http://yoursite.com/2016/07/11/swift-delegate-memory-leak/"></div>
+    <div class="ds-thread" data-thread-key="2016/07/11/swift-delegate-memory-leak/" data-title="swift 使用 delegate 内存泄露问题" data-url="http://blog.qoabc.com/2016/07/11/swift-delegate-memory-leak/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
