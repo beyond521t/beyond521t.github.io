@@ -3,17 +3,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>vue-cli@4 入门（一） | 老陶的博客</title>
+  <title>vue-cli@4 入门（二） | 老陶的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="因为最近要做一个管理后台，这里做一下记录。从入门到项目上手。适合初学 安装 vue-cli@41、首先卸载旧版本 （如果事先安装了 vue-cli 1.x 或者 vue-cli 2.x，要先卸载掉） npm uninstall vue-cli -g2、安装Vue-cli npm install -g @vue&#x2F;cli">
+  <meta name="description" content="根据上一篇文章，我们的项目已经可以运行了。为了开发方便，我们这里使用 element-UI。 在操作之前，先简单介绍一下 npm run serve">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vue-cli@4 入门（一）">
-<meta property="og:url" content="http://yoursite.com/2020/05/11/vue-cli4-start-01/index.html">
+<meta property="og:title" content="vue-cli@4 入门（二）">
+<meta property="og:url" content="http://yoursite.com/2020/05/12/vue-cli4-start-02/index.html">
 <meta property="og:site_name" content="老陶的博客">
-<meta property="og:description" content="因为最近要做一个管理后台，这里做一下记录。从入门到项目上手。适合初学 安装 vue-cli@41、首先卸载旧版本 （如果事先安装了 vue-cli 1.x 或者 vue-cli 2.x，要先卸载掉） npm uninstall vue-cli -g2、安装Vue-cli npm install -g @vue&#x2F;cli">
+<meta property="og:description" content="根据上一篇文章，我们的项目已经可以运行了。为了开发方便，我们这里使用 element-UI。 在操作之前，先简单介绍一下 npm run serve">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-05-11T08:36:59.000Z">
-<meta property="article:modified_time" content="2020-06-22T09:14:51.987Z">
+<meta property="article:published_time" content="2020-05-12T00:14:30.000Z">
+<meta property="article:modified_time" content="2020-06-22T09:24:41.971Z">
 <meta property="article:author" content="老陶">
 <meta property="article:tag" content="vue">
 <meta name="twitter:card" content="summary">
@@ -205,11 +205,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-vue-cli4-start-01" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-vue-cli4-start-02" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2020/05/11/vue-cli4-start-01/" class="article-date">
-      <time datetime="2020-05-11T08:36:59.000Z" itemprop="datePublished">2020-05-11</time>
+      <a href="/2020/05/12/vue-cli4-start-02/" class="article-date">
+      <time datetime="2020-05-12T00:14:30.000Z" itemprop="datePublished">2020-05-12</time>
 </a>
     </div>
   
@@ -222,7 +222,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      vue-cli@4 入门（一）
+      vue-cli@4 入门（二）
     </h1>
   
 
@@ -243,66 +243,45 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>因为最近要做一个管理后台，这里做一下记录。从入门到项目上手。适合初学</p>
-<h2 id="安装-vue-cli-4"><a href="#安装-vue-cli-4" class="headerlink" title="安装 vue-cli@4"></a>安装 vue-cli@4</h2><p>1、首先卸载旧版本 （如果事先安装了 vue-cli 1.x 或者 vue-cli 2.x，要先卸载掉）</p>
-<pre><code>npm uninstall vue-cli -g</code></pre><p>2、安装Vue-cli</p>
-<pre><code>npm install -g @vue/cli</code></pre><a id="more"></a>
+        <p>根据上一篇文章，我们的项目已经可以运行了。为了开发方便，我们这里使用 <a>element-UI</a>。</p>
+<p>在操作之前，先简单介绍一下 <code>npm run serve</code></p>
+<a id="more"></a>
+<p>打开项目，在项目根目录下，有一个 <code>package.json</code> 文件。</p>
+<p>可以发现 scripts 下面， 有 serve, build 等命令。这里和我们运行 的 <code>npm run serve</code>相对应</p>
+<p><code>npm run build</code> 就是打包了。这里也可以自己拓展功能</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;serve&quot;: &quot;vue-cli-service serve&quot;,</span><br><span class="line">    &quot;build&quot;: &quot;vue-cli-service build&quot;,</span><br><span class="line">    &quot;test:unit&quot;: &quot;vue-cli-service test:unit&quot;,</span><br><span class="line">    &quot;lint&quot;: &quot;vue-cli-service lint&quot;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
 
-<p>3、查看版本</p>
-<pre><code>$ vue --version
-#显示差不多如下
-@vue/cli 4.4.4</code></pre><h2 id="项目初始"><a href="#项目初始" class="headerlink" title="项目初始"></a>项目初始</h2><p>1、创建项目</p>
-<pre><code>#创建一个项目， projectName 项目名
-$ vue create projectName </code></pre><p>然后会提示 </p>
-<a>
-- ? Please pick a preset: 
+<h2 id="安装element-UI"><a href="#安装element-UI" class="headerlink" title="安装element-UI"></a>安装element-UI</h2><p>终端命令， cd 到项目的根目录</p>
+<a>    
 
-<pre><code>◯ myproject (这个是我自己的模板，后面会提到如何生成模板）
-◯ default
-◉ Manually select features</code></pre></a>
-
-<hr>
-<p>选择 <code>Manually select features</code> 回车</p>
-<p><b>然后会有提示，空格选择选项。回车确定，选项按照我标记的选择就可以了</b></p>
-<a>
-? Check the features needed for your project: (Press \<space> to select, \<a> to toggle all, \<i> to invert selection)
-
-<pre><code>❯◉ Babel
- ◯ TypeScript
- ◯ Progressive Web App (PWA) Support
- ◉ Router
- ◉ Vuex
- ◉ CSS Pre-processors
- ◉ Linter / Formatter
-  ◯ Unit Testing
- ◯ E2E Testing</code></pre> </i></a>
- ---
- 回车后，提示如下，输入 <a> Y</a> 回车
- 这里选择 <a>n</a> 的话，url会有<a>#</a>
-
-<p> <a>? Use history mode for router? (Requires proper server setup for index fallback in production) (Y/n)    </a></p>
-<hr>
-<p> 选择 css， 我这里选择的是 less。看个人吧<br> <a><br> Pick a CSS pre-processor (PostCSS, Autoprefixer and CSS Modules are supported by default): (Use arrow keys)</a></p>
-<pre><code>❯ Sass/SCSS (with dart-sass) 
-  Sass/SCSS (with node-sass) 
-  Less 
-    Stylus </code></pre>  </space></a>
-
-<hr>
-<p>这里默认回车<br><a></a></p>
-<pre><code>❯ ESLint with error prevention only 
-  ESLint + Airbnb config 
-ESLint + Standard config 
-  ESLint + Prettier </code></pre>
-
-<ul>
-<li>Lint on save</li>
-</ul>
-<p>这里是保存模板。保存就可以了。随便选择一个。保存之后，下次创建项目的时候，就可以使用这个模板了</p>
-<p>后面就等待项目加载了。可能有点儿慢。如果项目使用 <code>git</code>，在<code>.gitignore</code>中 添加一行，取消依赖的加载。</p>
-<pre><code>node_modules/</code></pre><h2 id="运行项目"><a href="#运行项目" class="headerlink" title="运行项目"></a>运行项目</h2><p>加载完成，终端会提示下面的命令</p>
 <pre><code>$ cd projectName
-$ npm run serve</code></pre><p><code>npm run serve</code>就是以后项目运行的时候，运行的命令了</p>
+$ vue add element
+$ 然后输入 y 回车</code></pre></a>
+<a>    
+
+<pre><code># 为了方便，选择第一个全局引用：Fully import
+? How do you want to import Element? (Use arrow keys)
+❯ Fully import 
+  Import on demand </code></pre></a>
+
+<a>
+
+<pre><code># 选择 y
+? Do you wish to overwrite Element&apos;s SCSS variables? (y/N)   </code></pre></a>
+
+<a>
+
+<pre><code># 选择 zh-CN
+? Choose the locale you want to load (Use arrow keys)
+❯ zh-CN 
+  zh-TW 
+  af-ZA 
+  ar 
+  bg 
+  ca 
+  cs-CZ</code></pre></a>
+
+
 
       
     </div>
@@ -311,13 +290,13 @@ $ npm run serve</code></pre><p><code>npm run serve</code>就是以后项目运�
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2020/05/11/vue-cli4-start-01/">vue-cli@4 入门（一）</a></p>
+        <p><span>本文标题:</span><a href="/2020/05/12/vue-cli4-start-02/">vue-cli@4 入门（二）</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 老陶 的个人博客">老陶</a></p>
-        <p><span>发布时间:</span>2020年05月11日 - 16时36分</p>
-        <p><span>最后更新:</span>2020年06月22日 - 17时14分</p>
+        <p><span>发布时间:</span>2020年05月12日 - 08时14分</p>
+        <p><span>最后更新:</span>2020年06月22日 - 17时24分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2020/05/11/vue-cli4-start-01/" title="vue-cli@4 入门（一）">http://yoursite.com/2020/05/11/vue-cli4-start-01/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2020/05/11/vue-cli4-start-01/　　作者: 老陶" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2020/05/12/vue-cli4-start-02/" title="vue-cli@4 入门（二）">http://yoursite.com/2020/05/12/vue-cli4-start-02/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2020/05/12/vue-cli4-start-02/　　作者: 老陶" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -330,18 +309,9 @@ $ npm run serve</code></pre><p><code>npm run serve</code>就是以后项目运�
 
 <nav id="article-nav">
   
-    <a href="/2020/05/12/vue-cli4-start-02/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          vue-cli@4 入门（二）
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/05/10/go-os-operation/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Golang 文件操作</div>
+    <a href="/2020/05/11/vue-cli4-start-01/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">vue-cli@4 入门（一）</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -352,7 +322,7 @@ $ npm run serve</code></pre><p><code>npm run serve</code>就是以后项目运�
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装-vue-cli-4"><span class="toc-number">1.</span> <span class="toc-text">安装 vue-cli@4</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#项目初始"><span class="toc-number">2.</span> <span class="toc-text">项目初始</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#运行项目"><span class="toc-number">3.</span> <span class="toc-text">运行项目</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装element-UI"><span class="toc-number">1.</span> <span class="toc-text">安装element-UI</span></a></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -416,7 +386,7 @@ $ npm run serve</code></pre><p><code>npm run serve</code>就是以后项目运�
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2020/05/11/vue-cli4-start-01/" data-title="vue-cli@4 入门（一）" data-url="http://yoursite.com/2020/05/11/vue-cli4-start-01/"></div>
+    <div class="ds-thread" data-thread-key="2020/05/12/vue-cli4-start-02/" data-title="vue-cli@4 入门（二）" data-url="http://yoursite.com/2020/05/12/vue-cli4-start-02/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -439,13 +409,11 @@ $ npm run serve</code></pre><p><code>npm run serve</code>就是以后项目运�
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2020/05/12/vue-cli4-start-02/" title="上一篇: vue-cli@4 入门（二）">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2020/05/10/go-os-operation/" title="下一篇: Golang 文件操作">
+            <a href="/2020/05/11/vue-cli4-start-01/" title="下一篇: vue-cli@4 入门（一）">
                 <i class="fa fa-angle-right"></i>
             </a>
         
