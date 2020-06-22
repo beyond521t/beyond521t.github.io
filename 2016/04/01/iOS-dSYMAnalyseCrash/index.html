@@ -12,14 +12,14 @@
 <meta property="og:site_name" content="老陶的博客">
 <meta property="og:description" content="1.导出crash log 通过Xcode的Organizer查看某台iphone设备的DeviceLog，选择需要的crash log，导出XXX.crash文件。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://yoursite.com/2016/04/01/iOS-dSYMAnalyseCrash/iOS-dSYMAnalyseCrash/crashLog1.png">
-<meta property="og:image" content="http://yoursite.com/2016/04/01/iOS-dSYMAnalyseCrash/iOS-dSYMAnalyseCrash/crashAnalyse.png">
+<meta property="og:image" content="http://yoursite.com/2016/04/01/iOS-dSYMAnalyseCrash/crashLog1.png">
+<meta property="og:image" content="http://yoursite.com/2016/04/01/iOS-dSYMAnalyseCrash/crashAnalyse.png">
 <meta property="article:published_time" content="2016-04-01T09:20:34.000Z">
 <meta property="article:modified_time" content="2019-08-13T14:35:05.607Z">
 <meta property="article:author" content="老陶">
 <meta property="article:tag" content="iOS">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2016/04/01/iOS-dSYMAnalyseCrash/iOS-dSYMAnalyseCrash/crashLog1.png">
+<meta name="twitter:image" content="http://yoursite.com/2016/04/01/iOS-dSYMAnalyseCrash/crashLog1.png">
   
     <link rel="alternative" href="/atom.xml" title="老陶的博客" type="application/atom+xml">
   
@@ -250,7 +250,7 @@
 <p>通过Xcode的Organizer查看某台iphone设备的DeviceLog，选择需要的crash log，导出XXX.crash文件。</p>
 <a id="more"></a>
 
-<p><img src="iOS-dSYMAnalyseCrash/crashLog1.png" alt="crash Log"></p>
+<p><img src="/2016/04/01/iOS-dSYMAnalyseCrash/crashLog1.png" alt="crash Log"></p>
 <p>2.找到对应的app文件</p>
 <p>找到当前iphone设备上安装的ipa文件，右键解压后得到Payload文件夹，你需要的app文件就在其中了。</p>
 <p>3.找到对应build版本的dSYM文件</p>
@@ -263,7 +263,7 @@
 <p>dwarfdump –uuid xxx.app.dSYM (xxx工程名)</p>
 <p>而.crash的uuid位于，crash日志中的Binary Images:中的第一行尖括号内。如：</p>
 <p>armv7 &lt;8bdeaf1a0b233ac199728c2a0ebb4165&gt;<br>将对应的xxx.app.dSYM文件以及xxx.app文件以及xxx.crash文件拷贝到同一文件夹中，如：~/Desktop/DebugLog。</p>
-<p><img src="iOS-dSYMAnalyseCrash/crashAnalyse.png" alt="crash Analyse"></p>
+<p><img src="/2016/04/01/iOS-dSYMAnalyseCrash/crashAnalyse.png" alt="crash Analyse"></p>
 <p>5.通过symbolicatecrash分析crash文件</p>
 <p>Xcode有自带的symbolicatecrash工具,可以通过dSYM文件将crash文件中的16进制地址转换成可读的函数地址。symbolicatecrash工具位于:<br>/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/PrivateFrameworks/DTDeviceKit.framework/Versions/A/Resources/symbolicatecrash(Xcode 4.5)<br>/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/PrivateFrameworks/DTDeviceKitBase.framework/Versions/A/Resources/symbolicatecrash(Xcode 5.0)<br>该文件是隐藏文件，可以通过如下命令查找并拷贝到系统目录下，并建立快捷方式。</p>
 <p>1)打开终端，进入到symbolicatecrash工具所在的文件夹目录</p>

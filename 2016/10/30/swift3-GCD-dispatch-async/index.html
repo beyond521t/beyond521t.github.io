@@ -10,14 +10,14 @@
 <meta property="og:url" content="http://yoursite.com/2016/10/30/swift3-GCD-dispatch-async/index.html">
 <meta property="og:site_name" content="老陶的博客">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://yoursite.com/2016/10/30/swift3-GCD-dispatch-async/swift3-GCD-dispatch-async/001.png">
-<meta property="og:image" content="http://yoursite.com/2016/10/30/swift3-GCD-dispatch-async/swift3-GCD-dispatch-async/002.png">
+<meta property="og:image" content="http://yoursite.com/2016/10/30/swift3-GCD-dispatch-async/001.png">
+<meta property="og:image" content="http://yoursite.com/2016/10/30/swift3-GCD-dispatch-async/002.png">
 <meta property="article:published_time" content="2016-10-30T07:45:13.000Z">
 <meta property="article:modified_time" content="2019-08-13T14:35:05.618Z">
 <meta property="article:author" content="老陶">
 <meta property="article:tag" content="swift">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2016/10/30/swift3-GCD-dispatch-async/swift3-GCD-dispatch-async/001.png">
+<meta name="twitter:image" content="http://yoursite.com/2016/10/30/swift3-GCD-dispatch-async/001.png">
   
     <link rel="alternative" href="/atom.xml" title="老陶的博客" type="application/atom+xml">
   
@@ -244,7 +244,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p><img src="swift3-GCD-dispatch-async/001.png" alt="图示"></p>
+        <p><img src="/2016/10/30/swift3-GCD-dispatch-async/001.png" alt="图示"></p>
 <a id="more"></a>
 
 <p>内存和活动管理选项( memory and activity management options)是今年苹果在OS发布的新技术(包括 OSX 10.12, iOS 10.0, tvOS 10.0, watchOS 3.0).这个包括用.initiallyInactive在非活动的状态启动一个队列,或者为你的线程设置一个自动释放属性(.autoreleaseInherit, .autoreleaseNever, .autoreleaseWorkItem)</p>
@@ -286,7 +286,7 @@ DISPATCH_QUEUE_PRIORITY_BACKGROUND</code></pre><p>现在则改为了QoSClass枚�
 
     public var rawValue: qos_class_t { get }
 }</code></pre><p>这些命名比原先的更加友好，能更好表达这个操作的意图。</p>
-<p><img src="swift3-GCD-dispatch-async/002.png" alt="图示"></p>
+<p><img src="/2016/10/30/swift3-GCD-dispatch-async/002.png" alt="图示"></p>
 <p>和原有的对应关系是：</p>
 <ul>
 <li>DISPATCH_QUEUE_PRIORITY_HIGH:         .userInitiated</li>

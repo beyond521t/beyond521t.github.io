@@ -12,15 +12,15 @@
 <meta property="og:site_name" content="老陶的博客">
 <meta property="og:description" content="版权声明：本文为博主原创文章，未经博主允许不得转载。 刚开始做开发的时候，在AppDelete方法设置根目录后，用户的登录，退出，所有操作都是最普通的界面跳转方式，以至于，由于根视图的存在，造成的内存溢出一直没有被发现。做出来之后，发现身边的一些朋友，也都没有对这一块做出特殊处理，所以写一下关于这方面的内容，供大家参考。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://yoursite.com/2016/05/25/iOS-rootViewControllerReset/iOS-rootViewControllerReset/1-1.png">
-<meta property="og:image" content="http://yoursite.com/2016/05/25/iOS-rootViewControllerReset/iOS-rootViewControllerReset/1-2.png">
-<meta property="og:image" content="http://yoursite.com/2016/05/25/iOS-rootViewControllerReset/iOS-rootViewControllerReset/1-3.png">
+<meta property="og:image" content="http://yoursite.com/2016/05/25/iOS-rootViewControllerReset/1-1.png">
+<meta property="og:image" content="http://yoursite.com/2016/05/25/iOS-rootViewControllerReset/1-2.png">
+<meta property="og:image" content="http://yoursite.com/2016/05/25/iOS-rootViewControllerReset/1-3.png">
 <meta property="article:published_time" content="2016-05-25T09:34:16.000Z">
 <meta property="article:modified_time" content="2019-08-13T14:35:05.613Z">
 <meta property="article:author" content="老陶">
 <meta property="article:tag" content="iOS">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2016/05/25/iOS-rootViewControllerReset/iOS-rootViewControllerReset/1-1.png">
+<meta name="twitter:image" content="http://yoursite.com/2016/05/25/iOS-rootViewControllerReset/1-1.png">
   
     <link rel="alternative" href="/atom.xml" title="老陶的博客" type="application/atom+xml">
   
@@ -256,12 +256,12 @@
 <p>app.window.rootViewController = [[LoginMainViewController alloc] initWithNibName:@”LoginMainViewController” bundle:nil];;</p>
 <p>需要使用(AppDelegate *)强转</p>
 <p>如果是使用MRC的，就不需要进行强转了</p>
-<p><img src="iOS-rootViewControllerReset/1-1.png" alt="图1-1"></p>
+<p><img src="/2016/05/25/iOS-rootViewControllerReset/1-1.png" alt="图1-1"></p>
 <p>关于推送收到消息，界面跳转的问题：</p>
-<p><img src="iOS-rootViewControllerReset/1-2.png" alt="图1-2"></p>
+<p><img src="/2016/05/25/iOS-rootViewControllerReset/1-2.png" alt="图1-2"></p>
 <p>收到消息，然后使用上图的方法，第一行，获取根视图，然后使用第二行，获取压栈的所有视图。如果是在当前页面，就不需要进行跳转了。否则进行界面跳转</p>
 <p>（这里本人是做了处理，可以确定根视图是这个，否则不会执行这一部，首先，如果是在登录界面，那么就没必要执行这个方法了。其他界面，根视图，基本是以mainView为主的）</p>
-<p><img src="iOS-rootViewControllerReset/1-3.png" alt="图1-3"></p>
+<p><img src="/2016/05/25/iOS-rootViewControllerReset/1-3.png" alt="图1-3"></p>
 <p>这一块只是简单的实现了，内存溢出暂什么的需要单独去处理了，如果有的类添加了通知这些的，都需要remove掉才可以，不然就真的会内存泄露了哦。</p>
 
       

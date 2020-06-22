@@ -12,14 +12,14 @@
 <meta property="og:site_name" content="老陶的博客">
 <meta property="og:description" content="点击下载代码 在iOS开发中，有时会有跳转系统设置界面的需求，例如提示用户打开蓝牙或者WIFI，提醒用户打开推送或者位置权限等。在iOS6之后，第三方应用需要跳转系统设置界面，需要在URL type中添加一个prefs值，如下图：">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://yoursite.com/2016/08/31/iOS-URLScheme-Setting/iOS-URLScheme-Setting/1-1.png">
-<meta property="og:image" content="http://yoursite.com/2016/08/31/iOS-URLScheme-Setting/iOS-URLScheme-Setting/1-2.png">
+<meta property="og:image" content="http://yoursite.com/2016/08/31/iOS-URLScheme-Setting/1-1.png">
+<meta property="og:image" content="http://yoursite.com/2016/08/31/iOS-URLScheme-Setting/1-2.png">
 <meta property="article:published_time" content="2016-08-31T03:08:10.000Z">
 <meta property="article:modified_time" content="2019-08-13T14:35:05.600Z">
 <meta property="article:author" content="老陶">
 <meta property="article:tag" content="iOS">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2016/08/31/iOS-URLScheme-Setting/iOS-URLScheme-Setting/1-1.png">
+<meta name="twitter:image" content="http://yoursite.com/2016/08/31/iOS-URLScheme-Setting/1-1.png">
   
     <link rel="alternative" href="/atom.xml" title="老陶的博客" type="application/atom+xml">
   
@@ -251,7 +251,7 @@
 <p><a href="/2016/08/31/iOS-URLScheme-Setting/PrefsDemo.zip">点击下载代码</a></p>
 <p>在iOS开发中，有时会有跳转系统设置界面的需求，例如提示用户打开蓝牙或者WIFI，提醒用户打开推送或者位置权限等。在iOS6之后，第三方应用需要跳转系统设置界面，需要在URL type中添加一个prefs值，如下图：</p>
 <a id="more"></a>
-<p><img src="iOS-URLScheme-Setting/1-1.png" alt="设置图"></p>
+<p><img src="/2016/08/31/iOS-URLScheme-Setting/1-1.png" alt="设置图"></p>
 <p>跳转系统设置根目录中的项目使用如下的方法： </p>
 <pre><code>_dataSource = @[
            @{@&quot;系统设置&quot;:@&quot;prefs:root=INTERNET_TETHERING&quot;},
@@ -285,7 +285,7 @@
            @{@&quot;APP Store&quot;:@&quot;prefs:root=STORE&quot;},
            @{@&quot;还原设置&quot;:@&quot;prefs:root=General&amp;path=Reset&quot;},
            @{@&quot;应用通知&quot;:@&quot;prefs:root=NOTIFICATIONS_ID&amp;path=应用的boundleId&quot;}
-           ]; </code></pre><p>本Demo，所有内容都写到了同一个字典中。根据注释分开。如下图所示：<br><img src="iOS-URLScheme-Setting/1-2.png" alt="字典参数"></p>
+           ]; </code></pre><p>本Demo，所有内容都写到了同一个字典中。根据注释分开。如下图所示：<br><img src="/2016/08/31/iOS-URLScheme-Setting/1-2.png" alt="字典参数"></p>
 
       
     </div>

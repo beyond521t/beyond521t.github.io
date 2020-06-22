@@ -12,15 +12,15 @@
 <meta property="og:site_name" content="老陶的博客">
 <meta property="og:description" content="版权声明：本文为博主原创文章，未经博主允许不得转载。 做iOS开发，今天写数据库，遇到了这个错误。我的数据库中有个字段也是token。刚开始以为是这个字段出了什么问题，不过后来排查，发现跟这个字段完全没有关系。这个就是sqlite3里的。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://yoursite.com/2016/02/17/DB-Error-1-unrecognized-token/DB-Error-1-unrecognized-token/0001.jpeg">
-<meta property="og:image" content="http://yoursite.com/2016/02/17/DB-Error-1-unrecognized-token/DB-Error-1-unrecognized-token/0002.jpeg">
-<meta property="og:image" content="http://yoursite.com/2016/02/17/DB-Error-1-unrecognized-token/DB-Error-1-unrecognized-token/0003.jpeg">
+<meta property="og:image" content="http://yoursite.com/2016/02/17/DB-Error-1-unrecognized-token/0001.jpeg">
+<meta property="og:image" content="http://yoursite.com/2016/02/17/DB-Error-1-unrecognized-token/0002.jpeg">
+<meta property="og:image" content="http://yoursite.com/2016/02/17/DB-Error-1-unrecognized-token/0003.jpeg">
 <meta property="article:published_time" content="2016-02-17T06:52:50.000Z">
 <meta property="article:modified_time" content="2019-12-18T09:04:25.757Z">
 <meta property="article:author" content="老陶">
 <meta property="article:tag" content="iOS">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2016/02/17/DB-Error-1-unrecognized-token/DB-Error-1-unrecognized-token/0001.jpeg">
+<meta name="twitter:image" content="http://yoursite.com/2016/02/17/DB-Error-1-unrecognized-token/0001.jpeg">
   
     <link rel="alternative" href="/atom.xml" title="老陶的博客" type="application/atom+xml">
   
@@ -251,10 +251,10 @@
 <p>做iOS开发，今天写数据库，遇到了这个错误。我的数据库中有个字段也是token。刚开始以为是这个字段出了什么问题，不过后来排查，发现跟这个字段完全没有关系。这个就是sqlite3里的。</p>
 <a id="more"></a>
 
-<p>错误日志截图<br><img src="DB-Error-1-unrecognized-token/0001.jpeg" alt="screen"><br>NSString *sql_select = [NSString stringWithFormat:@”select * from %@ where uid = %@ and dev_id = %@”,TBNAME_User_Dev, uid, device.nameOrAddress];</p>
-<p><img src="DB-Error-1-unrecognized-token/0002.jpeg" alt="screen"><br>原代码是这样写的。解决方法是在 uid , dev_id 的两个参数 上 加上 单引号(这两个是字符类型变量)。</p>
+<p>错误日志截图<br><img src="/2016/02/17/DB-Error-1-unrecognized-token/0001.jpeg" alt="screen"><br>NSString *sql_select = [NSString stringWithFormat:@”select * from %@ where uid = %@ and dev_id = %@”,TBNAME_User_Dev, uid, device.nameOrAddress];</p>
+<p><img src="/2016/02/17/DB-Error-1-unrecognized-token/0002.jpeg" alt="screen"><br>原代码是这样写的。解决方法是在 uid , dev_id 的两个参数 上 加上 单引号(这两个是字符类型变量)。</p>
 <p>NSString *sql_select = [NSString stringWithFormat:@”select * from %@ where uid = ‘%@’ and dev_id = ‘%@’ “,TBNAME_User_Dev, uid, device.nameOrAddress];</p>
-<p><img src="DB-Error-1-unrecognized-token/0003.jpeg" alt="screen"><br>倘若使用这种方法写，就不需要加 引号了。这种使用 ? 问号的，就没有碰到这种问题。</p>
+<p><img src="/2016/02/17/DB-Error-1-unrecognized-token/0003.jpeg" alt="screen"><br>倘若使用这种方法写，就不需要加 引号了。这种使用 ? 问号的，就没有碰到这种问题。</p>
 <p>NSString  *str = [NSString  stringWithFormat:@”insert into %@(uid, dev_id, created_at, status) values (?, ?, ?, ?)”,TBNAME_User_Dev];</p>
 
       

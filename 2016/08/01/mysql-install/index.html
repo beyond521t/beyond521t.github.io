@@ -12,13 +12,13 @@
 <meta property="og:site_name" content="老陶的博客">
 <meta property="og:description" content="如果之前安装过MySQL。先执行停止Mysql服务，然后执行 删除命令。 一、停用MySQL的所有服务 #启动Mysql服务 $ sudo &#x2F;Library&#x2F;StartupItems&#x2F;MySQLCOM&#x2F;MySQLCOM start #停止Mysql服务 $ sudo &#x2F;Library&#x2F;StartupItems&#x2F;MySQLCOM&#x2F;MySQLCOM stop #重启Mysql服务 $ sudo &#x2F;Li">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://yoursite.com/2016/08/01/mysql-install/mysql-install/001.png">
+<meta property="og:image" content="http://yoursite.com/2016/08/01/mysql-install/001.png">
 <meta property="article:published_time" content="2016-08-01T13:09:15.000Z">
 <meta property="article:modified_time" content="2019-08-13T14:35:05.615Z">
 <meta property="article:author" content="老陶">
 <meta property="article:tag" content="Mac">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2016/08/01/mysql-install/mysql-install/001.png">
+<meta name="twitter:image" content="http://yoursite.com/2016/08/01/mysql-install/001.png">
   
     <link rel="alternative" href="/atom.xml" title="老陶的博客" type="application/atom+xml">
   
@@ -264,7 +264,7 @@ $ sudo rm -rf ~/Library/PreferencePanes/My*      //我这里执行的是 MySQL�
 $ sudo rm -rf /Library/Receipts/mysql*  
 $ sudo rm -rf /Library/Receipts/MySQL*  
 $ sudo rm -rf /var/db/receipts/com.mysql.</code></pre><p>三、安装MySQL。</p>
-<p>安装MySQl，一直下一步继续，直到出现如下图所示内容，这里显示的是初始密码，记住咯：<br><img src="mysql-install/001.png" alt="MySQL Install">    </p>
+<p>安装MySQl，一直下一步继续，直到出现如下图所示内容，这里显示的是初始密码，记住咯：<br><img src="/2016/08/01/mysql-install/001.png" alt="MySQL Install">    </p>
 <p>因为苹果在OS X 10.11中引入的SIP特性使得即使加了sudo（也就是具有root权限）也无法修改系统级的目录，其中就包括了/usr/bin。要解决这个问题有两种做法：一种是比较不安全的就是关闭SIP，也就是rootless特性；另一种是将本要链接到/usr/bin下的改链接到/usr/local/bin下就好了：</p>
 <pre><code>//设置 mysql短命令
 $ sudo ln -s /usr/local/mysql/bin/mysql /usr/local/bin/

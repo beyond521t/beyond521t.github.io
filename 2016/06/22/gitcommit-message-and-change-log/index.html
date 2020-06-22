@@ -12,16 +12,16 @@
 <meta property="og:site_name" content="老陶的博客">
 <meta property="og:description" content="一、介绍Git 每次提交代码，都要写 Commit message（提交说明），否则就不允许提交。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://yoursite.com/2016/06/22/gitcommit-message-and-change-log/gitcommit-message-and-change-log/1-1.png">
-<meta property="og:image" content="http://yoursite.com/2016/06/22/gitcommit-message-and-change-log/gitcommit-message-and-change-log/1-2.png">
-<meta property="og:image" content="http://yoursite.com/2016/06/22/gitcommit-message-and-change-log/gitcommit-message-and-change-log/1-3.png">
-<meta property="og:image" content="http://yoursite.com/2016/06/22/gitcommit-message-and-change-log/gitcommit-message-and-change-log/4-1.png">
+<meta property="og:image" content="http://yoursite.com/2016/06/22/gitcommit-message-and-change-log/1-1.png">
+<meta property="og:image" content="http://yoursite.com/2016/06/22/gitcommit-message-and-change-log/1-2.png">
+<meta property="og:image" content="http://yoursite.com/2016/06/22/gitcommit-message-and-change-log/1-3.png">
+<meta property="og:image" content="http://yoursite.com/2016/06/22/gitcommit-message-and-change-log/4-1.png">
 <meta property="article:published_time" content="2016-06-22T03:46:29.000Z">
 <meta property="article:modified_time" content="2019-12-26T02:46:24.283Z">
 <meta property="article:author" content="老陶">
 <meta property="article:tag" content="git">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2016/06/22/gitcommit-message-and-change-log/gitcommit-message-and-change-log/1-1.png">
+<meta name="twitter:image" content="http://yoursite.com/2016/06/22/gitcommit-message-and-change-log/1-1.png">
   
     <link rel="alternative" href="/atom.xml" title="老陶的博客" type="application/atom+xml">
   
@@ -258,14 +258,14 @@
 <p><a href="http://blog.no-panic.at/2014/10/20/funny-initial-git-commit-messages/" target="_blank" rel="noopener">http://blog.no-panic.at/2014/10/20/funny-initial-git-commit-messages/</a></p>
 <p><a href="http://whatthecommit.com" target="_blank" rel="noopener">http://whatthecommit.com</a></p>
 <p>但是，一般来说，commit message 应该清晰明了，说明本次提交的目的。</p>
-<p><img src="gitcommit-message-and-change-log/1-1.png" alt="Angular规范"><br>目前，社区有多种 Commit message 的写法规范(<a href="http://whatthecommit.com)。本文介绍Angular" target="_blank" rel="noopener">http://whatthecommit.com)。本文介绍Angular</a> 规范（见上图），这是目前使用最广的写法，比较合理和系统化，并且有配套的工具。</p>
+<p><img src="/2016/06/22/gitcommit-message-and-change-log/1-1.png" alt="Angular规范"><br>目前，社区有多种 Commit message 的写法规范(<a href="http://whatthecommit.com)。本文介绍Angular" target="_blank" rel="noopener">http://whatthecommit.com)。本文介绍Angular</a> 规范（见上图），这是目前使用最广的写法，比较合理和系统化，并且有配套的工具。</p>
 <h4 id="二、Commit-message-的作用"><a href="#二、Commit-message-的作用" class="headerlink" title="二、Commit message 的作用"></a>二、Commit message 的作用</h4><p>格式化的Commit message，有几个好处。</p>
 <p>#####（1）提供更多的历史信息，方便快速浏览。</p>
 <p>比如，下面的命令显示上次发布后的变动，每个commit占据一行。你只看行首，就知道某次 commit 的目的。</p>
-<pre><code>$ git log &lt;last tag&gt; HEAD --pretty=format:%s</code></pre><p><img src="gitcommit-message-and-change-log/1-2.png" alt="历史信息"></p>
+<pre><code>$ git log &lt;last tag&gt; HEAD --pretty=format:%s</code></pre><p><img src="/2016/06/22/gitcommit-message-and-change-log/1-2.png" alt="历史信息"></p>
 <p>#####（2）可以过滤某些commit（比如文档改动），便于快速查找信息。</p>
 <p>比如，下面的命令仅仅显示本次发布新增加的功能。</p>
-<pre><code>$ git log &lt;last release&gt; HEAD --grep feature</code></pre><p><img src="gitcommit-message-and-change-log/1-3.png" alt="新增加的功能"></p>
+<pre><code>$ git log &lt;last release&gt; HEAD --grep feature</code></pre><p><img src="/2016/06/22/gitcommit-message-and-change-log/1-3.png" alt="新增加的功能"></p>
 <p>#####（3）可以直接从commit生成Change log。</p>
 <p>Change Log 是发布新版本时，用来说明与上一个版本差异的文档，详见后文。</p>
 <h4 id="三、Commit-message-的格式"><a href="#三、Commit-message-的格式" class="headerlink" title="三、Commit message 的格式"></a>三、Commit message 的格式</h4><p>每次提交，Commit message 都包括三个部分：Header，Body 和 Footer。</p>
@@ -309,7 +309,7 @@ Further paragraphs come after blank lines.
 <pre><code>Closes #234</code></pre><p>也可以一次关闭多个 issue 。</p>
 <pre><code>Closes #123, #245, #992</code></pre><h5 id="3-4-Revert"><a href="#3-4-Revert" class="headerlink" title="3.4 Revert"></a>3.4 Revert</h5><p>还有一种特殊情况，如果当前 commit 用于撤销以前的 commit，则必须以revert:开头，后面跟着被撤销 Commit 的 Header。</p>
 <pre><code>revert: feat(pencil): add &apos;graphiteWidth&apos; option
-This reverts commit 667ecc1654a317a13331b17617d973392f415f02.</code></pre><p>Body部分的格式是固定的，必须写成This reverts commit <hash>，其中的hash是被撤销 commit 的 SHA 标识符。</p>
+This reverts commit 667ecc1654a317a13331b17617d973392f415f02.</code></pre><p>Body部分的格式是固定的，必须写成This reverts commit <hash>，其中的hash是被撤销 commit 的 SHA 标识符。</hash></p>
 <p>如果当前 commit 与被撤销的 commit，在同一个发布（release）里面，那么它们都不会出现在 Change log 里面。如果两者在不同的发布，那么当前 commit，会出现在 Change log 的Reverts小标题下面。</p>
 <h4 id="四、Commitizen"><a href="#四、Commitizen" class="headerlink" title="四、Commitizen"></a>四、Commitizen</h4><p>Commitizen是一个撰写合格 Commit message 的工具。<br>安装命令如下。</p>
 <pre><code>$ npm install -g commitizen</code></pre><p>然后，在项目目录里，运行下面的命令</p>
@@ -318,7 +318,7 @@ This reverts commit 667ecc1654a317a13331b17617d973392f415f02.</code></pre><p>Bod
 <p>然后，在项目目录里，运行下面的命令，使其支持Angular的 Commit Message 格式。</p>
 <pre><code>$ commitizen init cz-conventional-changelog —save —save-exact</code></pre><p>以后，凡是用到git commit命令，一律改为使用git cz。这时，就会出现选项，用来生成符合格式的 Commit message。</p>
 <pre><code>如果提示core-js版本&lt;3 版本过低，可以执行下面的命令
-npm install --save core-js@^3</code></pre><p><img src="gitcommit-message-and-change-log/4-1.png" alt="Commit message"></p>
+npm install --save core-js@^3</code></pre><p><img src="/2016/06/22/gitcommit-message-and-change-log/4-1.png" alt="Commit message"></p>
 <pre><code>LaoTao@taobotongdeMacBook-Pro:~/Documents/CIM/cim-ios$ git add .
 LaoTao@taobotongdeMacBook-Pro:~/Documents/CIM/cim-ios$ git cz
 cz-cli@2.5.0, cz-conventional-changelog@1.1.5

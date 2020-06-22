@@ -343,18 +343,18 @@ git config --global push.default simple</code></pre><p>建立关系</p>
 <p>modified //表示修改文件</p>
 <p>deleted //表示删除文件</p>
 <pre><code>另外，git 给出了可能需要的操作命令，git add/rm, gitcheckout --</code></pre><p>c) 未跟踪 （untracked files）</p>
-<h3 id="2-查看代码修改的内容"><a href="#2-查看代码修改的内容" class="headerlink" title="2. 查看代码修改的内容"></a>2. 查看代码修改的内容</h3><p> git diff  <file></p>
+<h3 id="2-查看代码修改的内容"><a href="#2-查看代码修改的内容" class="headerlink" title="2. 查看代码修改的内容"></a>2. 查看代码修改的内容</h3><p> git diff  <file></file></p>
 <p>比较某文件与最近提交节点的差异。</p>
-<p>注意：如果该文件已暂存，那么应该使用git diff –cached<file></p>
-<p> git diff <hashcode> <hashcode>  <file></p>
+<p>注意：如果该文件已暂存，那么应该使用git diff –cached<file></file></p>
+<p> git diff <hashcode> <hashcode>  <file></file></hashcode></hashcode></p>
 <p>比较某文件在提交节点a，节点b的差异。</p>
 <p>技巧：如果省略后面一个hashcode，则默认表示与上一提交节点比较。（也可以利用^运算符）</p>
 <h3 id="3-暂存需要提交的文件"><a href="#3-暂存需要提交的文件" class="headerlink" title="3. 暂存需要提交的文件"></a>3. 暂存需要提交的文件</h3><p>如果是新建的文件</p>
-<p>则git add  <file></p>
+<p>则git add  <file></file></p>
 <p>如果是修改的文件</p>
-<p>则git add  <file></p>
+<p>则git add  <file></file></p>
 <p>如果是删除的文件</p>
-<p>则 git rm  <file></p>
+<p>则 git rm  <file></file></p>
 <h3 id="4-提交已暂存的文件"><a href="#4-提交已暂存的文件" class="headerlink" title="4. 提交已暂存的文件"></a>4. 提交已暂存的文件</h3><pre><code>git commit
 
 注意注释填写规范。
