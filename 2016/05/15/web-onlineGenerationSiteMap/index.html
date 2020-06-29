@@ -28,7 +28,7 @@
     <link rel="icon" href="/img/favicon.png">
   
   
-  
+      
 <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
 
   
@@ -46,6 +46,7 @@
     <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
   <script>
       var yiliaConfig = {
+          rootUrl: '/',
           fancybox: true,
           animate: true,
           isHome: false,
@@ -70,7 +71,7 @@
         </a>
 
         <hgroup>
-          <h1 class="header-author"><a href="/">老陶</a></h1>
+          <h1 class="header-author"><a href="/" title="Hi Mate">老陶</a></h1>
         </hgroup>
 
         
@@ -130,12 +131,6 @@
                     <nav class="header-nav">
                         <ul class="social">
                             
-                                <a class="fl mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=HysqLCkrJy0sK19ubjF8cHI" title="mail">mail</a>
-                            
-                                <a class="fl github" target="_blank" href="https://github.com/beyond521t" title="github">github</a>
-                            
-                                <a class="fl weibo" target="_blank" href="http://weibo.com/beyond521t" title="weibo">weibo</a>
-                            
                         </ul>
                     </nav>
                 </section>
@@ -152,7 +147,7 @@
                 <section class="switch-part switch-part3">
                     <div id="js-friends">
                     
-                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.hankin.cn/">hankin技术宅</a>
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://luuman.github.io/">name</a>
                     
                     </div>
                 </section>
@@ -162,7 +157,7 @@
                 
                 <section class="switch-part switch-part4">
                 
-                    <div id="js-aboutme">爱折腾，爱运动，更爱游离于错综复杂的编码与逻辑中，无法自拔。</div>
+                    <div id="js-aboutme">纯海迷、爱运动、爱交友、爱旅行、喜欢接触新鲜事物、迎接新的挑战，更爱游离于错综复杂的编码与逻辑中</div>
                 </section>
                 
             </div>
@@ -174,7 +169,7 @@
       <nav id="mobile-nav">
       <div class="overlay">
           <div class="slider-trigger"></div>
-          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">老陶</a></h1>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">老陶</a></h1>
       </div>
     <div class="intrude-less">
         <header id="header" class="inner">
@@ -184,7 +179,7 @@
                 
             </a>
             <hgroup>
-              <h1 class="header-author"><a href="/" title="回到主页">老陶</a></h1>
+              <h1 class="header-author"><a href="/" title="Me">老陶</a></h1>
             </hgroup>
             
             <p class="header-subtitle">真正的才智是刚毅的志向。</p>
@@ -197,12 +192,6 @@
             </nav>
             <nav class="header-nav">
                 <div class="social">
-                    
-                        <a class="mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=HysqLCkrJy0sK19ubjF8cHI" title="mail">mail</a>
-                    
-                        <a class="github" target="_blank" href="https://github.com/beyond521t" title="github">github</a>
-                    
-                        <a class="weibo" target="_blank" href="http://weibo.com/beyond521t" title="weibo">weibo</a>
                     
                 </div>
             </nav>
@@ -266,6 +255,53 @@ $ hexo deploy</code></pre><p>  不过相应的搜索引擎需要设置好才可�
 <p>效果如下图，不过不会立即生效的。上传后，等一些时日就好了。<br>    <img src="/2016/05/15/web-onlineGenerationSiteMap/002.png" alt="必应SiteMap配置效果"></p>
 
       
+      
+        <div class="page-reward">
+          <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang">赏</a></p>
+          <div class="hide_box"></div>
+          <div class="shang_box">
+            <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()">×</a>
+            <div class="shang_tit">
+              <p>纯属好玩</p>
+            </div>
+            <div class="shang_payimg">
+              <img src="/img/alipayimg.jpg" alt="扫码支持" title="扫一扫" />
+            </div>
+              <div class="pay_explain">扫码打赏，你说多少就多少</div>
+            <div class="shang_payselect">
+              
+                <div class="pay_item checked" data-id="alipay">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/alipay.png" alt="支付宝" /></span>
+                </div>
+              
+              
+                <div class="pay_item" data-id="wechat">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/weixin.png" alt="微信" /></span>
+                </div>
+              
+            </div>
+            <div class="shang_info">
+              <p>打开<span id="shang_pay_txt">支付宝</span>扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
+        <script type="text/javascript">
+          $(".pay_item").click(function(){
+            $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
+            var dataid=$(this).attr('data-id');
+            $(".shang_payimg img").attr("src","/img/"+dataid+"img.jpg");
+            $("#shang_pay_txt").text(dataid=="alipay"?"支付宝":"微信");
+          });
+          function dashangToggle(){
+            
+            $(".hide_box").fadeToggle();
+            $(".shang_box").fadeToggle();
+          }
+        </script>
+      
     </div>
     
   </div>
@@ -315,19 +351,10 @@ $ hexo deploy</code></pre><p>  不过相应的搜索引擎需要设置好才可�
     <strong class="toc-title">文章目录</strong>
     <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#站点地图SiteMap的好处是很大的，对Seo很有好处，能够更方便、迅速的让搜索引擎收录。"><span class="toc-number">1.</span> <span class="toc-text">站点地图SiteMap的好处是很大的，对Seo很有好处，能够更方便、迅速的让搜索引擎收录。</span></a></li></ol>
 </div>
-<style>
-    .left-col .switch-btn {
-        display: none;
-    }
-    .left-col .switch-area {
-        display: none;
-    }
-</style>
-
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
 
-<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
 
 <script>
     var valueHide = "隐藏目录";
@@ -336,23 +363,18 @@ $ hexo deploy</code></pre><p>  不过相应的搜索引擎需要设置好才可�
     if ($(".left-col").is(":hidden")) {
         $("#tocButton").attr("value", valueShow);
     }
-
     $("#tocButton").click(function() {
         if ($("#toc").is(":hidden")) {
             $("#tocButton").attr("value", valueHide);
             $("#toc").slideDown(320);
-            $(".switch-btn, .switch-area").fadeOut(300);
         }
         else {
             $("#tocButton").attr("value", valueShow);
             $("#toc").slideUp(350);
-            $(".switch-btn, .switch-area").fadeIn(500);
         }
     })
-
     if ($(".toc").length < 1) {
         $("#toc, #tocButton").hide();
-        $(".switch-btn, .switch-area").show();
     }
 </script>
 
@@ -369,30 +391,10 @@ $ hexo deploy</code></pre><p>  不过相应的搜索引擎需要设置好才可�
 	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
 	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
 </div>
-<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
 
 
 
-
-    
-      <div class="duoshuo" id="comments">
-    <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2016/05/15/web-onlineGenerationSiteMap/" data-title="在线生成站点地图SiteMap" data-url="http://blog.qoabc.com/2016/05/15/web-onlineGenerationSiteMap/"></div>
-    <!-- 多说评论框 end -->
-    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-    <script type="text/javascript">
-    var duoshuoQuery = {short_name:"laotao"};
-    (function() {
-        var ds = document.createElement('script');
-        ds.type = 'text/javascript';ds.async = true;
-        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-        ds.charset = 'UTF-8';
-        (document.getElementsByTagName('head')[0] 
-         || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-    </script>
-    <!-- 多说公共JS代码 end -->
-</div>
 
     
 
@@ -412,7 +414,7 @@ $ hexo deploy</code></pre><p>  不过相应的搜索引擎需要设置好才可�
         
     </div>
     <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/06/14/vue-cli4-start-04/">vue-cli@4 入门（四）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/14/vue-cli4-start-03/">vue-cli@4 入门（三）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/12/vue-cli4-start-02/">vue-cli@4 入门（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/11/vue-cli4-start-01/">vue-cli@4 入门（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/10/go-os-operation/">Golang 文件操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/06/go-type-format/">golang 中string和int类型相互转换</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/26/linux-start-03/">CentOS 使用 Docker 服务搭建 Nginx 文件服务器</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/22/linux-start-02/">CentOS 服务器 + mysql + vsftpd服务</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/20/linux-start-01/">CentOS 第一步</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/19/docker-net-shell/">docker网络命令与基本查看命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/19/linux-brctl-shell/">Linux brclt 命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/18/mac-go-environment/">Mac 下Go语言开发环境设置</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/13/iOS-BLEDevelopMultiDevice/baidu_verify_GTSzPZiZEu/">iOS-BLEDevelopMultiDevice/baidu_verify_GTSzPZiZEu</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/05/linux-Shell-ssh/">Linux Shell ssh登录脚本</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/05/hexo-installed-1/">Mac+HEXO+Github 搭建属于自己的博客(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/27/iOS-AVAudioSession/">iOS-AVAudio</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/29/ios-iphone-device/">iPhone不同设备屏幕尺寸和分辨率</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/25/domain-transfer/">域名转让</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/html-javaScript-elements/">javaScript-elements</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/html-css-animation/">CSS动画--页面特效</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/html-css-position/">html-css-position</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/html-css-box/">3.3 CSS盒子模型</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/html-css-style/">3.2 CSS基础样式讲解</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/html-css-elements/">第3阶段 CSS3基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/17/html-style-link-table/">html-style-link-table</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/10/html-framework-bg/">HTML框架、背景、实体</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/18/iOS-SpriteKit-SceneKit/">iOS SpriteKit/SceneKit/Metal浅析</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/30/swift3-GCD-dispatch-async/">Swift3中dispatch_once废弃的解决办法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/21/Deutsch-900-1/">德语900句（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/21/deutsch-900-2/">德语900句(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/31/iOS-URLScheme-Setting/">iOS应用内跳转系统设置相关界面的方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/04/git-warning-default/">Git Warning push.default is unset</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/02/hexo-asset-image/">在hexo中使用本地图片</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/01/mysql-install/">MySQL从安装到卸载</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/01/sublimeText3-License/">Sublime Text3激活</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/01/nvm-update-Ruby/">rvm升级Ruby</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/17/git-sshkey-multi/">管理多个SSH Key</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/17/git-sshkey/">生成SSH Key</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/12/CocoaPods-Install/">2016 CocosPods安装教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/11/swift-delegate-memory-leak/">swift 使用 delegate 内存泄露问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/11/ssh-exchange-identification/">ssh_exchange_identification</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/08/swift-LTPickerView/">LTPickerView.swift</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/22/iOS-UnicodeScalars/">判断中、英文、数字、符号</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/22/gitcommit-message-and-change-log/">Git提交的正确姿势：Commit message 和 Change log 编写指南</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/13/charlesproxy/">charles 抓包</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/01/APS-Encapsulation-Inheritance-Polymorphism-Delegation/">Encapsulation, Inheritance, Polymorphism, Delegation</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/25/iOS-rootViewControllerReset/"> iOS根视图切换，释放内存，以及推送界面跳转（iOS多语言切换语言处理，也请看此处）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/25/iOS-MultiLanguage/">iOS多语言，支持app内部设置</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/22/iOS-requireIPv6/">6 月 1 日起所有提交的 app 都需要支持 IPv6 网络</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/16/FMDatabaseQueue-lead-to-a-deadlock/">FMDatabaseQueue lead to a deadlock</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/15/web-onlineGenerationSiteMap/">在线生成站点地图SiteMap</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/14/swift-inout-keyordsChangePosition/">inout 关键字位置的变化</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/09/swift3-0AdvanceObjcTransformToSwift/">Swift 3.0 预告：将 Objc 库转换成更符合 Swift 语法风格的形式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/09/swiftPackageError-swiftc-failed-with-exit-code-1/">swift打包失败，swiftc failed with exit code 1</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/05/iOS-require-AllAppIPv6-only/">苹果:所有应用必须支持IPv6-only网络</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/28/iOS-BLEDevelopMultiDevice/">iOS-BLE蓝牙开发(二) -- 多设备</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/28/iOS-BLEDevelop1/">iOS-BLE蓝牙开发</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/28/swift3-0NewInfo(foundIn2-2)/">swift3.0变化（swift2.2工程中发现）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/27/UIImage-resizableImageWithCapInsets/">UIImage 拉伸图片 resizableImageWithCapInsets</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/18/VR-JourneyOfTime/">VR时代之旅</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/15/swift-mutating/">Swift - mutating关键字</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/11/IOS-cancel-performSelector-And-cancelPreviousPerformRequestsWithTarget/"> IOS 关于取消延迟执行函数的种种。performSelector与cancelPreviousPerformRequestsWithTarget</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/07/swift-StringOperation/">Swift字符串常用操作总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/07/StringOrNSString/">String还是NSString</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/01/APS-UML/">APS-UML</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/01/iOS-dSYMAnalyseCrash/">iOS通过dSYM文件分析crash</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/30/APS-Network/">APS-Network</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/28/APS-SQL2005/">APS---SQL2005</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/28/APS-Start/">APS---Start</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/24/developmentHistoryOfApple/">苹果手机发展史</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/23/swift2-2NewInfo/">Swift2.2的新特性</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/23/OSI%E3%80%81TCP-IP/">OSI、TCP/IP</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/11/iOS-SqliteMultithreading/">iOS上Sqlite多线程问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/10/ComputerEnglishVocabulary/">ComputerEnglishVocabulary</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/21/deploy-ssh-Of-Bitbucket/">如何配置Bitbucket的ssh</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/19/UITesting-ChineseWordsError/">UITesting中文错误问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/17/iOS-Objective-C-Literal-Value/">字面量声明方式 Objective-C Literal Value</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/17/DB-Error-1-unrecognized-token/">DB Error 1 unrecognized token</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/16/git-command/">Git命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/17/hello-world/">Hello World</a></li></ul>
-    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
     <script>
         $(".post-list").addClass("toc-article");
         $(".post-list-item a").attr("target","_blank");
@@ -422,13 +424,11 @@ $ hexo deploy</code></pre><p>  不过相应的搜索引擎需要设置好才可�
             if ($(".toc").length > 0) {
                 $("#toc, #tocButton").toggle(200, function() {
                     if ($(".switch-area").is(":visible")) {
-                        $("#toc, .switch-btn, .switch-area").toggle();
                         $("#tocButton").attr("value", valueHide);
                         }
                     })
             }
             else {
-                $(".switch-btn, .switch-area").fadeToggle(300);
             }
         })
     </script>
@@ -453,7 +453,7 @@ $ hexo deploy</code></pre><p>  不过相应的搜索引擎需要设置好才可�
             <div class="visit">
                 
                     <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" >本站到访数: 
+                        <span id="site-visit" >海贼到访数: 
                             <span id="busuanzi_value_site_uv"></span>
                         </span>
                     </span>
@@ -471,14 +471,12 @@ $ hexo deploy</code></pre><p>  不过相应的搜索引擎需要设置好才可�
             </div>
         
     </div>
-
     <script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1279014351'%3E%3C/span%3E%3Cscript src='https://s9.cnzz.com/z_stat.php%3Fid%3D1279014351%26show%3Dpic2' type='text/javascript'%3E%3C/script%3E"));</script>
-
 </footer>
 
     </div>
     
-<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
 
 
 <script src="/js/main.js"></script>
@@ -486,12 +484,13 @@ $ hexo deploy</code></pre><p>  不过相应的搜索引擎需要设置好才可�
 
     <script>
         $(document).ready(function() {
-            var backgroundnum = 21;
+            var backgroundnum = 24;
             var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
             $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
             $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
         })
     </script>
+
 
 
 
@@ -537,6 +536,7 @@ $ hexo deploy</code></pre><p>  不过相应的搜索引擎需要设置好才可�
         });
     });
 </script>
+
 
   </div>
 </body>
