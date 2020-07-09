@@ -3,19 +3,24 @@
 <head>
   <meta charset="utf-8">
   
-  <title>域名转让 | 老陶的博客</title>
+  <title>iOS 深浅模式 颜色 和 图片 | 老陶的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="因 devcom.com 域名将于11月最后一个礼拜起，进行转让，本人的域名地址将于此后进行转换">
+  <meta name="description" content="从iOS 13系统开始，开启了App的深色模式的大门。因为AppStore审核指南提出：从2020年4月30日开始，所有提交至App Store的iPhone App都必须使用 iOS 13 SDK或更高版本来构建。以后的app都需要支持暗黑模式了。 ##一、暗黑模式 1、 UIUserInterfaceStyle（页面模式的枚举）">
 <meta property="og:type" content="article">
-<meta property="og:title" content="域名转让">
-<meta property="og:url" content="http://blog.qoabc.com/2017/11/25/domain-transfer/index.html">
+<meta property="og:title" content="iOS 深浅模式 颜色 和 图片">
+<meta property="og:url" content="http://blog.qoabc.com/2020/05/28/ios-dynamic-color/index.html">
 <meta property="og:site_name" content="老陶的博客">
-<meta property="og:description" content="因 devcom.com 域名将于11月最后一个礼拜起，进行转让，本人的域名地址将于此后进行转换">
+<meta property="og:description" content="从iOS 13系统开始，开启了App的深色模式的大门。因为AppStore审核指南提出：从2020年4月30日开始，所有提交至App Store的iPhone App都必须使用 iOS 13 SDK或更高版本来构建。以后的app都需要支持暗黑模式了。 ##一、暗黑模式 1、 UIUserInterfaceStyle（页面模式的枚举）">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2017-11-25T06:21:28.000Z">
-<meta property="article:modified_time" content="2019-08-13T14:35:05.570Z">
+<meta property="og:image" content="http://blog.qoabc.com/2020/05/28/ios-dynamic-color/001.png">
+<meta property="og:image" content="http://blog.qoabc.com/2020/05/28/ios-dynamic-color/002.png">
+<meta property="og:image" content="http://blog.qoabc.com/2020/05/28/ios-dynamic-color/003.png">
+<meta property="article:published_time" content="2020-05-28T12:26:58.000Z">
+<meta property="article:modified_time" content="2020-07-09T02:51:14.232Z">
 <meta property="article:author" content="老陶">
+<meta property="article:tag" content="iOS">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://blog.qoabc.com/2020/05/28/ios-dynamic-color/001.png">
   
     <link rel="alternative" href="/atom.xml" title="老陶的博客" type="application/atom+xml">
   
@@ -193,11 +198,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-domain-transfer" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-ios-dynamic-color" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/11/25/domain-transfer/" class="article-date">
-      <time datetime="2017-11-25T06:21:28.000Z" itemprop="datePublished">2017-11-25</time>
+      <a href="/2020/05/28/ios-dynamic-color/" class="article-date">
+      <time datetime="2020-05-28T12:26:58.000Z" itemprop="datePublished">2020-05-28</time>
 </a>
     </div>
   
@@ -210,7 +215,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      域名转让
+      iOS 深浅模式 颜色 和 图片
     </h1>
   
 
@@ -220,6 +225,10 @@
         
 
         
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/" rel="tag">iOS</a></li></ul>
+    </div>
+
         <div class="clearfix"></div>
       </div>
       
@@ -227,8 +236,22 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>因 devcom.com 域名将于11月最后一个礼拜起，进行转让，本人的域名地址将于此后进行转换</p>
+        <p>从iOS 13系统开始，开启了App的深色模式的大门。因为AppStore审核指南提出：从2020年4月30日开始，所有提交至App Store的iPhone App都必须使用 iOS 13 SDK或更高版本来构建。以后的app都需要支持暗黑模式了。</p>
+<p>##一、暗黑模式</p>
+<h3 id="1、-UIUserInterfaceStyle（页面模式的枚举）"><a href="#1、-UIUserInterfaceStyle（页面模式的枚举）" class="headerlink" title="1、 UIUserInterfaceStyle（页面模式的枚举）"></a>1、 UIUserInterfaceStyle（页面模式的枚举）</h3><a id="more"></a>
 
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@available(iOS 12.0, *)</span><br><span class="line">public enum UIUserInterfaceStyle : Int &#123;    </span><br><span class="line">    case unspecified &#x3D; 0</span><br><span class="line">    case light &#x3D; 1</span><br><span class="line">    case dark &#x3D; 2</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2、暗黑模式监听："><a href="#2、暗黑模式监听：" class="headerlink" title="2、暗黑模式监听："></a>2、暗黑模式监听：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;&#x2F;监听模式的变化</span><br><span class="line">override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) &#123;</span><br><span class="line">	super.traitCollectionDidChange(previousTraitCollection)</span><br><span class="line">     	if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) &#123;</span><br><span class="line">            &#x2F;&#x2F;模式发生变化会回调这里</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3、获取当前模式"><a href="#3、获取当前模式" class="headerlink" title="3、获取当前模式"></a>3、获取当前模式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">if self.traitCollection.userInterfaceStyle &#x3D;&#x3D; .dark &#123;</span><br><span class="line">     &#x2F;&#x2F; Dark</span><br><span class="line">      print(&quot;是dark模式、。。。&quot;)</span><br><span class="line"> &#125; else  if self.traitCollection.userInterfaceStyle &#x3D;&#x3D; .light &#123;</span><br><span class="line">    &#x2F;&#x2F; Light</span><br><span class="line">    print(&quot;是light模式、。。。&quot;)</span><br><span class="line"> &#125; else &#123;</span><br><span class="line">   &#x2F;&#x2F;unspecified</span><br><span class="line">   print(&quot;是unspecified模式、。。。&quot;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、创建动态颜色"><a href="#二、创建动态颜色" class="headerlink" title="二、创建动态颜色"></a>二、创建动态颜色</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">extension UIColor &#123;</span><br><span class="line">    &#x2F;&#x2F;&#x2F; 动态颜色</span><br><span class="line">    class func color(lightColor: UIColor, darkColor: UIColor) -&gt; UIColor &#123;</span><br><span class="line">        if #available(iOS 13.0, *) &#123;</span><br><span class="line">            &#x2F;&#x2F; UITraitCollection</span><br><span class="line">            return UIColor &#123; (traitCollection) -&gt; UIColor in</span><br><span class="line">		    &#x2F;&#x2F;我这里只有两种颜色，所以if，else就可以。如果需要，可以看下面的注释方法</span><br><span class="line">                if traitCollection.userInterfaceStyle &#x3D;&#x3D; .dark &#123;</span><br><span class="line">                    return darkColor</span><br><span class="line">                &#125; else  &#123;</span><br><span class="line">                    return lightColor</span><br><span class="line">                &#125;</span><br><span class="line">		&#x2F;&#x2F;switch traitCollection.userInterfaceStyle &#123;</span><br><span class="line">		&#x2F;&#x2F;case .light:</span><br><span class="line">		&#x2F;&#x2F;	return lightColor</span><br><span class="line">		&#x2F;&#x2F;case .dark:</span><br><span class="line">		&#x2F;&#x2F;	return darkColor</span><br><span class="line">		&#x2F;&#x2F;case .unspecified:</span><br><span class="line">		&#x2F;&#x2F;	return lightColor   &#x2F;&#x2F;如果有需求，这里可以设置</span><br><span class="line">		&#x2F;&#x2F;@unknown default:</span><br><span class="line">		&#x2F;&#x2F;	return lightColor</span><br><span class="line">		&#x2F;&#x2F;&#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return lightColor</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、Assets-xcassets-Color-set-Image-set"><a href="#三、Assets-xcassets-Color-set-Image-set" class="headerlink" title="三、Assets.xcassets Color set/ Image set"></a>三、Assets.xcassets Color set/ Image set</h2><p>1、 设置动态图片。选择右侧第四个标签栏。在下面选择 <code>Appearance</code>，弹出的弹框里，可以根据需求选择 <code>Any, Dark</code> 或 <code>Any, Light, Dary</code> 模式。</p>
+<p><img src="/2020/05/28/ios-dynamic-color/001.png" alt="图片"></p>
+<p>2、设置动态颜色，点击下方的加号，然后选择 Color Set。然后按照设置动态图片的方式，设置动态颜色即可<br><img src="/2020/05/28/ios-dynamic-color/002.png" alt="图片"><br><img src="/2020/05/28/ios-dynamic-color/003.png" alt="图片"></p>
+<p>3、代码的使用<br>这里只记录颜色，图片的方式还是不变的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;Color Set是ios &gt;&#x3D; 11才能使用的，如果app仍然支持 iOS 11以下的，需要判断。</span><br><span class="line">&#x2F;&#x2F;如果支持版本 &gt;&#x3D; 11，不需要判断</span><br><span class="line">if #available(iOS 11.0, *) &#123;	</span><br><span class="line">   self.view.backgroundColor &#x3D; UIColor(named: &quot;lgl_test&quot;)</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    &#x2F;&#x2F;&#x2F;设置低于iOS11系统下展示的颜色</span><br><span class="line">    self.view.backgroundColor &#x3D; UIColor.red</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
       
       
         <div class="page-reward">
@@ -283,13 +306,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/11/25/domain-transfer/">域名转让</a></p>
+        <p><span>本文标题:</span><a href="/2020/05/28/ios-dynamic-color/">iOS 深浅模式 颜色 和 图片</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 老陶 的个人博客">老陶</a></p>
-        <p><span>发布时间:</span>2017年11月25日 - 14时21分</p>
-        <p><span>最后更新:</span>2019年08月13日 - 22时35分</p>
+        <p><span>发布时间:</span>2020年05月28日 - 20时26分</p>
+        <p><span>最后更新:</span>2020年07月09日 - 10时51分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/11/25/domain-transfer/" title="域名转让">http://blog.qoabc.com/2017/11/25/domain-transfer/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://blog.qoabc.com/2017/11/25/domain-transfer/　　作者: 老陶" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2020/05/28/ios-dynamic-color/" title="iOS 深浅模式 颜色 和 图片">http://blog.qoabc.com/2020/05/28/ios-dynamic-color/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://blog.qoabc.com/2020/05/28/ios-dynamic-color/　　作者: 老陶" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -302,18 +325,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2018/05/29/ios-iphone-device/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          iPhone不同设备屏幕尺寸和分辨率
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/03/21/html-javaScript-elements/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">javaScript-elements</div>
+    <a href="/2020/05/22/vue-cli4-axios/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">vue/cli4 axios网路请求封装 以及 登录token失效跳转页面</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -324,7 +338,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、-UIUserInterfaceStyle（页面模式的枚举）"><span class="toc-number">1.</span> <span class="toc-text">1、 UIUserInterfaceStyle（页面模式的枚举）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、暗黑模式监听："><span class="toc-number">2.</span> <span class="toc-text">2、暗黑模式监听：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、获取当前模式"><span class="toc-number">3.</span> <span class="toc-text">3、获取当前模式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、创建动态颜色"><span class="toc-number"></span> <span class="toc-text">二、创建动态颜色</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、Assets-xcassets-Color-set-Image-set"><span class="toc-number"></span> <span class="toc-text">三、Assets.xcassets Color set&#x2F; Image set</span></a>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -377,13 +391,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/05/29/ios-iphone-device/" title="上一篇: iPhone不同设备屏幕尺寸和分辨率">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2017/03/21/html-javaScript-elements/" title="下一篇: javaScript-elements">
+            <a href="/2020/05/22/vue-cli4-axios/" title="下一篇: vue/cli4 axios网路请求封装 以及 登录token失效跳转页面">
                 <i class="fa fa-angle-right"></i>
             </a>
         
