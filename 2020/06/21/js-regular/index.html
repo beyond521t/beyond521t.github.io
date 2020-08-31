@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>js常用正则表达式大全--如：数字，字符等 | 老陶的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一、校验数字的表达式12345678910111213141516171819数字：^[0-9]*$n位的数字：^\d&amp;#123;n&amp;#125;$至少n位的数字：^\d&amp;#123;n,&amp;#125;$m-n位的数字：^\d&amp;#123;m,n&amp;#125;$零和非零开头的数字：^(0|[1-9][0-9]*)$非零开头的最多带两位小数的数字：^([1-9][0-9]*)+(.[0-9]&amp;#123;1,2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js常用正则表达式大全--如：数字，字符等">
+<meta property="og:url" content="http://blog.qoabc.com/2020/06/21/js-regular/index.html">
+<meta property="og:site_name" content="老陶的博客">
+<meta property="og:description" content="一、校验数字的表达式12345678910111213141516171819数字：^[0-9]*$n位的数字：^\d&amp;#123;n&amp;#125;$至少n位的数字：^\d&amp;#123;n,&amp;#125;$m-n位的数字：^\d&amp;#123;m,n&amp;#125;$零和非零开头的数字：^(0|[1-9][0-9]*)$非零开头的最多带两位小数的数字：^([1-9][0-9]*)+(.[0-9]&amp;#123;1,2">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-06-21T00:06:44.000Z">
+<meta property="article:modified_time" content="2020-08-31T00:09:18.049Z">
+<meta property="article:author" content="老陶">
+<meta property="article:tag" content="js">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="老陶的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+      
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/head.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="Hi Mate">老陶</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">真正的才智是刚毅的志向。</p>
+        
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/APS/" style="font-size: 16.25px;">APS</a> <a href="/tags/LaoTao-Code/" style="font-size: 10px;">LaoTao-Code</a> <a href="/tags/Linux/" style="font-size: 11.25px;">Linux</a> <a href="/tags/Mac/" style="font-size: 12.5px;">Mac</a> <a href="/tags/VR/" style="font-size: 10px;">VR</a> <a href="/tags/deutsch/" style="font-size: 11.25px;">deutsch</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/golang/" style="font-size: 13.75px;">golang</a> <a href="/tags/hexo/" style="font-size: 13.75px;">hexo</a> <a href="/tags/html/" style="font-size: 17.5px;">html</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/iPhone/" style="font-size: 11.25px;">iPhone</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/linux/" style="font-size: 13.75px;">linux</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/swift/" style="font-size: 18.75px;">swift</a> <a href="/tags/vue/" style="font-size: 16.25px;">vue</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91/" style="font-size: 10px;">服务器开发</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://luuman.github.io/">name</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">纯海迷、爱运动、爱交友、爱旅行、喜欢接触新鲜事物、迎接新的挑战，更爱游离于错综复杂的编码与逻辑中</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">老陶</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">老陶</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">真正的才智是刚毅的志向。</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-js-regular" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/06/21/js-regular/" class="article-date">
+      <time datetime="2020-06-21T00:06:44.000Z" itemprop="datePublished">2020-06-21</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      js常用正则表达式大全--如：数字，字符等
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/" rel="tag">js</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="一、校验数字的表达式"><a href="#一、校验数字的表达式" class="headerlink" title="一、校验数字的表达式"></a>一、校验数字的表达式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">数字：^[0-9]*$</span><br><span class="line">n位的数字：^\d&#123;n&#125;$</span><br><span class="line">至少n位的数字：^\d&#123;n,&#125;$</span><br><span class="line">m-n位的数字：^\d&#123;m,n&#125;$</span><br><span class="line">零和非零开头的数字：^(0|[1-9][0-9]*)$</span><br><span class="line">非零开头的最多带两位小数的数字：^([1-9][0-9]*)+(.[0-9]&#123;1,2&#125;)?$</span><br><span class="line">带1-2位小数的正数或负数：^(\-)?\d+(\.\d&#123;1,2&#125;)?$</span><br><span class="line">正数、负数、和小数：^(\-|\+)?\d+(\.\d+)?$</span><br><span class="line">有两位小数的正实数：^[0-9]+(.[0-9]&#123;2&#125;)?$</span><br><span class="line">有1~3位小数的正实数：^[0-9]+(.[0-9]&#123;1,3&#125;)?$</span><br><span class="line">非零的正整数：^[1-9]\d*$ 或 ^([1-9][0-9]*)&#123;1,3&#125;$ 或 ^\+?[1-9][0-9]*$</span><br><span class="line">非零的负整数：^\-[1-9][]0-9&quot;*$ 或 ^-[1-9]\d*$</span><br><span class="line">非负整数：^\d+$ 或 ^[1-9]\d*|0$</span><br><span class="line">非正整数：^-[1-9]\d*|0$ 或 ^((-\d+)|(0+))$</span><br><span class="line">非负浮点数：^\d+(\.\d+)?$ 或 ^[1-9]\d*\.\d*|0\.\d*[1-9]\d*|0?\.0+|0$</span><br><span class="line">非正浮点数：^((-\d+(\.\d+)?)|(0+(\.0+)?))$ 或 ^(-([1-9]\d*\.\d*|0\.\d*[1-9]\d*))|0?\.0+|0$</span><br><span class="line">正浮点数：^[1-9]\d*\.\d*|0\.\d*[1-9]\d*$ 或 ^(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*))$</span><br><span class="line">负浮点数：^-([1-9]\d*\.\d*|0\.\d*[1-9]\d*)$ 或 ^(-(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*)))$</span><br><span class="line">浮点数：^(-?\d+)(\.\d+)?$ 或 ^-?([1-9]\d*\.\d*|0\.\d*[1-9]\d*|0?\.0+|0)$</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、校验字符的表达式"><a href="#二、校验字符的表达式" class="headerlink" title="二、校验字符的表达式"></a>二、校验字符的表达式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">汉字：^[\u4e00-\u9fa5]&#123;0,&#125;$</span><br><span class="line">英文和数字：^[A-Za-z0-9]+$ 或 ^[A-Za-z0-9]&#123;4,40&#125;$</span><br><span class="line">长度为3-20的所有字符：^.&#123;3,20&#125;$</span><br><span class="line">由26个英文字母组成的字符串：^[A-Za-z]+$</span><br><span class="line">由26个大写英文字母组成的字符串：^[A-Z]+$</span><br><span class="line">由26个小写英文字母组成的字符串：^[a-z]+$</span><br><span class="line">由数字和26个英文字母组成的字符串：^[A-Za-z0-9]+$</span><br><span class="line">由数字、26个英文字母或者下划线组成的字符串：^\w+$ 或 ^\w&#123;3,20&#125;$</span><br><span class="line">中文、英文、数字包括下划线：^[\u4E00-\u9FA5A-Za-z0-9_]+$</span><br><span class="line">中文、英文、数字但不包括下划线等符号：^[\u4E00-\u9FA5A-Za-z0-9]+$ 或 ^[\u4E00-\u9FA5A-Za-z0-9]&#123;2,20&#125;$</span><br><span class="line">可以输入含有^%&amp;&#39;,;&#x3D;?$\&quot;等字符：[^%&amp;&#39;,;&#x3D;?$\x22]+</span><br><span class="line">禁止输入含有~的字符：[^~\x22]+</span><br></pre></td></tr></table></figure>
+<h2 id="三、特殊需求表达式"><a href="#三、特殊需求表达式" class="headerlink" title="三、特殊需求表达式"></a>三、特殊需求表达式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">1 Email地址：^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$</span><br><span class="line"> 2 域名：[a-zA-Z0-9][-a-zA-Z0-9]&#123;0,62&#125;(&#x2F;.[a-zA-Z0-9][-a-zA-Z0-9]&#123;0,62&#125;)+&#x2F;.?</span><br><span class="line"> 3 InternetURL：[a-zA-z]+:&#x2F;&#x2F;[^\s]* 或 ^http:&#x2F;&#x2F;([\w-]+\.)+[\w-]+(&#x2F;[\w-.&#x2F;?%&amp;&#x3D;]*)?$</span><br><span class="line"> 4 手机号码：^(13[0-9]|14[0-9]|15[0-9]|166|17[0-9]|18[0-9]|19[8|9])\d&#123;8&#125;$   4.1 var re &#x3D; &#x2F;^(1[3-9][0-9]&#123;9&#125;)$&#x2F;;&#x2F;&#x2F;如：</span><br><span class="line"></span><br><span class="line">if (re.test(vmData.PHONE) &#x3D;&#x3D;&#x3D; false) &#123;</span><br><span class="line">   alert(&quot;手机号格式不正确&quot;);</span><br><span class="line">   return;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> 5 电话号码(&quot;XXX-XXXXXXX&quot;、&quot;XXXX-XXXXXXXX&quot;、&quot;XXX-XXXXXXX&quot;、&quot;XXX-XXXXXXXX&quot;、&quot;XXXXXXX&quot;和&quot;XXXXXXXX)：^(\(\d&#123;3,4&#125;-)|\d&#123;3.4&#125;-)?\d&#123;7,8&#125;$ </span><br><span class="line"> 6 国内电话号码(0511-4405222、021-87888822)：\d&#123;3&#125;-\d&#123;8&#125;|\d&#123;4&#125;-\d&#123;7&#125;  7 18位身份证号码(数字、字母x结尾)：^((\d&#123;18&#125;)|([0-9x]&#123;18&#125;)|([0-9X]&#123;18&#125;))$ 8 帐号是否合法(字母开头，允许5-16字节，允许字母数字下划线)：^[a-zA-Z][a-zA-Z0-9_]&#123;4,15&#125;$</span><br><span class="line"> 9 密码(以字母开头，长度在6~18之间，只能包含字母、数字和下划线)：^[a-zA-Z]\w&#123;5,17&#125;$</span><br><span class="line">10 强密码(必须包含大小写字母和数字的组合，不能使用特殊字符，长度在8-10之间)：^(?&#x3D;.*\d)(?&#x3D;.*[a-z])(?&#x3D;.*[A-Z]).&#123;8,10&#125;$  </span><br><span class="line">11 日期格式：^\d&#123;4&#125;-\d&#123;1,2&#125;-\d&#123;1,2&#125;</span><br><span class="line">12 一年的12个月(01～09和1～12)：^(0?[1-9]|1[0-2])$</span><br><span class="line">13 一个月的31天(01～09和1～31)：^((0?[1-9])|((1|2)[0-9])|30|31)$ </span><br><span class="line">14 钱的输入格式：</span><br><span class="line">15    1.有四种钱的表示形式我们可以接受:&quot;10000.00&quot; 和 &quot;10,000.00&quot;, 和没有 &quot;分&quot; 的 &quot;10000&quot; 和 &quot;10,000&quot;：^[1-9][0-9]*$ </span><br><span class="line">16    2.这表示任意一个不以0开头的数字,但是,这也意味着一个字符&quot;0&quot;不通过,所以我们采用下面的形式：^(0|[1-9][0-9]*)$ </span><br><span class="line">17    3.一个0或者一个不以0开头的数字.我们还可以允许开头有一个负号：^(0|-?[1-9][0-9]*)$ </span><br><span class="line">18    4.这表示一个0或者一个可能为负的开头不为0的数字.让用户以0开头好了.把负号的也去掉,因为钱总不能是负的吧.下面我们要加的是说明可能的小数部分：^[0-9]+(.[0-9]+)?$ </span><br><span class="line">19    5.必须说明的是,小数点后面至少应该有1位数,所以&quot;10.&quot;是不通过的,但是 &quot;10&quot; 和 &quot;10.2&quot; 是通过的：^[0-9]+(.[0-9]&#123;2&#125;)?$ </span><br><span class="line">20    6.这样我们规定小数点后面必须有两位,如果你认为太苛刻了,可以这样：^[0-9]+(.[0-9]&#123;1,2&#125;)?$ </span><br><span class="line">21    7.这样就允许用户只写一位小数.下面我们该考虑数字中的逗号了,我们可以这样：^[0-9]&#123;1,3&#125;(,[0-9]&#123;3&#125;)*(.[0-9]&#123;1,2&#125;)?$ </span><br><span class="line">22    8.1到3个数字,后面跟着任意个 逗号+3个数字,逗号成为可选,而不是必须：^([0-9]+|[0-9]&#123;1,3&#125;(,[0-9]&#123;3&#125;)*)(.[0-9]&#123;1,2&#125;)?$ </span><br><span class="line">23    备注：这就是最终结果了,别忘了&quot;+&quot;可以用&quot;*&quot;替代如果你觉得空字符串也可以接受的话(奇怪,为什么?)最后,别忘了在用函数时去掉去掉那个反斜杠,一般的错误都在这里</span><br><span class="line">24 xml文件：^([a-zA-Z]+-?)+[a-zA-Z0-9]+\\.[x|X][m|M][l|L]$</span><br><span class="line">25 中文字符的正则表达式：[\u4e00-\u9fa5]</span><br><span class="line">26 双字节字符：[^\x00-\xff]    (包括汉字在内，可以用来计算字符串的长度(一个双字节字符长度计2，ASCII字符计1))27 空白行的正则表达式：\n\s*\r    (可以用来删除空白行)</span><br><span class="line">28 HTML标记的正则表达式：&lt;(\S*?)[^&gt;]*&gt;.*?&lt;&#x2F;\1&gt;|&lt;.*? &#x2F;&gt;    (网上流传的版本太糟糕，上面这个也仅仅能部分，对于复杂的嵌套标记依旧无能为力)29 首尾空白字符的正则表达式：^\s*|\s*$或(^\s*)|(\s*$)    (可以用来删除行首行尾的空白字符(包括空格、制表符、换页符等等)，非常有用的表达式)</span><br><span class="line">30 腾讯QQ号：[1-9][0-9]&#123;4,&#125;    (腾讯QQ号从10000开始)</span><br><span class="line">31 中国邮政编码：[1-9]\d&#123;5&#125;(?!\d)    (中国邮政编码为6位数字)</span><br><span class="line">32 IP地址：\d+\.\d+\.\d+\.\d+    (提取IP地址时有用)33 IP地址：((?:(?:25[0-5]|2[0-4]\\d|[01]?\\d?\\d)\\.)&#123;3&#125;(?:25[0-5]|2[0-4]\\d|[01]?\\d?\\d))</span><br></pre></td></tr></table></figure>
+
+      
+      
+        <div class="page-reward">
+          <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang">赏</a></p>
+          <div class="hide_box"></div>
+          <div class="shang_box">
+            <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()">×</a>
+            <div class="shang_tit">
+              <p>纯属好玩</p>
+            </div>
+            <div class="shang_payimg">
+              <img src="/img/alipayimg.jpg" alt="扫码支持" title="扫一扫" />
+            </div>
+              <div class="pay_explain">扫码打赏，你说多少就多少</div>
+            <div class="shang_payselect">
+              
+                <div class="pay_item checked" data-id="alipay">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/alipay.png" alt="支付宝" /></span>
+                </div>
+              
+              
+                <div class="pay_item" data-id="wechat">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/weixin.png" alt="微信" /></span>
+                </div>
+              
+            </div>
+            <div class="shang_info">
+              <p>打开<span id="shang_pay_txt">支付宝</span>扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
+        <script type="text/javascript">
+          $(".pay_item").click(function(){
+            $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
+            var dataid=$(this).attr('data-id');
+            $(".shang_payimg img").attr("src","/img/"+dataid+"img.jpg");
+            $("#shang_pay_txt").text(dataid=="alipay"?"支付宝":"微信");
+          });
+          function dashangToggle(){
+            
+            $(".hide_box").fadeToggle();
+            $(".shang_box").fadeToggle();
+          }
+        </script>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2020/06/21/js-regular/">js常用正则表达式大全--如：数字，字符等</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 老陶 的个人博客">老陶</a></p>
+        <p><span>发布时间:</span>2020年06月21日 - 08时06分</p>
+        <p><span>最后更新:</span>2020年08月31日 - 08时09分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2020/06/21/js-regular/" title="js常用正则表达式大全--如：数字，字符等">http://blog.qoabc.com/2020/06/21/js-regular/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://blog.qoabc.com/2020/06/21/js-regular/　　作者: 老陶" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" target="_blank" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/2020/07/30/linux-nginx-proxy/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Nginx 反向代理 （一）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/06/03/vue-quill-editor/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Vue基于vue-quill-editor富文本编辑器的使用</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、校验数字的表达式"><span class="toc-number">1.</span> <span class="toc-text">一、校验数字的表达式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、校验字符的表达式"><span class="toc-number">2.</span> <span class="toc-text">二、校验字符的表达式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、特殊需求表达式"><span class="toc-number">3.</span> <span class="toc-text">三、特殊需求表达式</span></a></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2020/07/30/linux-nginx-proxy/" title="上一篇: Nginx 反向代理 （一）">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2020/06/03/vue-quill-editor/" title="下一篇: Vue基于vue-quill-editor富文本编辑器的使用">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/07/30/linux-nginx-proxy/">Nginx 反向代理 （一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/21/js-regular/">js常用正则表达式大全--如：数字，字符等</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/03/vue-quill-editor/">Vue基于vue-quill-editor富文本编辑器的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/31/vue-dialog-center/">使elementUI的dialog上下左右居中</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/28/ios-dynamic-color/">iOS 深浅模式 颜色 和 图片</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/22/vue-cli4-axios/">vue/cli4 axios网路请求封装 以及 登录token失效跳转页面</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/18/go-mysql-recursion/">Golang实战系列：mysql数据库查询 -- 实现无限级菜单（beego orm)</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/14/vue-cli4-start-04/">vue-cli@4 入门（四）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/14/vue-cli4-start-03/">vue-cli@4 入门（三）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/12/vue-cli4-start-02/">vue-cli@4 入门（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/11/vue-cli4-start-01/">vue-cli@4 入门（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/22/go-os-operation/">Golang 文件操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/16/go-type-format/">golang 中string和int类型相互转换</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/05/linux-start-03/">CentOS 使用 Docker 服务搭建 Nginx 文件服务器</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/25/linux-start-02/">CentOS 服务器 + mysql + vsftpd服务</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/07/19/docker-net-shell/">docker网络命令与基本查看命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/22/linux-brctl-shell/">Linux brclt 命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/07/go-mac-environment/">Mac 下Go语言开发环境设置</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/05/linux-Shell-ssh/">Linux Shell ssh登录脚本</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/05/hexo-installed-1/">Mac+HEXO+Github 搭建属于自己的博客(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/20/linux-start-01/">CentOS 第一步</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/27/iOS-AVAudioSession/">iOS-AVAudio</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/29/ios-iphone-device/">iPhone不同设备屏幕尺寸和分辨率</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/25/domain-transfer/">域名转让</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/html-javaScript-elements/">javaScript-elements</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/html-css-animation/">CSS动画--页面特效</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/html-css-position/">html-css-position</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/html-css-box/">3.3 CSS盒子模型</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/html-css-style/">3.2 CSS基础样式讲解</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/html-css-elements/">第3阶段 CSS3基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/17/html-style-link-table/">html-style-link-table</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/10/html-framework-bg/">HTML框架、背景、实体</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/18/iOS-SpriteKit-SceneKit/">iOS SpriteKit/SceneKit/Metal浅析</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/30/swift3-GCD-dispatch-async/">Swift3中dispatch_once废弃的解决办法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/21/Deutsch-900-1/">德语900句（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/21/deutsch-900-2/">德语900句(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/31/iOS-URLScheme-Setting/">iOS应用内跳转系统设置相关界面的方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/04/git-warning-default/">Git Warning push.default is unset</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/02/hexo-asset-image/">在hexo中使用本地图片</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/01/mysql-install/">MySQL从安装到卸载</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/01/sublimeText3-License/">Sublime Text3激活</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/01/nvm-update-Ruby/">rvm升级Ruby</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/17/git-sshkey-multi/">管理多个SSH Key</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/17/git-sshkey/">生成SSH Key</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/12/CocoaPods-Install/">2016 CocosPods安装教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/11/swift-delegate-memory-leak/">swift 使用 delegate 内存泄露问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/11/ssh-exchange-identification/">ssh_exchange_identification</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/08/swift-LTPickerView/">LTPickerView.swift</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/22/iOS-UnicodeScalars/">判断中、英文、数字、符号</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/22/gitcommit-message-and-change-log/">Git提交的正确姿势：Commit message 和 Change log 编写指南</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/13/charlesproxy/">charles 抓包</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/01/APS-Encapsulation-Inheritance-Polymorphism-Delegation/">Encapsulation, Inheritance, Polymorphism, Delegation</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/25/iOS-rootViewControllerReset/"> iOS根视图切换，释放内存，以及推送界面跳转（iOS多语言切换语言处理，也请看此处）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/25/iOS-MultiLanguage/">iOS多语言，支持app内部设置</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/22/iOS-requireIPv6/">6 月 1 日起所有提交的 app 都需要支持 IPv6 网络</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/16/FMDatabaseQueue-lead-to-a-deadlock/">FMDatabaseQueue lead to a deadlock</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/15/web-onlineGenerationSiteMap/">在线生成站点地图SiteMap</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/14/swift-inout-keyordsChangePosition/">inout 关键字位置的变化</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/09/swift3-0AdvanceObjcTransformToSwift/">Swift 3.0 预告：将 Objc 库转换成更符合 Swift 语法风格的形式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/09/swiftPackageError-swiftc-failed-with-exit-code-1/">swift打包失败，swiftc failed with exit code 1</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/05/iOS-require-AllAppIPv6-only/">苹果:所有应用必须支持IPv6-only网络</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/28/iOS-BLEDevelopMultiDevice/">iOS-BLE蓝牙开发(二) -- 多设备</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/28/iOS-BLEDevelop1/">iOS-BLE蓝牙开发</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/28/swift3-0NewInfo(foundIn2-2)/">swift3.0变化（swift2.2工程中发现）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/27/UIImage-resizableImageWithCapInsets/">UIImage 拉伸图片 resizableImageWithCapInsets</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/18/VR-JourneyOfTime/">VR时代之旅</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/15/swift-mutating/">Swift - mutating关键字</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/11/IOS-cancel-performSelector-And-cancelPreviousPerformRequestsWithTarget/"> IOS 关于取消延迟执行函数的种种。performSelector与cancelPreviousPerformRequestsWithTarget</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/07/swift-StringOperation/">Swift字符串常用操作总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/07/StringOrNSString/">String还是NSString</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/01/APS-UML/">APS-UML</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/01/iOS-dSYMAnalyseCrash/">iOS通过dSYM文件分析crash</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/30/APS-Network/">APS-Network</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/28/APS-SQL2005/">APS---SQL2005</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/28/APS-Start/">APS---Start</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/24/developmentHistoryOfApple/">苹果手机发展史</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/23/swift2-2NewInfo/">Swift2.2的新特性</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/23/OSI%E3%80%81TCP-IP/">OSI、TCP/IP</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/11/iOS-SqliteMultithreading/">iOS上Sqlite多线程问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/10/ComputerEnglishVocabulary/">ComputerEnglishVocabulary</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/21/deploy-ssh-Of-Bitbucket/">如何配置Bitbucket的ssh</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/19/UITesting-ChineseWordsError/">UITesting中文错误问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/17/iOS-Objective-C-Literal-Value/">字面量声明方式 Objective-C Literal Value</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/17/DB-Error-1-unrecognized-token/">DB Error 1 unrecognized token</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/16/git-command/">Git命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/17/hello-world/">Hello World</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2020 老陶
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >海贼到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span> </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+    <script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1279014351'%3E%3C/span%3E%3Cscript src='https://s9.cnzz.com/z_stat.php%3Fid%3D1279014351%26show%3Dpic2' type='text/javascript'%3E%3C/script%3E"));</script>
+</footer>
+
+    </div>
+    
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>
