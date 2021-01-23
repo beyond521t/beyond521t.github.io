@@ -5,15 +5,15 @@
   
   <title>使用国内源安装 Homebrew | 老陶的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="转载来源 1、删除旧的安装123sudo rm -rf &#x2F;usr&#x2F;local&#x2F;Homebrewsudo rm -f &#x2F;usr&#x2F;local&#x2F;bin&#x2F;brewsudo rm -rf &#x2F;usr&#x2F;local&#x2F;var&#x2F;homebrew 2、创建新的安装目录sudo mkdir &#x2F;usr&#x2F;local&#x2F;">
+  <meta name="description" content="转载来源 1、删除旧的安装123sudo rm -rf &#x2F;usr&#x2F;local&#x2F;Homebrewsudo rm -f &#x2F;usr&#x2F;local&#x2F;bin&#x2F;brewsudo rm -rf &#x2F;usr&#x2F;local&#x2F;var&#x2F;homebrew 2、创建新的安装目录">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用国内源安装 Homebrew">
 <meta property="og:url" content="http://blog.qoabc.com/2021/01/23/brew-install-national/index.html">
 <meta property="og:site_name" content="老陶的博客">
-<meta property="og:description" content="转载来源 1、删除旧的安装123sudo rm -rf &#x2F;usr&#x2F;local&#x2F;Homebrewsudo rm -f &#x2F;usr&#x2F;local&#x2F;bin&#x2F;brewsudo rm -rf &#x2F;usr&#x2F;local&#x2F;var&#x2F;homebrew 2、创建新的安装目录sudo mkdir &#x2F;usr&#x2F;local&#x2F;">
+<meta property="og:description" content="转载来源 1、删除旧的安装123sudo rm -rf &#x2F;usr&#x2F;local&#x2F;Homebrewsudo rm -f &#x2F;usr&#x2F;local&#x2F;bin&#x2F;brewsudo rm -rf &#x2F;usr&#x2F;local&#x2F;var&#x2F;homebrew 2、创建新的安装目录">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-01-23T09:22:24.000Z">
-<meta property="article:modified_time" content="2021-01-23T09:22:42.837Z">
+<meta property="article:modified_time" content="2021-01-23T09:23:19.278Z">
 <meta property="article:author" content="老陶">
 <meta property="article:tag" content="Mac">
 <meta name="twitter:card" content="summary">
@@ -234,7 +234,9 @@
           
         <p><a href="https://www.jianshu.com/p/cd7c7fabce9f" target="_blank" rel="noopener">转载来源</a></p>
 <h4 id="1、删除旧的安装"><a href="#1、删除旧的安装" class="headerlink" title="1、删除旧的安装"></a>1、删除旧的安装</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo rm -rf &#x2F;usr&#x2F;local&#x2F;Homebrew</span><br><span class="line">sudo rm -f &#x2F;usr&#x2F;local&#x2F;bin&#x2F;brew</span><br><span class="line">sudo rm -rf &#x2F;usr&#x2F;local&#x2F;var&#x2F;homebrew</span><br></pre></td></tr></table></figure>
-<h4 id="2、创建新的安装目录"><a href="#2、创建新的安装目录" class="headerlink" title="2、创建新的安装目录"></a>2、创建新的安装目录</h4><pre><code>sudo mkdir /usr/local/Homebrew</code></pre><h4 id="3、下载brew"><a href="#3、下载brew" class="headerlink" title="3、下载brew"></a>3、下载brew</h4><pre><code>sudo git clone https://mirrors.ustc.edu.cn/brew.git /usr/local/Homebrew</code></pre><p>地址可更换为清华源<code>https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git</code>。</p>
+<h4 id="2、创建新的安装目录"><a href="#2、创建新的安装目录" class="headerlink" title="2、创建新的安装目录"></a>2、创建新的安装目录</h4><a id="more"></a>
+
+<pre><code>sudo mkdir /usr/local/Homebrew</code></pre><h4 id="3、下载brew"><a href="#3、下载brew" class="headerlink" title="3、下载brew"></a>3、下载brew</h4><pre><code>sudo git clone https://mirrors.ustc.edu.cn/brew.git /usr/local/Homebrew</code></pre><p>地址可更换为清华源<code>https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git</code>。</p>
 <p>如提示没有git，可通过xcode-select –install安装。</p>
 <h4 id="4、创建执行文件链接"><a href="#4、创建执行文件链接" class="headerlink" title="4、创建执行文件链接"></a>4、创建执行文件链接</h4><pre><code>sudo mkdir /usr/local/bin
 sudo ln -s /usr/local/Homebrew/bin/brew /usr/local/bin/brew</code></pre><h4 id="5、创建brew-core目录"><a href="#5、创建brew-core目录" class="headerlink" title="5、创建brew-core目录"></a>5、创建brew-core目录</h4><pre><code>sudo mkdir -p /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core</code></pre><h4 id="6、下载brew-core"><a href="#6、下载brew-core" class="headerlink" title="6、下载brew-core"></a>6、下载brew-core</h4><pre><code>sudo git clone https://mirrors.ustc.edu.cn/homebrew-core.git /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core</code></pre><p>地址可更换为清华源<code>https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git</code>。</p>
@@ -301,7 +303,7 @@ sudo ln -s /usr/local/Homebrew/bin/brew /usr/local/bin/brew</code></pre><h4 id="
         <p><span>本文标题:</span><a href="/2021/01/23/brew-install-national/">使用国内源安装 Homebrew</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 老陶 的个人博客">老陶</a></p>
         <p><span>发布时间:</span>2021年01月23日 - 17时22分</p>
-        <p><span>最后更新:</span>2021年01月23日 - 17时22分</p>
+        <p><span>最后更新:</span>2021年01月23日 - 17时23分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2021/01/23/brew-install-national/" title="使用国内源安装 Homebrew">http://blog.qoabc.com/2021/01/23/brew-install-national/</a>
             <span class="copy-path" data-clipboard-text="原文: http://blog.qoabc.com/2021/01/23/brew-install-national/　　作者: 老陶" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
