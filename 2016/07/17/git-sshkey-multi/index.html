@@ -13,7 +13,7 @@
 <meta property="og:description" content="如果你在一台机器使用两个github账号，或者是使用github的同时，还有bitbucket等代码管理仓库。例如github，默认情况下，这个秘钥是在你账户的.ssh目录生成id_rsa文件，对应一个id_rsa.pub公钥文件，但是，我可能会有两个github帐号，一个个人，一个办公用（或者是多个仓库管理），这时，我就需要生成多个密钥。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2016-07-17T05:43:04.000Z">
-<meta property="article:modified_time" content="2019-08-13T14:35:05.570Z">
+<meta property="article:modified_time" content="2021-01-23T09:02:07.000Z">
 <meta property="article:author" content="老陶">
 <meta property="article:tag" content="git">
 <meta name="twitter:card" content="summary">
@@ -134,7 +134,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/APS/" style="font-size: 16.25px;">APS</a> <a href="/tags/LaoTao-Code/" style="font-size: 10px;">LaoTao-Code</a> <a href="/tags/Linux/" style="font-size: 11.25px;">Linux</a> <a href="/tags/Mac/" style="font-size: 12.5px;">Mac</a> <a href="/tags/VR/" style="font-size: 10px;">VR</a> <a href="/tags/deutsch/" style="font-size: 11.25px;">deutsch</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/golang/" style="font-size: 13.75px;">golang</a> <a href="/tags/hexo/" style="font-size: 13.75px;">hexo</a> <a href="/tags/html/" style="font-size: 17.5px;">html</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/iPhone/" style="font-size: 11.25px;">iPhone</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/linux/" style="font-size: 13.75px;">linux</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/swift/" style="font-size: 18.75px;">swift</a> <a href="/tags/vue/" style="font-size: 16.25px;">vue</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91/" style="font-size: 10px;">服务器开发</a>
+                        <a href="/tags/APS/" style="font-size: 15.71px;">APS</a> <a href="/tags/LaoTao-Code/" style="font-size: 10px;">LaoTao-Code</a> <a href="/tags/Linux/" style="font-size: 11.43px;">Linux</a> <a href="/tags/Mac/" style="font-size: 12.86px;">Mac</a> <a href="/tags/VR/" style="font-size: 10px;">VR</a> <a href="/tags/deutsch/" style="font-size: 11.43px;">deutsch</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/git/" style="font-size: 14.29px;">git</a> <a href="/tags/golang/" style="font-size: 12.86px;">golang</a> <a href="/tags/hexo/" style="font-size: 12.86px;">hexo</a> <a href="/tags/html/" style="font-size: 17.14px;">html</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/iPhone/" style="font-size: 11.43px;">iPhone</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/linux/" style="font-size: 12.86px;">linux</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/swift/" style="font-size: 18.57px;">swift</a> <a href="/tags/vue/" style="font-size: 15.71px;">vue</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91/" style="font-size: 10px;">服务器开发</a>
                     </div>
                 </section>
                 
@@ -236,31 +236,22 @@
 <a id="more"></a>
 
 <pre><code>$ ls ~/.ssh/
-beyond521t.pem 
 config        
 github_rsa     
-github_rsa.pub 
-id_rsa         
-id_rsa.pub     
-known_hosts    
+github_rsa.pub   
 personalid     
-personalid.pub 
-ssh_rsa        
-ssh_rsa.pub</code></pre><p>以上是我的密钥列表，那么我的github如何使用多个密钥呢。</p>
+personalid.pub </code></pre><p>以上是我的密钥列表，那么我的github如何使用多个密钥呢。</p>
 <ul>
 <li>需要编辑一下配置文件~/.ssh/config：</li>
 </ul>
 <p>如果没有这个文件，可以创建一个(切换到 ~/.ssh    目录下)</p>
 <pre><code>$ touch config</code></pre><p>编辑 config文件</p>
-<pre><code>Host github.com
-       Hostname github.com
-    User            username
-    IdentityFile    ~/.ssh/github_rsa
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Host github.com</span><br><span class="line">  		Hostname github.com</span><br><span class="line">    User            username</span><br><span class="line">   	IdentityFile    ~&#x2F;.ssh&#x2F;github_rsa</span><br><span class="line">    </span><br><span class="line">Host bitbucket.org</span><br><span class="line">    Hostname bitbucket.org</span><br><span class="line">    User username</span><br><span class="line">    IdentityFile ~&#x2F;.ssh&#x2F;personalid</span><br></pre></td></tr></table></figure>
 
-Host bitbucket.org
-    Hostname bitbucket.org
-    User username
-    IdentityFile ~/.ssh/personalid</code></pre><p>解释此配置文件：</p>
+<h4 id="只是用一个公钥"><a href="#只是用一个公钥" class="headerlink" title="只是用一个公钥"></a>只是用一个公钥</h4><p>也可以几个账号都上传同一个公钥，配置的时候，使用同一个公钥文件就可以了。为了安全性考虑，不建议这么做</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Host github.com</span><br><span class="line">   	 Hostname github.com</span><br><span class="line">	 User            username</span><br><span class="line">    	IdentityFile    ~&#x2F;.ssh&#x2F;github_rsa</span><br><span class="line">     </span><br><span class="line">Host bitbucket.org</span><br><span class="line">	 Hostname bitbucket.org</span><br><span class="line">	 User username</span><br><span class="line">	 IdentityFile ~&#x2F;.ssh&#x2F;github_rsa</span><br></pre></td></tr></table></figure>
+
+<p>解释此配置文件：</p>
 <pre><code>Host: &quot;github.com&quot;是一个『别名』，可以随意命名，也可以直接写github
 
 Hostname:    仓储地址：例如git@github.com，这里要的就是 github.com
@@ -270,128 +261,7 @@ IdentityFile: 所使用的公钥文件</code></pre><p>配置完毕，用下面�
 logged in as beyond521t.
 
 You can use git or hg to connect to Bitbucket. Shell access is disabled.</code></pre><p>可以使用如下命令，进行debug查看：</p>
-<pre><code>$ ssh -vv git@bitbucket.com
-OpenSSH_6.9p1, LibreSSL 2.1.8
-debug1: Reading configuration data /Users/LaoTao/.ssh/config
-debug1: Reading configuration data /etc/ssh/ssh_config
-debug1: /etc/ssh/ssh_config line 21: Applying options for *
-debug2: ssh_connect: needpriv 0
-debug1: Connecting to bitbucket.com [104.192.143.7] port 22.
-debug1: Connection established.
-debug1: identity file /Users/LaoTao/.ssh/id_rsa type 1
-debug1: key_load_public: No such file or directory
-debug1: identity file /Users/LaoTao/.ssh/id_rsa-cert type -1
-debug1: key_load_public: No such file or directory
-debug1: identity file /Users/LaoTao/.ssh/id_dsa type -1
-debug1: key_load_public: No such file or directory
-debug1: identity file /Users/LaoTao/.ssh/id_dsa-cert type -1
-debug1: key_load_public: No such file or directory
-debug1: identity file /Users/LaoTao/.ssh/id_ecdsa type -1
-debug1: key_load_public: No such file or directory
-debug1: identity file /Users/LaoTao/.ssh/id_ecdsa-cert type -1
-debug1: key_load_public: No such file or directory
-debug1: identity file /Users/LaoTao/.ssh/id_ed25519 type -1
-debug1: key_load_public: No such file or directory
-debug1: identity file /Users/LaoTao/.ssh/id_ed25519-cert type -1
-debug1: Enabling compatibility mode for protocol 2.0
-debug1: Local version string SSH-2.0-OpenSSH_6.9
-debug1: Remote protocol version 2.0, remote software version conker_1.0.205.d303317
-debug1: no match: conker_1.0.205.d303317
-debug2: fd 5 setting O_NONBLOCK
-debug1: Authenticating to bitbucket.com:22 as &apos;git&apos;
-debug1: SSH2_MSG_KEXINIT sent
-debug1: SSH2_MSG_KEXINIT received
-debug2: kex_parse_kexinit: curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1,diffie-hellman-group1-sha1
-debug2: kex_parse_kexinit: ssh-rsa-cert-v01@openssh.com,ssh-rsa-cert-v00@openssh.com,ssh-rsa,ecdsa-sha2-nistp256-cert-v01@openssh.com,ecdsa-sha2-nistp384-cert-v01@openssh.com,ecdsa-sha2-nistp521-cert-v01@openssh.com,ssh-ed25519-cert-v01@openssh.com,ssh-dss-cert-v01@openssh.com,ssh-dss-cert-v00@openssh.com,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,ssh-ed25519,ssh-dss
-debug2: kex_parse_kexinit: chacha20-poly1305@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com,arcfour256,arcfour128,aes128-cbc,3des-cbc,blowfish-cbc,cast128-cbc,aes192-cbc,aes256-cbc,arcfour,rijndael-cbc@lysator.liu.se
-debug2: kex_parse_kexinit: chacha20-poly1305@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com,arcfour256,arcfour128,aes128-cbc,3des-cbc,blowfish-cbc,cast128-cbc,aes192-cbc,aes256-cbc,arcfour,rijndael-cbc@lysator.liu.se
-debug2: kex_parse_kexinit: umac-64-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-64@openssh.com,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-sha1,hmac-md5-etm@openssh.com,hmac-ripemd160-etm@openssh.com,hmac-sha1-96-etm@openssh.com,hmac-md5-96-etm@openssh.com,hmac-md5,hmac-ripemd160,hmac-ripemd160@openssh.com,hmac-sha1-96,hmac-md5-96
-debug2: kex_parse_kexinit: umac-64-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-64@openssh.com,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-sha1,hmac-md5-etm@openssh.com,hmac-ripemd160-etm@openssh.com,hmac-sha1-96-etm@openssh.com,hmac-md5-96-etm@openssh.com,hmac-md5,hmac-ripemd160,hmac-ripemd160@openssh.com,hmac-sha1-96,hmac-md5-96
-debug2: kex_parse_kexinit: none,zlib@openssh.com,zlib
-debug2: kex_parse_kexinit: none,zlib@openssh.com,zlib
-debug2: kex_parse_kexinit: 
-debug2: kex_parse_kexinit: 
-debug2: kex_parse_kexinit: first_kex_follows 0 
-debug2: kex_parse_kexinit: reserved 0 
-debug2: kex_parse_kexinit: curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group14-sha1,diffie-hellman-group1-sha1
-debug2: kex_parse_kexinit: ssh-dss,ssh-rsa
-debug2: kex_parse_kexinit: aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,arcfour256,arcfour128
-debug2: kex_parse_kexinit: aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,arcfour256,arcfour128
-debug2: kex_parse_kexinit: hmac-sha2-256,hmac-sha1,hmac-sha1-96
-debug2: kex_parse_kexinit: hmac-sha2-256,hmac-sha1,hmac-sha1-96
-debug2: kex_parse_kexinit: none
-debug2: kex_parse_kexinit: none
-debug2: kex_parse_kexinit: 
-debug2: kex_parse_kexinit: 
-debug2: kex_parse_kexinit: first_kex_follows 0 
-debug2: kex_parse_kexinit: reserved 0 
-debug1: kex: server-&gt;client aes128-ctr hmac-sha2-256 none
-debug1: kex: client-&gt;server aes128-ctr hmac-sha2-256 none
-debug1: expecting SSH2_MSG_KEX_ECDH_REPLY
-debug1: Server host key: ssh-rsa SHA256:zzXQOXSRBEiUtuE8AikJYKwbHaxvSc0ojez9YXaGp1A
-debug1: Host &apos;bitbucket.com&apos; is known and matches the RSA host key.
-debug1: Found key in /Users/LaoTao/.ssh/known_hosts:1
-debug2: set_newkeys: mode 1
-debug1: SSH2_MSG_NEWKEYS sent
-debug1: expecting SSH2_MSG_NEWKEYS
-debug2: set_newkeys: mode 0
-debug1: SSH2_MSG_NEWKEYS received
-debug1: SSH2_MSG_SERVICE_REQUEST sent
-debug2: service_accept: ssh-userauth
-debug1: SSH2_MSG_SERVICE_ACCEPT received
-debug2: key: /Users/LaoTao/.ssh/personalid (0x7fd358e00bd0),
-debug2: key: /Users/LaoTao/.ssh/id_rsa (0x7fd358e00200),
-debug2: key: /Users/LaoTao/.ssh/id_dsa (0x0),
-debug2: key: /Users/LaoTao/.ssh/id_ecdsa (0x0),
-debug2: key: /Users/LaoTao/.ssh/id_ed25519 (0x0),
-debug1: Authentications that can continue: publickey
-debug1: Next authentication method: publickey
-debug1: Offering RSA public key: /Users/LaoTao/.ssh/personalid
-debug2: we sent a publickey packet, wait for reply
-debug1: Server accepts key: pkalg ssh-rsa blen 279
-debug2: input_userauth_pk_ok: fp SHA256:v/HdPvYds0+vJmcKW09dsaeyRWab2w3FHPPiMwysGJY
-debug1: Authentication succeeded (publickey).
-Authenticated to bitbucket.com ([104.192.143.7]:22).
-debug1: channel 0: new [client-session]
-debug2: channel 0: send open
-debug1: Entering interactive session.
-debug2: callback start
-debug2: fd 5 setting TCP_NODELAY
-debug2: client_session2_setup: id 0
-debug2: channel 0: request pty-req confirm 1
-debug1: Sending environment.
-debug1: Sending env LANG = zh_CN.UTF-8
-debug2: channel 0: request env confirm 0
-debug2: channel 0: request shell confirm 1
-debug2: callback done
-debug2: channel 0: open confirm rwindow 2097152 rmax 32768
-debug2: channel_input_status_confirm: type 100 id 0
-PTY allocation request failed on channel 0
-debug2: channel_input_status_confirm: type 99 id 0
-debug2: shell request accepted on channel 0
-debug1: client_input_channel_req: channel 0 rtype exit-status reply 0
-debug2: channel 0: rcvd eof
-debug2: channel 0: output open -&gt; drain
-debug2: channel 0: rcvd close
-debug2: channel 0: close_read
-debug2: channel 0: input open -&gt; closed
-logged in as beyond521t.
-
-You can use git or hg to connect to Bitbucket. Shell access is disabled.
-debug2: channel 0: obuf empty
-debug2: channel 0: close_write
-debug2: channel 0: output drain -&gt; closed
-debug2: channel 0: almost dead
-debug2: channel 0: gc: notify user
-debug2: channel 0: gc: user detached
-debug2: channel 0: send close
-debug2: channel 0: is dead
-debug2: channel 0: garbage collecting
-debug1: channel 0: free: client-session, nchannels 1
-Connection to bitbucket.com closed.
-Transferred: sent 3600, received 1744 bytes, in 0.9 seconds
-Bytes per second: sent 4044.6, received 1959.4
-debug1: Exit status 0</code></pre>
+<pre><code>$ ssh -vv git@bitbucket.com</code></pre>
       
       
         <div class="page-reward">
@@ -449,7 +319,7 @@ debug1: Exit status 0</code></pre>
         <p><span>本文标题:</span><a href="/2016/07/17/git-sshkey-multi/">管理多个SSH Key</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 老陶 的个人博客">老陶</a></p>
         <p><span>发布时间:</span>2016年07月17日 - 13时43分</p>
-        <p><span>最后更新:</span>2019年08月13日 - 22时35分</p>
+        <p><span>最后更新:</span>2021年01月23日 - 17时02分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/07/17/git-sshkey-multi/" title="管理多个SSH Key">http://blog.qoabc.com/2016/07/17/git-sshkey-multi/</a>
             <span class="copy-path" data-clipboard-text="原文: http://blog.qoabc.com/2016/07/17/git-sshkey-multi/　　作者: 老陶" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -487,7 +357,7 @@ debug1: Exit status 0</code></pre>
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#只是用一个公钥"><span class="toc-number">1.</span> <span class="toc-text">只是用一个公钥</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -551,7 +421,7 @@ debug1: Exit status 0</code></pre>
             </a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/07/30/linux-nginx-proxy/">Nginx 反向代理 （一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/21/js-regular/">js常用正则表达式大全--如：数字，字符等</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/03/vue-quill-editor/">Vue基于vue-quill-editor富文本编辑器的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/31/vue-dialog-center/">使elementUI的dialog上下左右居中</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/28/ios-dynamic-color/">iOS 深浅模式 颜色 和 图片</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/22/vue-cli4-axios/">vue/cli4 axios网路请求封装 以及 登录token失效跳转页面</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/18/go-mysql-recursion/">Golang实战系列：mysql数据库查询 -- 实现无限级菜单（beego orm)</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/14/vue-cli4-start-04/">vue-cli@4 入门（四）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/14/vue-cli4-start-03/">vue-cli@4 入门（三）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/12/vue-cli4-start-02/">vue-cli@4 入门（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/11/vue-cli4-start-01/">vue-cli@4 入门（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/22/go-os-operation/">Golang 文件操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/16/go-type-format/">golang 中string和int类型相互转换</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/05/linux-start-03/">CentOS 使用 Docker 服务搭建 Nginx 文件服务器</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/25/linux-start-02/">CentOS 服务器 + mysql + vsftpd服务</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/07/19/docker-net-shell/">docker网络命令与基本查看命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/22/linux-brctl-shell/">Linux brclt 命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/07/go-mac-environment/">Mac 下Go语言开发环境设置</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/05/linux-Shell-ssh/">Linux Shell ssh登录脚本</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/05/hexo-installed-1/">Mac+HEXO+Github 搭建属于自己的博客(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/20/linux-start-01/">CentOS 第一步</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/27/iOS-AVAudioSession/">iOS-AVAudio</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/29/ios-iphone-device/">iPhone不同设备屏幕尺寸和分辨率</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/25/domain-transfer/">域名转让</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/html-javaScript-elements/">javaScript-elements</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/html-css-animation/">CSS动画--页面特效</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/html-css-position/">html-css-position</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/html-css-box/">3.3 CSS盒子模型</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/html-css-style/">3.2 CSS基础样式讲解</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/html-css-elements/">第3阶段 CSS3基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/17/html-style-link-table/">html-style-link-table</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/10/html-framework-bg/">HTML框架、背景、实体</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/18/iOS-SpriteKit-SceneKit/">iOS SpriteKit/SceneKit/Metal浅析</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/30/swift3-GCD-dispatch-async/">Swift3中dispatch_once废弃的解决办法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/21/Deutsch-900-1/">德语900句（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/21/deutsch-900-2/">德语900句(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/31/iOS-URLScheme-Setting/">iOS应用内跳转系统设置相关界面的方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/04/git-warning-default/">Git Warning push.default is unset</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/02/hexo-asset-image/">在hexo中使用本地图片</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/01/mysql-install/">MySQL从安装到卸载</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/01/sublimeText3-License/">Sublime Text3激活</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/01/nvm-update-Ruby/">rvm升级Ruby</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/17/git-sshkey-multi/">管理多个SSH Key</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/17/git-sshkey/">生成SSH Key</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/12/CocoaPods-Install/">2016 CocosPods安装教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/11/swift-delegate-memory-leak/">swift 使用 delegate 内存泄露问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/11/ssh-exchange-identification/">ssh_exchange_identification</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/08/swift-LTPickerView/">LTPickerView.swift</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/22/iOS-UnicodeScalars/">判断中、英文、数字、符号</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/22/gitcommit-message-and-change-log/">Git提交的正确姿势：Commit message 和 Change log 编写指南</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/13/charlesproxy/">charles 抓包</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/01/APS-Encapsulation-Inheritance-Polymorphism-Delegation/">Encapsulation, Inheritance, Polymorphism, Delegation</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/25/iOS-rootViewControllerReset/"> iOS根视图切换，释放内存，以及推送界面跳转（iOS多语言切换语言处理，也请看此处）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/25/iOS-MultiLanguage/">iOS多语言，支持app内部设置</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/22/iOS-requireIPv6/">6 月 1 日起所有提交的 app 都需要支持 IPv6 网络</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/16/FMDatabaseQueue-lead-to-a-deadlock/">FMDatabaseQueue lead to a deadlock</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/15/web-onlineGenerationSiteMap/">在线生成站点地图SiteMap</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/14/swift-inout-keyordsChangePosition/">inout 关键字位置的变化</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/09/swift3-0AdvanceObjcTransformToSwift/">Swift 3.0 预告：将 Objc 库转换成更符合 Swift 语法风格的形式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/09/swiftPackageError-swiftc-failed-with-exit-code-1/">swift打包失败，swiftc failed with exit code 1</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/05/iOS-require-AllAppIPv6-only/">苹果:所有应用必须支持IPv6-only网络</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/28/iOS-BLEDevelopMultiDevice/">iOS-BLE蓝牙开发(二) -- 多设备</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/28/iOS-BLEDevelop1/">iOS-BLE蓝牙开发</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/28/swift3-0NewInfo(foundIn2-2)/">swift3.0变化（swift2.2工程中发现）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/27/UIImage-resizableImageWithCapInsets/">UIImage 拉伸图片 resizableImageWithCapInsets</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/18/VR-JourneyOfTime/">VR时代之旅</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/15/swift-mutating/">Swift - mutating关键字</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/11/IOS-cancel-performSelector-And-cancelPreviousPerformRequestsWithTarget/"> IOS 关于取消延迟执行函数的种种。performSelector与cancelPreviousPerformRequestsWithTarget</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/07/swift-StringOperation/">Swift字符串常用操作总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/07/StringOrNSString/">String还是NSString</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/01/APS-UML/">APS-UML</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/01/iOS-dSYMAnalyseCrash/">iOS通过dSYM文件分析crash</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/30/APS-Network/">APS-Network</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/28/APS-SQL2005/">APS---SQL2005</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/28/APS-Start/">APS---Start</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/24/developmentHistoryOfApple/">苹果手机发展史</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/23/swift2-2NewInfo/">Swift2.2的新特性</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/23/OSI%E3%80%81TCP-IP/">OSI、TCP/IP</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/11/iOS-SqliteMultithreading/">iOS上Sqlite多线程问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/10/ComputerEnglishVocabulary/">ComputerEnglishVocabulary</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/21/deploy-ssh-Of-Bitbucket/">如何配置Bitbucket的ssh</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/19/UITesting-ChineseWordsError/">UITesting中文错误问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/17/iOS-Objective-C-Literal-Value/">字面量声明方式 Objective-C Literal Value</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/17/DB-Error-1-unrecognized-token/">DB Error 1 unrecognized token</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/16/git-command/">Git命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/17/hello-world/">Hello World</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2021/01/23/brew-install-national/">使用国内源安装 Homebrew</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/01/05/ios-dark-disable/">iOS关于屏蔽暗黑模式小结 Xcode12失效的问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/12/31/gitcommit-message-and-change-log/">Git提交的正确姿势：Commit message 和 Change log 编写指南</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/30/linux-nginx-proxy/">Nginx 反向代理 （一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/21/js-regular/">js常用正则表达式大全--如：数字，字符等</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/03/vue-quill-editor/">Vue基于vue-quill-editor富文本编辑器的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/31/vue-dialog-center/">使elementUI的dialog上下左右居中</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/28/ios-dynamic-color/">iOS 深浅模式 颜色 和 图片</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/22/vue-cli4-axios/">vue/cli4 axios网路请求封装 以及 登录token失效跳转页面</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/18/go-mysql-recursion/">Golang实战系列：mysql数据库查询 -- 实现无限级菜单（beego orm)</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/14/vue-cli4-start-04/">vue-cli@4 入门（四）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/14/vue-cli4-start-03/">vue-cli@4 入门（三）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/12/vue-cli4-start-02/">vue-cli@4 入门（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/11/vue-cli4-start-01/">vue-cli@4 入门（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/22/go-os-operation/">Golang 文件操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/16/go-type-format/">golang 中string和int类型相互转换</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/05/linux-start-03/">CentOS 使用 Docker 服务搭建 Nginx 文件服务器</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/25/linux-start-02/">CentOS 服务器 + mysql + vsftpd服务</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/07/19/docker-net-shell/">docker网络命令与基本查看命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/22/linux-brctl-shell/">Linux brclt 命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/07/go-mac-environment/">Mac 下Go语言开发环境设置</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/05/linux-Shell-ssh/">Linux Shell ssh登录脚本</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/05/hexo-installed-1/">Mac+HEXO+Github 搭建属于自己的博客(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/02/20/linux-start-01/">CentOS 第一步</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/27/iOS-AVAudioSession/">iOS-AVAudio</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/29/ios-iphone-device/">iPhone不同设备屏幕尺寸和分辨率</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/25/domain-transfer/">域名转让</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/html-javaScript-elements/">javaScript-elements</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/html-css-animation/">CSS动画--页面特效</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/html-css-position/">html-css-position</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/html-css-box/">3.3 CSS盒子模型</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/html-css-style/">3.2 CSS基础样式讲解</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/html-css-elements/">第3阶段 CSS3基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/17/html-style-link-table/">html-style-link-table</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/10/html-framework-bg/">HTML框架、背景、实体</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/18/iOS-SpriteKit-SceneKit/">iOS SpriteKit/SceneKit/Metal浅析</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/30/swift3-GCD-dispatch-async/">Swift3中dispatch_once废弃的解决办法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/21/Deutsch-900-1/">德语900句（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/21/deutsch-900-2/">德语900句(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/31/iOS-URLScheme-Setting/">iOS应用内跳转系统设置相关界面的方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/04/git-warning-default/">Git Warning push.default is unset</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/02/hexo-asset-image/">在hexo中使用本地图片</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/01/mysql-install/">MySQL从安装到卸载</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/01/sublimeText3-License/">Sublime Text3激活</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/01/nvm-update-Ruby/">rvm升级Ruby</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/17/git-sshkey-multi/">管理多个SSH Key</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/17/git-sshkey/">生成SSH Key</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/12/CocoaPods-Install/">2016 CocosPods安装教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/11/swift-delegate-memory-leak/">swift 使用 delegate 内存泄露问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/11/ssh-exchange-identification/">ssh_exchange_identification</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/08/swift-LTPickerView/">LTPickerView.swift</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/22/iOS-UnicodeScalars/">判断中、英文、数字、符号</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/13/charlesproxy/">charles 抓包</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/01/APS-Encapsulation-Inheritance-Polymorphism-Delegation/">Encapsulation, Inheritance, Polymorphism, Delegation</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/25/iOS-rootViewControllerReset/"> iOS根视图切换，释放内存，以及推送界面跳转（iOS多语言切换语言处理，也请看此处）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/25/iOS-MultiLanguage/">iOS多语言，支持app内部设置</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/22/iOS-requireIPv6/">6 月 1 日起所有提交的 app 都需要支持 IPv6 网络</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/16/FMDatabaseQueue-lead-to-a-deadlock/">FMDatabaseQueue lead to a deadlock</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/15/web-onlineGenerationSiteMap/">在线生成站点地图SiteMap</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/14/swift-inout-keyordsChangePosition/">inout 关键字位置的变化</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/09/swift3-0AdvanceObjcTransformToSwift/">Swift 3.0 预告：将 Objc 库转换成更符合 Swift 语法风格的形式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/09/swiftPackageError-swiftc-failed-with-exit-code-1/">swift打包失败，swiftc failed with exit code 1</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/05/iOS-require-AllAppIPv6-only/">苹果:所有应用必须支持IPv6-only网络</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/28/iOS-BLEDevelopMultiDevice/">iOS-BLE蓝牙开发(二) -- 多设备</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/28/iOS-BLEDevelop1/">iOS-BLE蓝牙开发</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/28/swift3-0NewInfo(foundIn2-2)/">swift3.0变化（swift2.2工程中发现）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/27/UIImage-resizableImageWithCapInsets/">UIImage 拉伸图片 resizableImageWithCapInsets</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/18/VR-JourneyOfTime/">VR时代之旅</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/15/swift-mutating/">Swift - mutating关键字</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/11/IOS-cancel-performSelector-And-cancelPreviousPerformRequestsWithTarget/"> IOS 关于取消延迟执行函数的种种。performSelector与cancelPreviousPerformRequestsWithTarget</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/07/swift-StringOperation/">Swift字符串常用操作总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/07/StringOrNSString/">String还是NSString</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/01/APS-UML/">APS-UML</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/01/iOS-dSYMAnalyseCrash/">iOS通过dSYM文件分析crash</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/30/APS-Network/">APS-Network</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/28/APS-SQL2005/">APS---SQL2005</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/28/APS-Start/">APS---Start</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/24/developmentHistoryOfApple/">苹果手机发展史</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/23/swift2-2NewInfo/">Swift2.2的新特性</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/23/OSI%E3%80%81TCP-IP/">OSI、TCP/IP</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/11/iOS-SqliteMultithreading/">iOS上Sqlite多线程问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/10/ComputerEnglishVocabulary/">ComputerEnglishVocabulary</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/21/deploy-ssh-Of-Bitbucket/">如何配置Bitbucket的ssh</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/19/UITesting-ChineseWordsError/">UITesting中文错误问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/17/iOS-Objective-C-Literal-Value/">字面量声明方式 Objective-C Literal Value</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/17/DB-Error-1-unrecognized-token/">DB Error 1 unrecognized token</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/16/git-command/">Git命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/17/hello-world/">Hello World</a></li></ul>
     <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
     <script>
         $(".post-list").addClass("toc-article");
@@ -581,7 +451,7 @@ debug1: Exit status 0</code></pre>
     <div class="outer">
         <div id="footer-info">
             <div class="footer-left">
-                &copy; 2020 老陶
+                &copy; 2021 老陶
             </div>
             <div class="footer-right">
                 <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
